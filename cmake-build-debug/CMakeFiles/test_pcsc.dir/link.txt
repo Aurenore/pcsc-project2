@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/test_pcsc.dir/test/test.cc.o -o test_pcsc  lib/libgtest_maind.a lib/libgtestd.a -lpthread libpcsc.a 

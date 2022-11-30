@@ -10,7 +10,7 @@ add_library(pcsc
 
 add_subdirectory(googletest)
 
-add_executable(main src/main.cc)
+add_executable(main src/main.cc src/AbstractExplicitSolver.cpp src/AbstractExplicitSolver.h src/AdamsBashforthSolver.cpp src/AdamsBashforthSolver.h)
 target_link_libraries(main pcsc)
 
 add_executable(test_pcsc test/test.cc)

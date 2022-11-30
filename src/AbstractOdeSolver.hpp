@@ -21,6 +21,7 @@ public:
   void SetTimeInterval(const double t0, const double t1);
   void SetInitialValue(const double y0);
   void SetRightHandSide(double (*f)(double y, double t));
+  void SetOrder(unsigned int s);
 
   double RightHandSide(double y, double t) const;
   virtual void SolveEquation(std::ostream &stream) = 0;
@@ -34,12 +35,15 @@ public:
 
   double GetStepSize() const { return stepSize; }
 
+  unsigned int GetOrder() const { return s; }
+
 private:
   double stepSize;
   double initialTime;
   double finalTime;
   double initialValue;
   double (*f_rhs)(double y, double t);
+  unsigned int s;
 };
 
 #endif /* ABSTRACTODESOLVER_HPP_ */

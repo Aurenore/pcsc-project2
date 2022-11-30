@@ -8,7 +8,7 @@
 #include "AbstractOdeSolver.hpp"
 
 AbstractOdeSolver::AbstractOdeSolver()
-    : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0) {}
+    : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {}
 
 AbstractOdeSolver::~AbstractOdeSolver() {}
 
@@ -23,6 +23,10 @@ void AbstractOdeSolver::SetInitialValue(const double y0) { initialValue = y0; }
 
 void AbstractOdeSolver::SetRightHandSide(double (*f)(double y, double t)) {
   f_rhs = f;
+}
+
+void AbstractOdeSolver::SetOrder(unsigned int order) {
+    s = order;
 }
 
 double AbstractOdeSolver::RightHandSide(double y, double t) const {
