@@ -6,11 +6,15 @@
  */
 
 #include "AbstractOdeSolver.hpp"
+#include <iostream>
+#include <cassert>
 
 AbstractOdeSolver::AbstractOdeSolver()
     : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {}
 
-AbstractOdeSolver::~AbstractOdeSolver() {}
+AbstractOdeSolver::~AbstractOdeSolver() {
+    delete[] b;
+}
 
 void AbstractOdeSolver::SetStepSize(const double h) { stepSize = h; }
 
@@ -25,10 +29,16 @@ void AbstractOdeSolver::SetRightHandSide(double (*f)(double y, double t)) {
   f_rhs = f;
 }
 
-void AbstractOdeSolver::SetOrder(unsigned int order) {
+void AbstractOdeSolver::SetOrder(const unsigned int order) {
     s = order;
+    this->SetB();
 }
 
 double AbstractOdeSolver::RightHandSide(double y, double t) const {
   return f_rhs(y, t);
+}
+
+double AbstractOdeSolver::GetB(unsigned int i) const {
+    assert(i <= s + 2);
+    return b[i];
 }

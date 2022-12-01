@@ -8,9 +8,6 @@
 #include "AbstractOdeSolver.hpp"
 
 class AbstractExplicitSolver : public AbstractOdeSolver{
-public:
-    AbstractExplicitSolver();
-    virtual ~AbstractExplicitSolver();
 };
 
 

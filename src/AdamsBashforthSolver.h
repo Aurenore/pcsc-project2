@@ -9,10 +9,10 @@
 
 class AdamsBashforthSolver : public AbstractExplicitSolver {
 public:
-    AdamsBashforthSolver();
-    virtual ~AdamsBashforthSolver();
+    virtual double SolveEquation(std::ostream &stream);
 
-    virtual void SolveEquation(std::ostream &stream);
+protected:
+    virtual void SetB();
 };
 
 

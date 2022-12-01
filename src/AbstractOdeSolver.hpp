@@ -21,10 +21,10 @@ public:
   void SetTimeInterval(const double t0, const double t1);
   void SetInitialValue(const double y0);
   void SetRightHandSide(double (*f)(double y, double t));
-  void SetOrder(unsigned int s);
+  void SetOrder(const unsigned int s);
 
   double RightHandSide(double y, double t) const;
-  virtual void SolveEquation(std::ostream &stream) = 0;
+  virtual double SolveEquation(std::ostream &stream) = 0;
 
   // Get methods
   double GetFinalTime() const { return finalTime; }
@@ -37,13 +37,19 @@ public:
 
   unsigned int GetOrder() const { return s; }
 
+  double GetB(unsigned int i) const;
+
 private:
   double stepSize;
   double initialTime;
   double finalTime;
   double initialValue;
   double (*f_rhs)(double y, double t);
+
+protected:
+  virtual void SetB() = 0;
   unsigned int s;
+  double* b;
 };
 
 #endif /* ABSTRACTODESOLVER_HPP_ */
