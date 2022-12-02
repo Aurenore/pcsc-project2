@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/test_solver.dir/test/test_solver.cc.o -o test_solver  lib/libgtest_maind.a lib/libgtestd.a libsolver.a 

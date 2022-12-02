@@ -14,6 +14,8 @@ class AbstractOdeSolver {
 public:
   // Constructor and destructor
   AbstractOdeSolver();
+  AbstractOdeSolver(const double h, const double t0, const double t1, const double y0, double (*f)(double y, double t),
+                    const unsigned int s);
   virtual ~AbstractOdeSolver();
 
   // Other public methods
@@ -34,6 +36,8 @@ public:
   double GetInitialValue() const { return initialValue; }
 
   double GetStepSize() const { return stepSize; }
+
+  //WRITE GetRightHandSide();
 
   unsigned int GetOrder() const { return s; }
 

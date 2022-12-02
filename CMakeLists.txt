@@ -10,10 +10,22 @@ add_library(pcsc
 
 add_subdirectory(googletest)
 
-add_executable(main src/main.cc src/AbstractExplicitSolver.cpp src/AbstractExplicitSolver.h src/AdamsBashforthSolver.cpp src/AdamsBashforthSolver.h)
+add_executable(main src/main.cc)
 target_link_libraries(main pcsc)
 
 add_executable(test_pcsc test/test.cc)
 target_link_libraries(test_pcsc gtest_main gtest pthread pcsc)
 
 add_custom_target(test ./test_pcsc DEPENDS test_pcsc)
+
+
+
+
+add_library(solver src/AbstractExplicitSolver.cpp src/AbstractExplicitSolver.h src/AdamsBashforthSolver.cpp src/AdamsBashforthSolver.h)
+add_executable(main_solver src/ch-07-ex-03-solution.cpp)
+target_link_libraries(main_solver solver)
+
+add_executable(test_solver test/test_solver.cc)
+target_link_libraries(test_solver gtest_main gtest solver)
+
+add_custom_target(target_test ./test_solver DEPENDS test_solver)

@@ -42,3 +42,12 @@ double AbstractOdeSolver::GetB(unsigned int i) const {
     assert(i <= s + 2);
     return b[i];
 }
+
+AbstractOdeSolver::AbstractOdeSolver(const double h, const double t0, const double t1, const double y0,
+                                     double (*f)(double, double), const unsigned int s) {
+    SetStepSize(h);
+    SetTimeInterval(t0, t1);
+    SetInitialValue(y0);
+    SetRightHandSide(f);
+    SetOrder(s);
+}

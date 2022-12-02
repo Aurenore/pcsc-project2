@@ -1,8 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/main.dir/src/AbstractExplicitSolver.cpp.o"
-  "CMakeFiles/main.dir/src/AbstractExplicitSolver.cpp.o.d"
-  "CMakeFiles/main.dir/src/AdamsBashforthSolver.cpp.o"
-  "CMakeFiles/main.dir/src/AdamsBashforthSolver.cpp.o.d"
   "CMakeFiles/main.dir/src/main.cc.o"
   "CMakeFiles/main.dir/src/main.cc.o.d"
   "main"

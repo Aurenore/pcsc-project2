@@ -214,6 +214,58 @@ test/fast:
 .PHONY : test/fast
 
 #=============================================================================
+# Target rules for targets named solver
+
+# Build rule for target.
+solver: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solver
+.PHONY : solver
+
+# fast build rule for target.
+solver/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/build
+.PHONY : solver/fast
+
+#=============================================================================
+# Target rules for targets named main_solver
+
+# Build rule for target.
+main_solver: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main_solver
+.PHONY : main_solver
+
+# fast build rule for target.
+main_solver/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/build
+.PHONY : main_solver/fast
+
+#=============================================================================
+# Target rules for targets named test_solver
+
+# Build rule for target.
+test_solver: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_solver
+.PHONY : test_solver
+
+# fast build rule for target.
+test_solver/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_solver.dir/build.make CMakeFiles/test_solver.dir/build
+.PHONY : test_solver/fast
+
+#=============================================================================
+# Target rules for targets named target_test
+
+# Build rule for target.
+target_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 target_test
+.PHONY : target_test
+
+# fast build rule for target.
+target_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/target_test.dir/build.make CMakeFiles/target_test.dir/build
+.PHONY : target_test/fast
+
+#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -270,7 +322,7 @@ src/AbstractExplicitSolver.o: src/AbstractExplicitSolver.cpp.o
 
 # target to build an object file
 src/AbstractExplicitSolver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AbstractExplicitSolver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AbstractExplicitSolver.cpp.o
 .PHONY : src/AbstractExplicitSolver.cpp.o
 
 src/AbstractExplicitSolver.i: src/AbstractExplicitSolver.cpp.i
@@ -278,7 +330,7 @@ src/AbstractExplicitSolver.i: src/AbstractExplicitSolver.cpp.i
 
 # target to preprocess a source file
 src/AbstractExplicitSolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AbstractExplicitSolver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AbstractExplicitSolver.cpp.i
 .PHONY : src/AbstractExplicitSolver.cpp.i
 
 src/AbstractExplicitSolver.s: src/AbstractExplicitSolver.cpp.s
@@ -286,7 +338,7 @@ src/AbstractExplicitSolver.s: src/AbstractExplicitSolver.cpp.s
 
 # target to generate assembly for a file
 src/AbstractExplicitSolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AbstractExplicitSolver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AbstractExplicitSolver.cpp.s
 .PHONY : src/AbstractExplicitSolver.cpp.s
 
 src/AdamsBashforthSolver.o: src/AdamsBashforthSolver.cpp.o
@@ -294,7 +346,7 @@ src/AdamsBashforthSolver.o: src/AdamsBashforthSolver.cpp.o
 
 # target to build an object file
 src/AdamsBashforthSolver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AdamsBashforthSolver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.o
 .PHONY : src/AdamsBashforthSolver.cpp.o
 
 src/AdamsBashforthSolver.i: src/AdamsBashforthSolver.cpp.i
@@ -302,7 +354,7 @@ src/AdamsBashforthSolver.i: src/AdamsBashforthSolver.cpp.i
 
 # target to preprocess a source file
 src/AdamsBashforthSolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AdamsBashforthSolver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.i
 .PHONY : src/AdamsBashforthSolver.cpp.i
 
 src/AdamsBashforthSolver.s: src/AdamsBashforthSolver.cpp.s
@@ -310,8 +362,32 @@ src/AdamsBashforthSolver.s: src/AdamsBashforthSolver.cpp.s
 
 # target to generate assembly for a file
 src/AdamsBashforthSolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/AdamsBashforthSolver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.s
 .PHONY : src/AdamsBashforthSolver.cpp.s
+
+src/ch-07-ex-03-solution.o: src/ch-07-ex-03-solution.cpp.o
+.PHONY : src/ch-07-ex-03-solution.o
+
+# target to build an object file
+src/ch-07-ex-03-solution.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o
+.PHONY : src/ch-07-ex-03-solution.cpp.o
+
+src/ch-07-ex-03-solution.i: src/ch-07-ex-03-solution.cpp.i
+.PHONY : src/ch-07-ex-03-solution.i
+
+# target to preprocess a source file
+src/ch-07-ex-03-solution.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.i
+.PHONY : src/ch-07-ex-03-solution.cpp.i
+
+src/ch-07-ex-03-solution.s: src/ch-07-ex-03-solution.cpp.s
+.PHONY : src/ch-07-ex-03-solution.s
+
+# target to generate assembly for a file
+src/ch-07-ex-03-solution.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.s
+.PHONY : src/ch-07-ex-03-solution.cpp.s
 
 src/main.o: src/main.cc.o
 .PHONY : src/main.o
@@ -385,6 +461,30 @@ test/test.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pcsc.dir/build.make CMakeFiles/test_pcsc.dir/test/test.cc.s
 .PHONY : test/test.cc.s
 
+test/test_solver.o: test/test_solver.cc.o
+.PHONY : test/test_solver.o
+
+# target to build an object file
+test/test_solver.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_solver.dir/build.make CMakeFiles/test_solver.dir/test/test_solver.cc.o
+.PHONY : test/test_solver.cc.o
+
+test/test_solver.i: test/test_solver.cc.i
+.PHONY : test/test_solver.i
+
+# target to preprocess a source file
+test/test_solver.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_solver.dir/build.make CMakeFiles/test_solver.dir/test/test_solver.cc.i
+.PHONY : test/test_solver.cc.i
+
+test/test_solver.s: test/test_solver.cc.s
+.PHONY : test/test_solver.s
+
+# target to generate assembly for a file
+test/test_solver.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_solver.dir/build.make CMakeFiles/test_solver.dir/test/test_solver.cc.s
+.PHONY : test/test_solver.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -397,20 +497,27 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... target_test"
 	@echo "... test"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... main"
+	@echo "... main_solver"
 	@echo "... pcsc"
+	@echo "... solver"
 	@echo "... test_pcsc"
+	@echo "... test_solver"
 	@echo "... src/AbstractExplicitSolver.o"
 	@echo "... src/AbstractExplicitSolver.i"
 	@echo "... src/AbstractExplicitSolver.s"
 	@echo "... src/AdamsBashforthSolver.o"
 	@echo "... src/AdamsBashforthSolver.i"
 	@echo "... src/AdamsBashforthSolver.s"
+	@echo "... src/ch-07-ex-03-solution.o"
+	@echo "... src/ch-07-ex-03-solution.i"
+	@echo "... src/ch-07-ex-03-solution.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -420,6 +527,9 @@ help:
 	@echo "... test/test.o"
 	@echo "... test/test.i"
 	@echo "... test/test.s"
+	@echo "... test/test_solver.o"
+	@echo "... test/test_solver.i"
+	@echo "... test/test_solver.s"
 .PHONY : help
 
 

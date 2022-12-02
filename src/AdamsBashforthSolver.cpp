@@ -60,14 +60,15 @@ double AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
     stream << t << " " << y << "\n";
     double temp[GetOrder() + 1];
     temp[0] = y;
-    if(GetOrder()>1){
-        for(int j=1; j<GetOrder(); j++){
-            // A CONTINUER DE REMPLIR
-            AdamsBashforthSolver solver()
-            temp[j] =
+    if (GetOrder() > 1) {
+        for (int j = 1; j < GetOrder(); j++) {
+            //WRITE HERE
+            //f = ...
+            //AdamsBashforthSolver solver(h, t, GetFinalTime(), y0, f, j);
+            temp[j] = 0;
         }
     }
-}
+
     for (int i = 1; i <= n; ++i) {
         double temp = y + h * RightHandSide(y, t);
         if (-1e-6 <= temp && temp <= 0.0) {
@@ -78,9 +79,11 @@ double AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
             y = temp;
         } else {
             // Freak out!
-            throw Exception("STEP", "Step size too large.");
+            //throw Exception("STEP", "Step size too large.");
         }
         t += h;
 
         stream << t << " " << y << "\n";
+    }
+    return y;
 }
