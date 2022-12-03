@@ -7,11 +7,15 @@
 #include <iostream>
 #include <cmath>
 
-AdamsBashforthSolver::AdamsBashforthSolver() : AbstractExplicitSolver() {}
+AdamsBashforthSolver::AdamsBashforthSolver() : AbstractExplicitSolver() {
+    SetB();
+}
 
 AdamsBashforthSolver::AdamsBashforthSolver(const double h, const double t0, const double t1, const double y0,
                                            double (*f)(double, double), const unsigned int s) : AbstractExplicitSolver
-                                           (h, t0,t1,y0, f,s) {}
+                                           (h, t0,t1,y0, f,s) {
+    SetB();
+}
 
 AdamsBashforthSolver::~AdamsBashforthSolver() = default;
 

@@ -31,7 +31,7 @@ void AbstractOdeSolver::SetRightHandSide(double (*f)(double y, double t)) {
 
 void AbstractOdeSolver::SetOrder(const unsigned int order) {
     s = order;
-    this->SetB(); //PB ICI : VIRTUAL METHOD CALLED
+    // PB ICI : VIRTUAL METHOD CALLED
 }
 
 double AbstractOdeSolver::RightHandSide(double y, double t) const {

@@ -10,8 +10,9 @@ int main(int argc, char **argv) {
     double t1=2;
     double y0=1;
     unsigned int s=1;
-    //AbstractOdeSolver *pSolver = new AdamsBashforthSolver();
-    AdamsBashforthSolver solver(h, t0, t1, y0, fRhs, s);
+    AbstractOdeSolver *pSolver = new AdamsBashforthSolver(h, t0, t1, y0, fRhs, s);
+    AdamsBashforthSolver solver1(h, t0, t1, y0, fRhs, s);
+
     std::cout << "AdamsBashforth solver has been declared." << std::endl;
     return 0;
 }
