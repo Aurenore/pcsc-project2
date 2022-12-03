@@ -29,7 +29,9 @@ public:
   void SetOrder(const unsigned int s);
 
   double RightHandSide(double y, double t) const;
-  virtual double SolveEquation(std::ostream &stream) = 0;
+  //Product with B : return sum_{i = 0}^{j-1} F[i]*b[j-1][i]
+  double ProductWithB(const double F[max_order+1], const int j) const;
+  virtual void SolveEquation(std::ostream &stream) = 0;
 
   // Get methods
   double GetFinalTime() const { return finalTime; }
@@ -42,6 +44,7 @@ public:
 
   unsigned int GetOrder() const { return s; }
 
+  double GetB(const unsigned int i, const unsigned int j) const;
 
 private:
   double stepSize;
@@ -49,10 +52,10 @@ private:
   double finalTime;
   double initialValue;
   double (*f_rhs)(double y, double t);
+  unsigned int s;
 
 protected:
   virtual void SetB() = 0;
-  unsigned int s;
   double b[max_order][max_order];
 };
 

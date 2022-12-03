@@ -6,21 +6,22 @@
  */
 
 #include "AbstractOdeSolver.hpp"
-#include <iostream>
 #include <cassert>
 
 AbstractOdeSolver::AbstractOdeSolver()
-    : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {
-    //this->SetB();
-}
+    : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {}
 
 AbstractOdeSolver::~AbstractOdeSolver() {}
 
-void AbstractOdeSolver::SetStepSize(const double h) { stepSize = h; }
+void AbstractOdeSolver::SetStepSize(const double h) {
+    assert(h>0);
+    stepSize = h;
+}
 
 void AbstractOdeSolver::SetTimeInterval(const double t0, const double t1) {
-  initialTime = t0;
-  finalTime = t1;
+    assert(t1>t0);
+    initialTime = t0;
+    finalTime = t1;
 }
 
 void AbstractOdeSolver::SetInitialValue(const double y0) { initialValue = y0; }
@@ -30,8 +31,8 @@ void AbstractOdeSolver::SetRightHandSide(double (*f)(double y, double t)) {
 }
 
 void AbstractOdeSolver::SetOrder(const unsigned int order) {
+    assert(order>=0);
     s = order;
-    // PB ICI : VIRTUAL METHOD CALLED
 }
 
 double AbstractOdeSolver::RightHandSide(double y, double t) const {
@@ -45,4 +46,18 @@ AbstractOdeSolver::AbstractOdeSolver(const double h, const double t0, const doub
     SetInitialValue(y0);
     SetRightHandSide(f);
     SetOrder(s);
+}
+
+double AbstractOdeSolver::GetB(const unsigned int i, const unsigned int j) const {
+    assert((i>=0) && (i<max_order) && (j>=0) && (j<max_order));
+    assert(i>=j); //since the B matrix is triangular inferior
+    return b[i][j];
+}
+
+double AbstractOdeSolver::ProductWithB(const double *F, const int j) const {
+    double product(0);
+    for(int i=0; i<j; i++){
+        product += F[i]*b[j-1][i];
+    }
+    return product;
 }
