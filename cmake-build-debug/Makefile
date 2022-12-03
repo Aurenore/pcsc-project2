@@ -341,6 +341,30 @@ src/AbstractExplicitSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AbstractExplicitSolver.cpp.s
 .PHONY : src/AbstractExplicitSolver.cpp.s
 
+src/AbstractOdeSolver.o: src/AbstractOdeSolver.cpp.o
+.PHONY : src/AbstractOdeSolver.o
+
+# target to build an object file
+src/AbstractOdeSolver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AbstractOdeSolver.cpp.o
+.PHONY : src/AbstractOdeSolver.cpp.o
+
+src/AbstractOdeSolver.i: src/AbstractOdeSolver.cpp.i
+.PHONY : src/AbstractOdeSolver.i
+
+# target to preprocess a source file
+src/AbstractOdeSolver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AbstractOdeSolver.cpp.i
+.PHONY : src/AbstractOdeSolver.cpp.i
+
+src/AbstractOdeSolver.s: src/AbstractOdeSolver.cpp.s
+.PHONY : src/AbstractOdeSolver.s
+
+# target to generate assembly for a file
+src/AbstractOdeSolver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AbstractOdeSolver.cpp.s
+.PHONY : src/AbstractOdeSolver.cpp.s
+
 src/AdamsBashforthSolver.o: src/AdamsBashforthSolver.cpp.o
 .PHONY : src/AdamsBashforthSolver.o
 
@@ -365,36 +389,13 @@ src/AdamsBashforthSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.s
 .PHONY : src/AdamsBashforthSolver.cpp.s
 
-src/ch-07-ex-03-solution.o: src/ch-07-ex-03-solution.cpp.o
-.PHONY : src/ch-07-ex-03-solution.o
-
-# target to build an object file
-src/ch-07-ex-03-solution.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o
-.PHONY : src/ch-07-ex-03-solution.cpp.o
-
-src/ch-07-ex-03-solution.i: src/ch-07-ex-03-solution.cpp.i
-.PHONY : src/ch-07-ex-03-solution.i
-
-# target to preprocess a source file
-src/ch-07-ex-03-solution.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.i
-.PHONY : src/ch-07-ex-03-solution.cpp.i
-
-src/ch-07-ex-03-solution.s: src/ch-07-ex-03-solution.cpp.s
-.PHONY : src/ch-07-ex-03-solution.s
-
-# target to generate assembly for a file
-src/ch-07-ex-03-solution.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.s
-.PHONY : src/ch-07-ex-03-solution.cpp.s
-
 src/main.o: src/main.cc.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cc.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/main.cc.o
 .PHONY : src/main.cc.o
 
 src/main.i: src/main.cc.i
@@ -403,6 +404,7 @@ src/main.i: src/main.cc.i
 # target to preprocess a source file
 src/main.cc.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/main.cc.i
 .PHONY : src/main.cc.i
 
 src/main.s: src/main.cc.s
@@ -411,6 +413,7 @@ src/main.s: src/main.cc.s
 # target to generate assembly for a file
 src/main.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/main.cc.s
 .PHONY : src/main.cc.s
 
 src/pcsc.o: src/pcsc.cc.o
@@ -512,12 +515,12 @@ help:
 	@echo "... src/AbstractExplicitSolver.o"
 	@echo "... src/AbstractExplicitSolver.i"
 	@echo "... src/AbstractExplicitSolver.s"
+	@echo "... src/AbstractOdeSolver.o"
+	@echo "... src/AbstractOdeSolver.i"
+	@echo "... src/AbstractOdeSolver.s"
 	@echo "... src/AdamsBashforthSolver.o"
 	@echo "... src/AdamsBashforthSolver.i"
 	@echo "... src/AdamsBashforthSolver.s"
-	@echo "... src/ch-07-ex-03-solution.o"
-	@echo "... src/ch-07-ex-03-solution.i"
-	@echo "... src/ch-07-ex-03-solution.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

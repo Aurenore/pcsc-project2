@@ -69,28 +69,28 @@ include CMakeFiles/main_solver.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/main_solver.dir/flags.make
 
-CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o: CMakeFiles/main_solver.dir/flags.make
-CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o: ../src/ch-07-ex-03-solution.cpp
-CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o: CMakeFiles/main_solver.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o -MF CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o.d -o CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o -c /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/ch-07-ex-03-solution.cpp
+CMakeFiles/main_solver.dir/src/main.cc.o: CMakeFiles/main_solver.dir/flags.make
+CMakeFiles/main_solver.dir/src/main.cc.o: ../src/main.cc
+CMakeFiles/main_solver.dir/src/main.cc.o: CMakeFiles/main_solver.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main_solver.dir/src/main.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main_solver.dir/src/main.cc.o -MF CMakeFiles/main_solver.dir/src/main.cc.o.d -o CMakeFiles/main_solver.dir/src/main.cc.o -c /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/main.cc
 
-CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/ch-07-ex-03-solution.cpp > CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.i
+CMakeFiles/main_solver.dir/src/main.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main_solver.dir/src/main.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/main.cc > CMakeFiles/main_solver.dir/src/main.cc.i
 
-CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/ch-07-ex-03-solution.cpp -o CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.s
+CMakeFiles/main_solver.dir/src/main.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main_solver.dir/src/main.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/main.cc -o CMakeFiles/main_solver.dir/src/main.cc.s
 
 # Object files for target main_solver
 main_solver_OBJECTS = \
-"CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o"
+"CMakeFiles/main_solver.dir/src/main.cc.o"
 
 # External object files for target main_solver
 main_solver_EXTERNAL_OBJECTS =
 
-main_solver: CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o
+main_solver: CMakeFiles/main_solver.dir/src/main.cc.o
 main_solver: CMakeFiles/main_solver.dir/build.make
 main_solver: libsolver.a
 main_solver: CMakeFiles/main_solver.dir/link.txt

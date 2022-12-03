@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/ch-07-ex-03-solution.cpp" "CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o" "gcc" "CMakeFiles/main_solver.dir/src/ch-07-ex-03-solution.cpp.o.d"
+  "/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/main.cc" "CMakeFiles/main_solver.dir/src/main.cc.o" "gcc" "CMakeFiles/main_solver.dir/src/main.cc.o.d"
   )
 
 # Targets to which this target links.

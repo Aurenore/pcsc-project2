@@ -10,6 +10,9 @@
 
 #include <ostream>
 
+//the maximum order of the solver is set to 5 in our case.
+const unsigned int max_order = 5;
+
 class AbstractOdeSolver {
 public:
   // Constructor and destructor
@@ -37,11 +40,8 @@ public:
 
   double GetStepSize() const { return stepSize; }
 
-  //WRITE GetRightHandSide();
-
   unsigned int GetOrder() const { return s; }
 
-  double GetB(unsigned int i) const;
 
 private:
   double stepSize;
@@ -53,7 +53,7 @@ private:
 protected:
   virtual void SetB() = 0;
   unsigned int s;
-  double* b;
+  double b[max_order][max_order];
 };
 
 #endif /* ABSTRACTODESOLVER_HPP_ */

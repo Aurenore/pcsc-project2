@@ -10,11 +10,11 @@
 #include <cassert>
 
 AbstractOdeSolver::AbstractOdeSolver()
-    : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {}
-
-AbstractOdeSolver::~AbstractOdeSolver() {
-    delete[] b;
+    : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {
+    //this->SetB();
 }
+
+AbstractOdeSolver::~AbstractOdeSolver() {}
 
 void AbstractOdeSolver::SetStepSize(const double h) { stepSize = h; }
 
@@ -31,16 +31,11 @@ void AbstractOdeSolver::SetRightHandSide(double (*f)(double y, double t)) {
 
 void AbstractOdeSolver::SetOrder(const unsigned int order) {
     s = order;
-    this->SetB();
+    this->SetB(); //PB ICI : VIRTUAL METHOD CALLED
 }
 
 double AbstractOdeSolver::RightHandSide(double y, double t) const {
   return f_rhs(y, t);
-}
-
-double AbstractOdeSolver::GetB(unsigned int i) const {
-    assert(i <= s + 2);
-    return b[i];
 }
 
 AbstractOdeSolver::AbstractOdeSolver(const double h, const double t0, const double t1, const double y0,
