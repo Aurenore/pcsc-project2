@@ -20,7 +20,9 @@ add_custom_target(test ./test_pcsc DEPENDS test_pcsc)
 
 
 
-add_library(solver src/AbstractOdeSolver.cpp src/AbstractOdeSolver.hpp src/AbstractExplicitSolver.cpp src/AbstractExplicitSolver.h src/AdamsBashforthSolver.cpp src/AdamsBashforthSolver.h)
+add_library(solver src/AbstractOdeSolver.cpp src/AbstractOdeSolver.hpp src/AbstractExplicitSolver.cpp
+        src/AbstractExplicitSolver.h src/AdamsBashforthSolver.cpp src/AdamsBashforthSolver.h
+        src/RKSolver.cpp src/RKSolver.h)
 add_executable(main_solver src/main.cc)
 target_link_libraries(main_solver solver)
 

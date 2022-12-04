@@ -26,9 +26,10 @@ public:
   void SetTimeInterval(const double t0, const double t1);
   void SetInitialValue(const double y0);
   void SetRightHandSide(double (*f)(double y, double t));
-  void SetOrder(const unsigned int s);
+  virtual void SetOrder(const unsigned int order);
 
   double RightHandSide(double y, double t) const;
+  double ScalarProduct(const int size, const double* a, const double* b) const;
   //Product with B : return sum_{i = 0}^{j-1} F[i]*b[j-1][i]
   double ProductWithB(const double F[max_order+1], const int j) const;
   virtual void SolveEquation(std::ostream &stream) = 0;
@@ -52,11 +53,12 @@ private:
   double finalTime;
   double initialValue;
   double (*f_rhs)(double y, double t);
-  unsigned int s;
+
 
 protected:
-  virtual void SetB() = 0;
-  double b[max_order][max_order];
+    unsigned int s;
+    virtual void SetB() = 0;
+    double b[max_order][max_order];
 };
 
 #endif /* ABSTRACTODESOLVER_HPP_ */

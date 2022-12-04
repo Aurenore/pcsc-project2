@@ -14,6 +14,12 @@ AdamsBashforthSolver::AdamsBashforthSolver() : AbstractExplicitSolver() {
 AdamsBashforthSolver::AdamsBashforthSolver(const double h, const double t0, const double t1, const double y0,
                                            double (*f)(double, double), const unsigned int s) : AbstractExplicitSolver
                                            (h,t0,t1,y0,f,s) {
+    SetOrder(s);
+}
+
+void AdamsBashforthSolver::SetOrder(const unsigned int order){
+    assert(order>=0);
+    s = order;
     SetB();
 }
 
@@ -87,6 +93,8 @@ void AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
         stream << t << " " << y << "\n";
     }
 }
+
+
 
 
 

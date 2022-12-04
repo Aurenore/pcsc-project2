@@ -1,10 +1,3 @@
-/*
- * RungeKuttaSolver.hpp
- *
- *  Created on: Oct 25, 2012
- *      Author: rpopescu
- */
-
 #ifndef RUNGEKUTTASOLVER_HPP_
 #define RUNGEKUTTASOLVER_HPP_
 

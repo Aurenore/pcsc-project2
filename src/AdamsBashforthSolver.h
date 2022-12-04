@@ -15,6 +15,7 @@ public:
     AdamsBashforthSolver(const double h, const double t0, const double t1, const double y0,
                          double (*f)(double y, double t), const unsigned int s);
     ~AdamsBashforthSolver() override;
+    void SetOrder(const unsigned int order) override;
 
 protected:
     void SetB() override;

@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/solver.dir/src/AbstractOdeSolver.cpp.o.d"
   "CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.o"
   "CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.o.d"
+  "CMakeFiles/solver.dir/src/RKSolver.cpp.o"
+  "CMakeFiles/solver.dir/src/RKSolver.cpp.o.d"
   "libsolver.a"
   "libsolver.pdb"
 )

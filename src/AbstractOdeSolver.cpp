@@ -7,6 +7,7 @@
 
 #include "AbstractOdeSolver.hpp"
 #include <cassert>
+#include <iostream>
 
 AbstractOdeSolver::AbstractOdeSolver()
     : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {}
@@ -54,10 +55,22 @@ double AbstractOdeSolver::GetB(const unsigned int i, const unsigned int j) const
     return b[i][j];
 }
 
-double AbstractOdeSolver::ProductWithB(const double *F, const int j) const {
-    double product(0);
-    for(int i=0; i<j; i++){
-        product += F[i]*b[j-1][i];
+double AbstractOdeSolver::ScalarProduct(const int size, const double *a, const double *b) const {
+    double product(0.);
+    for(int i=0; i<size; i++){
+        product += a[i]*b[i];
     }
     return product;
 }
+
+double AbstractOdeSolver::ProductWithB(const double *F, const int j) const {
+    //Product with B : return sum_{i = 0}^{j-1} F[i]*b[j-1][i]
+    double product;
+    auto* pt = new double;
+    *pt = b[j-1][0];
+    product = ScalarProduct(j, F, pt);
+    delete pt;
+    return product;
+}
+
+
