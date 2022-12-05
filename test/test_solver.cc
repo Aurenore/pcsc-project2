@@ -143,6 +143,19 @@ TEST(AdamsBashforthSolver_test, B_sum_order1) {
     }
 }
 
+TEST(AdamsBashforthSolver_test, ProductWithB) {
+    AdamsBashforthSolver solver;
+    for(int order=1; order<=max_order; order++){
+        double ones[order];
+        for(int i=0; i<order; i++){
+            ones[i]=1;
+        }
+        double sum = solver.ProductWithB(ones, order);
+        std::cout << "For order : " << order <<", sum = " << sum << std::endl;
+        EXPECT_DOUBLE_EQ(1., sum);
+    }
+}
+
 double fRhs2(double y, double t) { return -100*y; }
 TEST(AdamsBashforthSolver_test, EulerForward) {
     AbstractOdeSolver* pt_solver = new AdamsBashforthSolver;

@@ -4,15 +4,14 @@
 #include <iostream>
 #include <fstream>
 
-double fRhs(double y, double t) { return 1 + t; }
+double fRhs(double y, double t)  { return -100*y; }
 
 int main(int argc, char **argv) {
-    double h=1e-3;
-    double t0=0;
-    double t1=2;
-    double y0=1;
-    unsigned int s=2;
-    AbstractOdeSolver *pSolver = new RKSolver(h, t0, t1, y0, fRhs, s);
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.8;
+    AbstractOdeSolver *pSolver = new RKSolver(h, t0, t1, y0, fRhs, 3);
     AbstractOdeSolver *pForwardEuler = new RKSolver(h, t0, t1, y0, fRhs, 1);
 
     std::cout << "RKsolver has been declared." << std::endl;
