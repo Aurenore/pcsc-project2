@@ -227,6 +227,19 @@ solver/fast:
 .PHONY : solver/fast
 
 #=============================================================================
+# Target rules for targets named exception
+
+# Build rule for target.
+exception: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exception
+.PHONY : exception
+
+# fast build rule for target.
+exception/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/build
+.PHONY : exception/fast
+
+#=============================================================================
 # Target rules for targets named main_solver
 
 # Build rule for target.
@@ -389,6 +402,30 @@ src/AdamsBashforthSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.s
 .PHONY : src/AdamsBashforthSolver.cpp.s
 
+src/Exception.o: src/Exception.cpp.o
+.PHONY : src/Exception.o
+
+# target to build an object file
+src/Exception.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/Exception.cpp.o
+.PHONY : src/Exception.cpp.o
+
+src/Exception.i: src/Exception.cpp.i
+.PHONY : src/Exception.i
+
+# target to preprocess a source file
+src/Exception.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/Exception.cpp.i
+.PHONY : src/Exception.cpp.i
+
+src/Exception.s: src/Exception.cpp.s
+.PHONY : src/Exception.s
+
+# target to generate assembly for a file
+src/Exception.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/Exception.cpp.s
+.PHONY : src/Exception.cpp.s
+
 src/RKSolver.o: src/RKSolver.cpp.o
 .PHONY : src/RKSolver.o
 
@@ -412,6 +449,30 @@ src/RKSolver.s: src/RKSolver.cpp.s
 src/RKSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/RKSolver.cpp.s
 .PHONY : src/RKSolver.cpp.s
+
+src/UnsetOrderException.o: src/UnsetOrderException.cpp.o
+.PHONY : src/UnsetOrderException.o
+
+# target to build an object file
+src/UnsetOrderException.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o
+.PHONY : src/UnsetOrderException.cpp.o
+
+src/UnsetOrderException.i: src/UnsetOrderException.cpp.i
+.PHONY : src/UnsetOrderException.i
+
+# target to preprocess a source file
+src/UnsetOrderException.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/UnsetOrderException.cpp.i
+.PHONY : src/UnsetOrderException.cpp.i
+
+src/UnsetOrderException.s: src/UnsetOrderException.cpp.s
+.PHONY : src/UnsetOrderException.s
+
+# target to generate assembly for a file
+src/UnsetOrderException.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/UnsetOrderException.cpp.s
+.PHONY : src/UnsetOrderException.cpp.s
 
 src/main.o: src/main.cc.o
 .PHONY : src/main.o
@@ -526,6 +587,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... target_test"
 	@echo "... test"
+	@echo "... exception"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
@@ -545,9 +607,15 @@ help:
 	@echo "... src/AdamsBashforthSolver.o"
 	@echo "... src/AdamsBashforthSolver.i"
 	@echo "... src/AdamsBashforthSolver.s"
+	@echo "... src/Exception.o"
+	@echo "... src/Exception.i"
+	@echo "... src/Exception.s"
 	@echo "... src/RKSolver.o"
 	@echo "... src/RKSolver.i"
 	@echo "... src/RKSolver.s"
+	@echo "... src/UnsetOrderException.o"
+	@echo "... src/UnsetOrderException.i"
+	@echo "... src/UnsetOrderException.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

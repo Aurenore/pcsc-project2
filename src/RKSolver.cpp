@@ -133,7 +133,7 @@ void RKSolver::SolveEquation(std::ostream &stream) {
     double h = GetStepSize();
     unsigned int order = GetOrder();
     assert(h > 1e-6);
-    //std::cout << "Step size: " << h << std::endl;
+    //std::cout << "RK solver : Step size: " << h << std::endl;
 
     int n = static_cast<int>(std::floor((GetFinalTime() - GetInitialTime()) / h));
 
@@ -143,7 +143,7 @@ void RKSolver::SolveEquation(std::ostream &stream) {
     temp = y;
     double product(0);
     double final_product;
-    for (int i = 1; i < n; ++i) {
+    for (int i = 1; i <= n; ++i) {
         // compute the values k_j
         for(int j = 0; j < order; j++){
             if(j>0){

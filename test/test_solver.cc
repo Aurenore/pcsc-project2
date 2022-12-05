@@ -1,9 +1,87 @@
 #include <cmath>
 #include <gtest/gtest.h>
+#include "../src/AbstractOdeSolver.hpp"
 #include "../src/AdamsBashforthSolver.h"
 #include "../src/RKSolver.h"
 #include <fstream>
 #include <string>
+
+const double TOL = 1e-10;
+
+void Test_results(AbstractOdeSolver *solver, std::string filename_solver, std::string filename_solution){
+    std::fstream SolveFile;
+    SolveFile.open(filename_solver, std::ios::out);
+    if (SolveFile.is_open()) {
+        solver->SolveEquation(SolveFile);
+        SolveFile.close();
+    } else {
+        std::cerr << "Couldn't open " << filename_solver << " Aborting." << std::endl;
+    }
+
+    // check that the lines correspond between the solve data and the solution
+    SolveFile.open(filename_solver, std::ios::in);
+
+    std::fstream SolutionFile;
+    SolutionFile.open(filename_solution, std::ios::in);
+    while(SolveFile.is_open() && SolutionFile.is_open()){
+        std::string solve_line;
+        std::string solution_line;
+        while(std::getline(SolveFile, solve_line) && std::getline(SolutionFile, solution_line)){
+            EXPECT_TRUE(solve_line == solution_line);
+        }
+        SolveFile.close();
+        SolutionFile.close();
+    }
+}
+
+void Test_final_results(AbstractOdeSolver *solver, std::string filename_solver, std::string filename_solution){
+    std::fstream SolveFile;
+    SolveFile.open(filename_solver, std::ios::out);
+    if (SolveFile.is_open()) {
+        solver->SolveEquation(SolveFile);
+        SolveFile.close();
+    } else {
+        std::cerr << "Couldn't open " << filename_solver << " Aborting." << std::endl;
+    }
+
+    // check that the second to last line correspond between the solve data and the solution given by Euler Forward
+    SolveFile.open(filename_solver, std::ios::in);
+    std::fstream SolutionFile;
+    SolutionFile.open(filename_solution, std::ios::in);
+    while(SolveFile.is_open() && SolutionFile.is_open()) {
+        // store the line and previous lines of the files
+        std::string solve_line;
+        std::string solve_line_prev;
+        std::string solution_line;
+        std::string solution_line_prev;
+
+        do {
+            solve_line_prev = solve_line;
+        } while (std::getline(SolveFile, solve_line));
+        do {
+            solution_line_prev = solution_line;
+        } while (std::getline(SolutionFile, solution_line));
+
+        //only check that the last line is similar.
+        std::stringstream ss(solve_line_prev);
+        double t;
+        ss >> t;
+        double y;
+        ss >> y;
+
+        std::stringstream ss_sol(solution_line_prev);
+        double t_sol;
+        ss_sol >> t_sol;
+        double y_sol;
+        ss_sol >> y_sol;
+
+        EXPECT_NEAR(y, y_sol, TOL);
+        EXPECT_NEAR(t, t_sol, TOL);
+
+        SolveFile.close();
+        SolutionFile.close();
+    }
+}
 
 TEST(AdamsBashforthSolver_test, GetFinalTime) {
     AdamsBashforthSolver solver;
@@ -67,239 +145,78 @@ TEST(AdamsBashforthSolver_test, B_sum_order1) {
 
 double fRhs2(double y, double t) { return -100*y; }
 TEST(AdamsBashforthSolver_test, EulerForward) {
+    AbstractOdeSolver* pt_solver = new AdamsBashforthSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 1;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::ofstream SolveFile("test_solve.dat");
-    if (SolveFile.is_open()) {
-        solver.SolveEquation(SolveFile);
-        SolveFile.close();
-    } else {
-        std::cerr << "Couldn't open test_solve.dat Aborting." << std::endl;
-    }
+    *pt_solver = solver;
+    std::string filename_solver("test_AB_s1.dat");
+    std::string filename_solution("solution_euler.dat");
 
-    // check that the lines correspond between the solve data and the solution given by Euler Forward
-    std::fstream SolveFile_in;
-    SolveFile_in.open("test_solve.dat", std::ios::in);
-
-    std::fstream SolutionFile;
-    SolutionFile.open("solution_euler.dat", std::ios::in);
-    while(SolveFile_in.is_open() && SolutionFile.is_open()){
-        std::string solve_line;
-        std::string solution_line;
-        while(std::getline(SolveFile_in, solve_line) && std::getline(SolutionFile, solution_line)){
-            EXPECT_TRUE(solve_line == solution_line);
-        }
-        SolveFile_in.close();
-        SolutionFile.close();
-    }
+    Test_results(pt_solver, filename_solver, filename_solution);
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_2) {
+    AbstractOdeSolver* pt_solver = new AdamsBashforthSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 2;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::fstream SolveFile;
-    SolveFile.open("test_solve_s2.dat", std::ios::out);
-    if (SolveFile.is_open()) {
-        solver.SolveEquation(SolveFile);
-        SolveFile.close();
-    } else {
-        std::cerr << "Couldn't open test_solve_s2.dat Aborting." << std::endl;
-    }
+    *pt_solver = solver;
+    std::string filename_solver("test_AB_s2.dat");
+    std::string filename_solution("solution_euler.dat");
 
-    // check that the last line correspond between the solve data and the solution given by Euler Forward
-    SolveFile.open("test_solve_s2.dat", std::ios::in);
-    std::fstream SolutionFile;
-    SolutionFile.open("solution_euler.dat", std::ios::in);
-    while(SolveFile.is_open() && SolutionFile.is_open()){
-        // store the line and previous lines of the files
-        std::string solve_line;
-        std::string solve_line_prev;
-        std::string solution_line;
-        std::string solution_line_prev;
-
-        do{
-            solve_line_prev = solve_line;
-        }while(std::getline(SolveFile, solve_line));
-        do{
-            solution_line_prev = solution_line;
-        }while(std::getline(SolutionFile, solution_line));
-
-        //only check that the last line is similar.
-        std::stringstream ss(solve_line_prev);
-        double t;   ss >> t; //read 100
-        double y; ss >> y;   // read 1
-
-        std::stringstream ss_sol(solution_line_prev);
-        double t_sol; ss_sol >> t_sol;
-        double y_sol; ss_sol >> y_sol;
-
-        EXPECT_DOUBLE_EQ(y, y_sol);
-        EXPECT_DOUBLE_EQ(t, t_sol);
-
-        SolveFile.close();
-        SolutionFile.close();
-    }
+    Test_final_results(pt_solver, filename_solver, filename_solution);
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_3) {
+    AbstractOdeSolver* pt_solver = new AdamsBashforthSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 3;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::fstream SolveFile;
-    SolveFile.open("test_solve_s3.dat", std::ios::out);
-    if (SolveFile.is_open()) {
-        solver.SolveEquation(SolveFile);
-        SolveFile.close();
-    } else {
-        std::cerr << "Couldn't open test_solve_s3.dat Aborting." << std::endl;
-    }
+    *pt_solver = solver;
+    std::string filename_solver("test_AB_s3.dat");
+    std::string filename_solution("solution_euler.dat");
 
-    // check that the last line correspond between the solve data and the solution given by Euler Forward
-    SolveFile.open("test_solve_s3.dat", std::ios::in);
-    std::fstream SolutionFile;
-    SolutionFile.open("solution_euler.dat", std::ios::in);
-    while(SolveFile.is_open() && SolutionFile.is_open()){
-        // store the line and previous lines of the files
-        std::string solve_line;
-        std::string solve_line_prev;
-        std::string solution_line;
-        std::string solution_line_prev;
-
-        do{
-            solve_line_prev = solve_line;
-        }while(std::getline(SolveFile, solve_line));
-        do{
-            solution_line_prev = solution_line;
-        }while(std::getline(SolutionFile, solution_line));
-
-        //only check that the last line is similar.
-        std::stringstream ss(solve_line_prev);
-        double t;   ss >> t; //read 100
-        double y; ss >> y;   // read 1
-
-        std::stringstream ss_sol(solution_line_prev);
-        double t_sol; ss_sol >> t_sol;
-        double y_sol; ss_sol >> y_sol;
-
-        EXPECT_NEAR(y, y_sol, 1e-10);
-        EXPECT_NEAR(t, t_sol, 1e-10);
-
-        SolveFile.close();
-        SolutionFile.close();
-    }
+    Test_final_results(pt_solver, filename_solver, filename_solution);
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_4) {
+    AbstractOdeSolver* pt_solver = new AdamsBashforthSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 4;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::fstream SolveFile;
-    SolveFile.open("test_solve_s4.dat", std::ios::out);
-    if (SolveFile.is_open()) {
-        solver.SolveEquation(SolveFile);
-        SolveFile.close();
-    } else {
-        std::cerr << "Couldn't open test_solve_s4.dat Aborting." << std::endl;
-    }
+    *pt_solver = solver;
+    std::string filename_solver("test_AB_s4.dat");
+    std::string filename_solution("solution_euler.dat");
 
-    // check that the last line correspond between the solve data and the solution given by Euler Forward
-    SolveFile.open("test_solve_s4.dat", std::ios::in);
-    std::fstream SolutionFile;
-    SolutionFile.open("solution_euler.dat", std::ios::in);
-    while(SolveFile.is_open() && SolutionFile.is_open()){
-        // store the line and previous lines of the files
-        std::string solve_line;
-        std::string solve_line_prev;
-        std::string solution_line;
-        std::string solution_line_prev;
-
-        do{
-            solve_line_prev = solve_line;
-        }while(std::getline(SolveFile, solve_line));
-        do{
-            solution_line_prev = solution_line;
-        }while(std::getline(SolutionFile, solution_line));
-
-        //only check that the last line is similar.
-        std::stringstream ss(solve_line_prev);
-        double t;   ss >> t; //read 100
-        double y; ss >> y;   // read 1
-
-        std::stringstream ss_sol(solution_line_prev);
-        double t_sol; ss_sol >> t_sol;
-        double y_sol; ss_sol >> y_sol;
-
-        EXPECT_NEAR(y, y_sol, 1e-10);
-        EXPECT_NEAR(t, t_sol, 1e-10);
-
-        SolveFile.close();
-        SolutionFile.close();
-    }
+    Test_final_results(pt_solver, filename_solver, filename_solution);
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_5) {
+    AbstractOdeSolver* pt_solver = new AdamsBashforthSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 5;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::fstream SolveFile;
-    SolveFile.open("test_solve_s5.dat", std::ios::out);
-    if (SolveFile.is_open()) {
-        solver.SolveEquation(SolveFile);
-        SolveFile.close();
-    } else {
-        std::cerr << "Couldn't open test_solve_s5.dat Aborting." << std::endl;
-    }
+    *pt_solver = solver;
+    std::string filename_solver("test_AB_s5.dat");
+    std::string filename_solution("solution_euler.dat");
 
-    // check that the last line correspond between the solve data and the solution given by Euler Forward
-    SolveFile.open("test_solve_s5.dat", std::ios::in);
-    std::fstream SolutionFile;
-    SolutionFile.open("solution_euler.dat", std::ios::in);
-    while(SolveFile.is_open() && SolutionFile.is_open()){
-        // store the line and previous lines of the files
-        std::string solve_line;
-        std::string solve_line_prev;
-        std::string solution_line;
-        std::string solution_line_prev;
-
-        do{
-            solve_line_prev = solve_line;
-        }while(std::getline(SolveFile, solve_line));
-        do{
-            solution_line_prev = solution_line;
-        }while(std::getline(SolutionFile, solution_line));
-
-        //only check that the last line is similar.
-        std::stringstream ss(solve_line_prev);
-        double t;   ss >> t; //read 100
-        double y; ss >> y;   // read 1
-
-        std::stringstream ss_sol(solution_line_prev);
-        double t_sol; ss_sol >> t_sol;
-        double y_sol; ss_sol >> y_sol;
-
-        EXPECT_NEAR(y, y_sol, 1e-10);
-        EXPECT_NEAR(t, t_sol, 1e-10);
-
-        SolveFile.close();
-        SolutionFile.close();
-    }
+    Test_final_results(pt_solver, filename_solver, filename_solution);
 }
 
 
@@ -381,33 +298,62 @@ TEST(RKSolver_test, sum_of_A_is_C) {
 }
 
 TEST(RKSolver_test, EulerForward) {
+    AbstractOdeSolver* pt_solver = new RKSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 1;
     RKSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::ofstream SolveFile("test_RK_EulerForward.dat");
-    if (SolveFile.is_open()) {
-        solver.SolveEquation(SolveFile);
-        SolveFile.close();
-    } else {
-        std::cerr << "Couldn't open test_RK_EulerForward.dat Aborting." << std::endl;
-    }
+    *pt_solver = solver;
+    std::string filename_solver("test_RK_s1.dat");
+    std::string filename_solution("solution_euler.dat");
 
-    // check that the lines correspond between the solve data and the solution given by Euler Forward
-    std::fstream SolveFile_in;
-    SolveFile_in.open("test_RK_EulerForward.dat", std::ios::in);
+    Test_results(pt_solver, filename_solver, filename_solution);
+}
 
-    std::fstream SolutionFile;
-    SolutionFile.open("solution_euler.dat", std::ios::in);
-    while(SolveFile_in.is_open() && SolutionFile.is_open()){
-        std::string solve_line;
-        std::string solution_line;
-        while(std::getline(SolveFile_in, solve_line) && std::getline(SolutionFile, solution_line)){
-            EXPECT_TRUE(solve_line == solution_line);
-        }
-        SolveFile_in.close();
-        SolutionFile.close();
-    }
+
+TEST(RKSolver_test, Solver_order_2) {
+    AbstractOdeSolver* pt_solver = new RKSolver;
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.8;
+    unsigned int s = 2;
+    RKSolver solver(h, t0, t1, y0, fRhs2, s);
+    *pt_solver = solver;
+    std::string filename_solver("test_RK_s2.dat");
+    std::string filename_solution("solution_euler.dat");
+
+    Test_final_results(pt_solver, filename_solver, filename_solution);
+}
+
+TEST(RKSolver_test, Solver_order_3) {
+    AbstractOdeSolver* pt_solver = new RKSolver;
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.8;
+    unsigned int s = 3;
+    RKSolver solver(h, t0, t1, y0, fRhs2, s);
+    *pt_solver = solver;
+    std::string filename_solver("test_RK_s3.dat");
+    std::string filename_solution("solution_euler.dat");
+
+    Test_final_results(pt_solver, filename_solver, filename_solution);
+}
+
+TEST(RKSolver_test, Solver_order_4) {
+    AbstractOdeSolver* pt_solver = new RKSolver;
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.8;
+    unsigned int s = 4;
+    RKSolver solver(h, t0, t1, y0, fRhs2, s);
+    *pt_solver = solver;
+    std::string filename_solver("test_RK_s4.dat");
+    std::string filename_solution("solution_euler.dat");
+
+    Test_final_results(pt_solver, filename_solver, filename_solution);
 }

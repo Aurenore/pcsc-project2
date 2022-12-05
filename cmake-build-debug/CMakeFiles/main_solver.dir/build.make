@@ -93,6 +93,7 @@ main_solver_EXTERNAL_OBJECTS =
 main_solver: CMakeFiles/main_solver.dir/src/main.cc.o
 main_solver: CMakeFiles/main_solver.dir/build.make
 main_solver: libsolver.a
+main_solver: libexception.a
 main_solver: CMakeFiles/main_solver.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main_solver"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main_solver.dir/link.txt --verbose=$(VERBOSE)

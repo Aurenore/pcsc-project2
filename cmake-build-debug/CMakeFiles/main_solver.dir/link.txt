@@ -1,1 +1,1 @@
-/usr/bin/c++ -g -rdynamic CMakeFiles/main_solver.dir/src/main.cc.o -o main_solver  libsolver.a 
+/usr/bin/c++ -g -rdynamic CMakeFiles/main_solver.dir/src/main.cc.o -o main_solver  libsolver.a libexception.a 

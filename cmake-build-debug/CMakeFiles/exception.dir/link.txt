@@ -1,0 +1,2 @@
+/usr/bin/ar qc libexception.a CMakeFiles/exception.dir/src/Exception.cpp.o CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o
+/usr/bin/ranlib libexception.a

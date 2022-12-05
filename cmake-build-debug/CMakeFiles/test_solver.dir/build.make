@@ -95,6 +95,7 @@ test_solver: CMakeFiles/test_solver.dir/build.make
 test_solver: lib/libgtest_maind.a
 test_solver: lib/libgtestd.a
 test_solver: libsolver.a
+test_solver: libexception.a
 test_solver: CMakeFiles/test_solver.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_solver"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_solver.dir/link.txt --verbose=$(VERBOSE)

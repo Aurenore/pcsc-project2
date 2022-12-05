@@ -23,10 +23,11 @@ add_custom_target(test ./test_pcsc DEPENDS test_pcsc)
 add_library(solver src/AbstractOdeSolver.cpp src/AbstractOdeSolver.hpp src/AbstractExplicitSolver.cpp
         src/AbstractExplicitSolver.h src/AdamsBashforthSolver.cpp src/AdamsBashforthSolver.h
         src/RKSolver.cpp src/RKSolver.h)
+add_library(exception src/Exception.cpp src/Exception.hpp src/UnsetOrderException.cpp src/UnsetOrderException.h)
 add_executable(main_solver src/main.cc)
-target_link_libraries(main_solver solver)
+target_link_libraries(main_solver solver exception)
 
 add_executable(test_solver test/test_solver.cc)
-target_link_libraries(test_solver gtest_main gtest pthread solver)
+target_link_libraries(test_solver gtest_main gtest pthread solver exception)
 
 add_custom_target(target_test ./test_solver DEPENDS test_solver)
