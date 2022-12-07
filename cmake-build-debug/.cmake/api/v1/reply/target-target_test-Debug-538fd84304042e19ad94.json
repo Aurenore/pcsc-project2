@@ -18,7 +18,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 19,
+				"line" : 20,
 				"parent" : 0
 			}
 		]
@@ -26,11 +26,11 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "test_pcsc::@6890427a1f51a3e7e1df"
+			"id" : "test_solver::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "test::@6890427a1f51a3e7e1df",
-	"name" : "test",
+	"id" : "target_test::@6890427a1f51a3e7e1df",
+	"name" : "target_test",
 	"paths" : 
 	{
 		"build" : ".",
@@ -58,13 +58,13 @@
 		{
 			"backtrace" : 1,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/test",
+			"path" : "cmake-build-debug/CMakeFiles/target_test",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/test.rule",
+			"path" : "cmake-build-debug/CMakeFiles/target_test.rule",
 			"sourceGroupIndex" : 1
 		}
 	],

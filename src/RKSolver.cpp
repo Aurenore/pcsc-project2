@@ -3,9 +3,14 @@
 //
 
 #include "RKSolver.h"
+#include "UnsetOrderException.h"
+#include "SetOrderException.h"
+#include "OutOfRangeException.h"
+
 #include <cassert>
 #include <iostream>
 #include <cmath>
+
 
 RKSolver::RKSolver() : AbstractExplicitSolver() {
     SetB();
@@ -64,7 +69,13 @@ double RKSolver::GetC(const int i, const int j) const {
 
 void RKSolver::SetA() {
     unsigned int order = GetOrder();
-    assert(order >= 1);
+    try {
+        if (order<1) {
+            throw UnsetOrderException("When setting the coefficient As, the order needs to be set.");
+        }
+    } catch (UnsetOrderException &error) {
+        error.PrintDebug();
+    }
     assert(order < max_order);
     switch (order) {
         case 1: // s = 1: Forward Euler (first order)
@@ -101,15 +112,49 @@ void RKSolver::SetA() {
 }
 
 double RKSolver::GetA(const int i, const int j) const {
-    assert(i>=0 && i<max_order && j>=0);
-    assert(j<=i);
-    assert(GetOrder() >= 1);
+    try {
+        if (i<0 || i>=max_order || j<0) {
+            throw OutOfRangeException("Out of range index.");
+        }
+    } catch (OutOfRangeException &error) {
+        error.PrintDebug();
+    }
+
+    try {
+        if (j>i) {
+            throw OutOfRangeException("j must be smaller or equal to i.");
+        }
+    } catch (OutOfRangeException &error) {
+        error.PrintDebug();
+    }
+
+    unsigned int order = GetOrder();
+    try {
+        if (order<1) {
+            throw UnsetOrderException("When setting the coefficient As, the order needs to be set.");
+        }
+    } catch (UnsetOrderException &error) {
+        error.PrintDebug();
+    }
+
     return a[i][j];
 }
 
 void RKSolver::SetOrder(const unsigned int order) {
-    assert(order >= 1);
-    assert(order < max_order);
+    try {
+        if(order < 1) {
+            throw SetOrderException("Order of the RK solver should be bigger or equal to 1.");
+        }
+    } catch (SetOrderException &error) {
+        error.PrintDebug();
+    }
+    try {
+        if (order >= max_order) {
+            throw SetOrderException("Order of the RK solver should be smaller or equal to 4.");
+        }
+    } catch (SetOrderException &error) {
+        error.PrintDebug();
+    }
     s = order;
     SetB();
     SetC();

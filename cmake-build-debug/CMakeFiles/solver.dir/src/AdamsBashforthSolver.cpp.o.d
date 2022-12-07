@@ -176,4 +176,6 @@ CMakeFiles/solver.dir/src/AdamsBashforthSolver.cpp.o: \
  /usr/include/c++/11/tr1/modified_bessel_func.tcc \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
- /usr/include/c++/11/tr1/riemann_zeta.tcc
+ /usr/include/c++/11/tr1/riemann_zeta.tcc \
+ /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/FileNotOpenException.hpp \
+ /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/Exception.hpp

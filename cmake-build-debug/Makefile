@@ -162,58 +162,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named pcsc
-
-# Build rule for target.
-pcsc: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pcsc
-.PHONY : pcsc
-
-# fast build rule for target.
-pcsc/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcsc.dir/build.make CMakeFiles/pcsc.dir/build
-.PHONY : pcsc/fast
-
-#=============================================================================
-# Target rules for targets named main
-
-# Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
-
-# fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
-
-#=============================================================================
-# Target rules for targets named test_pcsc
-
-# Build rule for target.
-test_pcsc: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_pcsc
-.PHONY : test_pcsc
-
-# fast build rule for target.
-test_pcsc/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pcsc.dir/build.make CMakeFiles/test_pcsc.dir/build
-.PHONY : test_pcsc/fast
-
-#=============================================================================
-# Target rules for targets named test
-
-# Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
-.PHONY : test
-
-# fast build rule for target.
-test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
-
-#=============================================================================
 # Target rules for targets named solver
 
 # Build rule for target.
@@ -426,6 +374,54 @@ src/Exception.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/Exception.cpp.s
 .PHONY : src/Exception.cpp.s
 
+src/FileNotOpenException.o: src/FileNotOpenException.cpp.o
+.PHONY : src/FileNotOpenException.o
+
+# target to build an object file
+src/FileNotOpenException.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o
+.PHONY : src/FileNotOpenException.cpp.o
+
+src/FileNotOpenException.i: src/FileNotOpenException.cpp.i
+.PHONY : src/FileNotOpenException.i
+
+# target to preprocess a source file
+src/FileNotOpenException.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/FileNotOpenException.cpp.i
+.PHONY : src/FileNotOpenException.cpp.i
+
+src/FileNotOpenException.s: src/FileNotOpenException.cpp.s
+.PHONY : src/FileNotOpenException.s
+
+# target to generate assembly for a file
+src/FileNotOpenException.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/FileNotOpenException.cpp.s
+.PHONY : src/FileNotOpenException.cpp.s
+
+src/OutOfRangeException.o: src/OutOfRangeException.cpp.o
+.PHONY : src/OutOfRangeException.o
+
+# target to build an object file
+src/OutOfRangeException.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o
+.PHONY : src/OutOfRangeException.cpp.o
+
+src/OutOfRangeException.i: src/OutOfRangeException.cpp.i
+.PHONY : src/OutOfRangeException.i
+
+# target to preprocess a source file
+src/OutOfRangeException.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/OutOfRangeException.cpp.i
+.PHONY : src/OutOfRangeException.cpp.i
+
+src/OutOfRangeException.s: src/OutOfRangeException.cpp.s
+.PHONY : src/OutOfRangeException.s
+
+# target to generate assembly for a file
+src/OutOfRangeException.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/OutOfRangeException.cpp.s
+.PHONY : src/OutOfRangeException.cpp.s
+
 src/RKSolver.o: src/RKSolver.cpp.o
 .PHONY : src/RKSolver.o
 
@@ -449,6 +445,30 @@ src/RKSolver.s: src/RKSolver.cpp.s
 src/RKSolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/solver.dir/build.make CMakeFiles/solver.dir/src/RKSolver.cpp.s
 .PHONY : src/RKSolver.cpp.s
+
+src/SetOrderException.o: src/SetOrderException.cpp.o
+.PHONY : src/SetOrderException.o
+
+# target to build an object file
+src/SetOrderException.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/SetOrderException.cpp.o
+.PHONY : src/SetOrderException.cpp.o
+
+src/SetOrderException.i: src/SetOrderException.cpp.i
+.PHONY : src/SetOrderException.i
+
+# target to preprocess a source file
+src/SetOrderException.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/SetOrderException.cpp.i
+.PHONY : src/SetOrderException.cpp.i
+
+src/SetOrderException.s: src/SetOrderException.cpp.s
+.PHONY : src/SetOrderException.s
+
+# target to generate assembly for a file
+src/SetOrderException.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/SetOrderException.cpp.s
+.PHONY : src/SetOrderException.cpp.s
 
 src/UnsetOrderException.o: src/UnsetOrderException.cpp.o
 .PHONY : src/UnsetOrderException.o
@@ -479,7 +499,6 @@ src/main.o: src/main.cc.o
 
 # target to build an object file
 src/main.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cc.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/main.cc.o
 .PHONY : src/main.cc.o
 
@@ -488,7 +507,6 @@ src/main.i: src/main.cc.i
 
 # target to preprocess a source file
 src/main.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cc.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/main.cc.i
 .PHONY : src/main.cc.i
 
@@ -497,57 +515,8 @@ src/main.s: src/main.cc.s
 
 # target to generate assembly for a file
 src/main.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main_solver.dir/build.make CMakeFiles/main_solver.dir/src/main.cc.s
 .PHONY : src/main.cc.s
-
-src/pcsc.o: src/pcsc.cc.o
-.PHONY : src/pcsc.o
-
-# target to build an object file
-src/pcsc.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcsc.dir/build.make CMakeFiles/pcsc.dir/src/pcsc.cc.o
-.PHONY : src/pcsc.cc.o
-
-src/pcsc.i: src/pcsc.cc.i
-.PHONY : src/pcsc.i
-
-# target to preprocess a source file
-src/pcsc.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcsc.dir/build.make CMakeFiles/pcsc.dir/src/pcsc.cc.i
-.PHONY : src/pcsc.cc.i
-
-src/pcsc.s: src/pcsc.cc.s
-.PHONY : src/pcsc.s
-
-# target to generate assembly for a file
-src/pcsc.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pcsc.dir/build.make CMakeFiles/pcsc.dir/src/pcsc.cc.s
-.PHONY : src/pcsc.cc.s
-
-test/test.o: test/test.cc.o
-.PHONY : test/test.o
-
-# target to build an object file
-test/test.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pcsc.dir/build.make CMakeFiles/test_pcsc.dir/test/test.cc.o
-.PHONY : test/test.cc.o
-
-test/test.i: test/test.cc.i
-.PHONY : test/test.i
-
-# target to preprocess a source file
-test/test.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pcsc.dir/build.make CMakeFiles/test_pcsc.dir/test/test.cc.i
-.PHONY : test/test.cc.i
-
-test/test.s: test/test.cc.s
-.PHONY : test/test.s
-
-# target to generate assembly for a file
-test/test.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_pcsc.dir/build.make CMakeFiles/test_pcsc.dir/test/test.cc.s
-.PHONY : test/test.cc.s
 
 test/test_solver.o: test/test_solver.cc.o
 .PHONY : test/test_solver.o
@@ -586,17 +555,13 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... target_test"
-	@echo "... test"
 	@echo "... exception"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... main"
 	@echo "... main_solver"
-	@echo "... pcsc"
 	@echo "... solver"
-	@echo "... test_pcsc"
 	@echo "... test_solver"
 	@echo "... src/AbstractExplicitSolver.o"
 	@echo "... src/AbstractExplicitSolver.i"
@@ -610,21 +575,24 @@ help:
 	@echo "... src/Exception.o"
 	@echo "... src/Exception.i"
 	@echo "... src/Exception.s"
+	@echo "... src/FileNotOpenException.o"
+	@echo "... src/FileNotOpenException.i"
+	@echo "... src/FileNotOpenException.s"
+	@echo "... src/OutOfRangeException.o"
+	@echo "... src/OutOfRangeException.i"
+	@echo "... src/OutOfRangeException.s"
 	@echo "... src/RKSolver.o"
 	@echo "... src/RKSolver.i"
 	@echo "... src/RKSolver.s"
+	@echo "... src/SetOrderException.o"
+	@echo "... src/SetOrderException.i"
+	@echo "... src/SetOrderException.s"
 	@echo "... src/UnsetOrderException.o"
 	@echo "... src/UnsetOrderException.i"
 	@echo "... src/UnsetOrderException.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/pcsc.o"
-	@echo "... src/pcsc.i"
-	@echo "... src/pcsc.s"
-	@echo "... test/test.o"
-	@echo "... test/test.i"
-	@echo "... test/test.s"
 	@echo "... test/test_solver.o"
 	@echo "... test/test_solver.i"
 	@echo "... test/test_solver.s"

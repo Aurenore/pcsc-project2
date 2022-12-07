@@ -17,152 +17,6 @@
 					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="pcsc">
-				<Option output="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/libpcsc.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 pcsc"/>
-					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="pcsc/fast">
-				<Option output="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/libpcsc.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="2"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 pcsc/fast"/>
-					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="main">
-				<Option output="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
-					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="main/fast">
-				<Option output="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
-					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="test_pcsc">
-				<Option output="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/test_pcsc" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/googletest/googletest/include"/>
-					<Add directory="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/googletest/googletest"/>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_pcsc"/>
-					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="test_pcsc/fast">
-				<Option output="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/test_pcsc" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/googletest/googletest/include"/>
-					<Add directory="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/googletest/googletest"/>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_pcsc/fast"/>
-					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="test">
-				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
-					<CompileFile command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j20 -f &quot;/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="solver">
 				<Option output="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/libsolver.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug"/>
@@ -650,11 +504,29 @@
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/Exception.hpp">
 			<Option target="exception"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/FileNotOpenException.cpp">
+			<Option target="exception"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/FileNotOpenException.hpp">
+			<Option target="exception"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/OutOfRangeException.cpp">
+			<Option target="exception"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/OutOfRangeException.h">
+			<Option target="exception"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/RKSolver.cpp">
 			<Option target="solver"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/RKSolver.h">
 			<Option target="solver"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/SetOrderException.cpp">
+			<Option target="exception"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/SetOrderException.h">
+			<Option target="exception"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UnsetOrderException.cpp">
 			<Option target="exception"/>
@@ -663,17 +535,7 @@
 			<Option target="exception"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/main.cc">
-			<Option target="main"/>
 			<Option target="main_solver"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/pcsc.cc">
-			<Option target="pcsc"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/pcsc.hh">
-			<Option target="pcsc"/>
-		</Unit>
-		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/test/test.cc">
-			<Option target="test_pcsc"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/test/test_solver.cc">
 			<Option target="test_solver"/>

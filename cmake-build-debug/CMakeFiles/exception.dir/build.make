@@ -83,10 +83,24 @@ CMakeFiles/exception.dir/src/Exception.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exception.dir/src/Exception.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/Exception.cpp -o CMakeFiles/exception.dir/src/Exception.cpp.s
 
+CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o: CMakeFiles/exception.dir/flags.make
+CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o: ../src/FileNotOpenException.cpp
+CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o: CMakeFiles/exception.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o -MF CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o.d -o CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o -c /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/FileNotOpenException.cpp
+
+CMakeFiles/exception.dir/src/FileNotOpenException.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exception.dir/src/FileNotOpenException.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/FileNotOpenException.cpp > CMakeFiles/exception.dir/src/FileNotOpenException.cpp.i
+
+CMakeFiles/exception.dir/src/FileNotOpenException.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exception.dir/src/FileNotOpenException.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/FileNotOpenException.cpp -o CMakeFiles/exception.dir/src/FileNotOpenException.cpp.s
+
 CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o: CMakeFiles/exception.dir/flags.make
 CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o: ../src/UnsetOrderException.cpp
 CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o: CMakeFiles/exception.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o -MF CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o.d -o CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o -c /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UnsetOrderException.cpp
 
 CMakeFiles/exception.dir/src/UnsetOrderException.cpp.i: cmake_force
@@ -97,19 +111,53 @@ CMakeFiles/exception.dir/src/UnsetOrderException.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exception.dir/src/UnsetOrderException.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UnsetOrderException.cpp -o CMakeFiles/exception.dir/src/UnsetOrderException.cpp.s
 
+CMakeFiles/exception.dir/src/SetOrderException.cpp.o: CMakeFiles/exception.dir/flags.make
+CMakeFiles/exception.dir/src/SetOrderException.cpp.o: ../src/SetOrderException.cpp
+CMakeFiles/exception.dir/src/SetOrderException.cpp.o: CMakeFiles/exception.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/exception.dir/src/SetOrderException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exception.dir/src/SetOrderException.cpp.o -MF CMakeFiles/exception.dir/src/SetOrderException.cpp.o.d -o CMakeFiles/exception.dir/src/SetOrderException.cpp.o -c /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/SetOrderException.cpp
+
+CMakeFiles/exception.dir/src/SetOrderException.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exception.dir/src/SetOrderException.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/SetOrderException.cpp > CMakeFiles/exception.dir/src/SetOrderException.cpp.i
+
+CMakeFiles/exception.dir/src/SetOrderException.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exception.dir/src/SetOrderException.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/SetOrderException.cpp -o CMakeFiles/exception.dir/src/SetOrderException.cpp.s
+
+CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o: CMakeFiles/exception.dir/flags.make
+CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o: ../src/OutOfRangeException.cpp
+CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o: CMakeFiles/exception.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o -MF CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o.d -o CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o -c /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/OutOfRangeException.cpp
+
+CMakeFiles/exception.dir/src/OutOfRangeException.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exception.dir/src/OutOfRangeException.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/OutOfRangeException.cpp > CMakeFiles/exception.dir/src/OutOfRangeException.cpp.i
+
+CMakeFiles/exception.dir/src/OutOfRangeException.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exception.dir/src/OutOfRangeException.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/OutOfRangeException.cpp -o CMakeFiles/exception.dir/src/OutOfRangeException.cpp.s
+
 # Object files for target exception
 exception_OBJECTS = \
 "CMakeFiles/exception.dir/src/Exception.cpp.o" \
-"CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o"
+"CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o" \
+"CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o" \
+"CMakeFiles/exception.dir/src/SetOrderException.cpp.o" \
+"CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o"
 
 # External object files for target exception
 exception_EXTERNAL_OBJECTS =
 
 libexception.a: CMakeFiles/exception.dir/src/Exception.cpp.o
+libexception.a: CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o
 libexception.a: CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o
+libexception.a: CMakeFiles/exception.dir/src/SetOrderException.cpp.o
+libexception.a: CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o
 libexception.a: CMakeFiles/exception.dir/build.make
 libexception.a: CMakeFiles/exception.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libexception.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libexception.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/exception.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/exception.dir/link.txt --verbose=$(VERBOSE)
 

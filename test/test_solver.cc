@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include "../src/FileNotOpenException.hpp"
 
 const double TOL = 1e-5;
 
@@ -18,14 +19,16 @@ void Test_results(AbstractOdeSolver *solver, std::string filename_solver, std::s
         solver->SolveEquation(SolveFile);
         SolveFile.close();
     } else {
-        std::cerr << "Couldn't open " << filename_solver << " Aborting." << std::endl;
+        throw FileNotOpenException("File can't be opened.");
     }
 
     // check that the lines correspond between the solve data and the solution
     SolveFile.open(filename_solver, std::ios::in);
-
     std::fstream SolutionFile;
     SolutionFile.open(filename_solution, std::ios::in);
+    if(!(SolveFile.is_open() || SolutionFile.is_open())){
+        throw FileNotOpenException("One of the 2 files can't be opened.");
+    }
     while(SolveFile.is_open() && SolutionFile.is_open()){
         std::string solve_line;
         std::string solution_line;
@@ -45,13 +48,16 @@ void Test_final_results(AbstractOdeSolver *solver, std::string filename_solver, 
         solver->SolveEquation(SolveFile);
         SolveFile.close();
     } else {
-        std::cerr << "Couldn't open " << filename_solver << " Aborting." << std::endl;
+        throw FileNotOpenException("File can't be opened.");
     }
 
     // check that the second to last line correspond between the solve data and the solution given by Euler Forward
     SolveFile.open(filename_solver, std::ios::in);
     std::fstream SolutionFile;
     SolutionFile.open(filename_solution, std::ios::in);
+    if(!(SolveFile.is_open() || SolutionFile.is_open())){
+        throw FileNotOpenException("One of the 2 files can't be opened.");
+    }
     while(SolveFile.is_open() && SolutionFile.is_open()) {
         // store the line and previous lines of the files
         std::string solve_line;
@@ -95,11 +101,14 @@ void Test_final_results(AbstractOdeSolver *solver, std::string filename_solver, 
         solver->SolveEquation(SolveFile);
         SolveFile.close();
     } else {
-        std::cerr << "Couldn't open " << filename_solver << " Aborting." << std::endl;
+        throw FileNotOpenException("File can't be opened.");
     }
 
     // check that the second to last line correspond between the solve data and the solution given by Euler Forward
     SolveFile.open(filename_solver, std::ios::in);
+    if (!SolveFile.is_open()) {
+        throw FileNotOpenException("File can't be opened.");
+    }
 
     while(SolveFile.is_open()) {
         // store the line and previous lines of the files
@@ -226,7 +235,11 @@ TEST(AdamsBashforthSolver_test, EulerForward_fRhs1) {
     unsigned int s = 1;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs1, s);
     std::string filename_solver("test_AB_fRhs1_s1.dat");
-    Test_final_results(&solver, filename_solver, sol1, 0.1);
+    try {
+        Test_final_results(&solver, filename_solver, sol1, 0.1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, EulerForward_fRhs2) {
@@ -239,8 +252,12 @@ TEST(AdamsBashforthSolver_test, EulerForward_fRhs2) {
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_AB_fRhs2_s1.dat");
     std::string filename_solution("solution_euler.dat");
+    try {
+        Test_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 
-    Test_results(&solver, filename_solver, filename_solution);
 }
 
 TEST(AdamsBashforthSolver_test, EulerForward_fRhs3) {
@@ -251,7 +268,11 @@ TEST(AdamsBashforthSolver_test, EulerForward_fRhs3) {
     unsigned int s = 1;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs3, s);
     std::string filename_solver("test_AB_fRhs3_s1.dat");
-    Test_final_results(&solver, filename_solver, sol3, 0.01);
+    try{
+        Test_final_results(&solver, filename_solver, sol3, 0.01);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_2_fRhs1) {
@@ -262,10 +283,12 @@ TEST(AdamsBashforthSolver_test, Solver_order_2_fRhs1) {
     unsigned int s = 2;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs1, s);
     std::string filename_solver("test_AB_fRhs1_s2.dat");
-
-    Test_final_results(&solver, filename_solver, sol1);
+    try {
+        Test_final_results(&solver, filename_solver, sol1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
-
 TEST(AdamsBashforthSolver_test, Solver_order_2_fRhs2) {
     double h = 0.001;
     double t0 = 0.0;
@@ -275,8 +298,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_2_fRhs2) {
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_AB_fRhs2_s2.dat");
     std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
+    try {
+        Test_final_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_2_fRhs3) {
@@ -287,8 +313,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_2_fRhs3) {
     unsigned int s = 2;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs3, s);
     std::string filename_solver("test_AB_fRhs3_s2.dat");
-
-    Test_final_results(&solver, filename_solver, sol3);
+    try  {
+        Test_final_results(&solver, filename_solver, sol3);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_3_fRhs1) {
@@ -299,8 +328,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_3_fRhs1) {
     unsigned int s = 3;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs1, s);
     std::string filename_solver("test_AB_fRhs1_s3.dat");
-
-    Test_final_results(&solver, filename_solver, sol1);
+    try {
+        Test_final_results(&solver, filename_solver, sol1);
+    } catch (FileNotOpenException &error) {
+    error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_3_fRhs2) {
@@ -312,8 +344,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_3_fRhs2) {
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_AB_fRhs2_s3.dat");
     std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
+    try {
+        Test_final_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_3_fRhs3) {
@@ -324,8 +359,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_3_fRhs3) {
     unsigned int s = 3;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs3, s);
     std::string filename_solver("test_AB_fRhs3_s3.dat");
-
-    Test_final_results(&solver, filename_solver, sol3);
+    try {
+        Test_final_results(&solver, filename_solver, sol3);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_4_fRhs1) {
@@ -336,8 +374,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_4_fRhs1) {
     unsigned int s = 4;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs1, s);
     std::string filename_solver("test_AB_fRhs1_s4.dat");
-
-    Test_final_results(&solver, filename_solver, sol1);
+    try {
+        Test_final_results(&solver, filename_solver, sol1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_4_fRhs2) {
@@ -349,8 +390,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_4_fRhs2) {
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_AB_s4.dat");
     std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
+    try {
+        Test_final_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_4_fRhs3) {
@@ -361,8 +405,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_4_fRhs3) {
     unsigned int s = 4;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs3, s);
     std::string filename_solver("test_AB_fRhs3_s4.dat");
-
-    Test_final_results(&solver, filename_solver, sol3);
+    try {
+        Test_final_results(&solver, filename_solver, sol3);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_5_fRhs1) {
@@ -373,8 +420,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_5_fRhs1) {
     unsigned int s = 5;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs1, s);
     std::string filename_solver("test_AB_fRhs1_s5.dat");
-
-    Test_final_results(&solver, filename_solver, sol1);
+    try {
+        Test_final_results(&solver, filename_solver, sol1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_5_fRhs2) {
@@ -386,8 +436,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_5_fRhs2) {
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_AB_s5.dat");
     std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
+    try {
+        Test_final_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(AdamsBashforthSolver_test, Solver_order_5_fRhs3) {
@@ -398,8 +451,11 @@ TEST(AdamsBashforthSolver_test, Solver_order_5_fRhs3) {
     unsigned int s = 5;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs3, s);
     std::string filename_solver("test_AB_fRhs3_s5.dat");
-
-    Test_final_results(&solver, filename_solver, sol3);
+    try {
+        Test_final_results(&solver, filename_solver, sol3);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 
@@ -482,7 +538,38 @@ TEST(RKSolver_test, sum_of_A_is_C) {
     }
 }
 
-TEST(RKSolver_test, EulerForward) {
+TEST(RKSolver_test, ProductWithA) {
+    RKSolver solver;
+    double ones[max_order];
+    std::fill(ones, ones+max_order, 1.);
+    // loop over the orders
+    for(int i=1; i<max_order; i++){
+        solver.SetOrder(i);
+        // loop over the rows of the A matrix
+        for(int j=0; j<i; j++){
+        double sum = solver.ProductWithA(ones, j);
+        double c_j = solver.GetC(i-1, j);
+        EXPECT_DOUBLE_EQ(sum, c_j);
+        }
+    }
+}
+
+TEST(RKSolver_test, EulerForward_fRhs1) {
+    double h = 0.0001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 1;
+    RKSolver solver(h, t0, t1, y0, fRhs1, s);
+    std::string filename_solver("test_RK_fRhs1_s1.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol1, 0.1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, EulerForward_fRhs2) {
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
@@ -491,35 +578,220 @@ TEST(RKSolver_test, EulerForward) {
     RKSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_RK_s1.dat");
     std::string filename_solution("solution_euler.dat");
-
-    Test_results(&solver, filename_solver, filename_solution);
+    try {
+        Test_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
+TEST(RKSolver_test, EulerForward_fRhs3) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 1;
+    RKSolver solver(h, t0, t1, y0, fRhs3, s);
+    std::string filename_solver("test_RK_fRhs3_s1.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol3, 0.1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
 
-TEST(RKSolver_test, Solver_order_2) {
+//compare the Euler Forward methods given by RK solver and AdamsBashforth.
+TEST(RKSolver_test, EulerForward_compared_to_Adamsbashforth_fRhs1) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.8;
+    unsigned int s = 1;
+    RKSolver solver_RK(h, t0, t1, y0, fRhs1, s);
+    AdamsBashforthSolver solver_AB(h, t0, t1, y0, fRhs1, s);
+    std::string filename_RK("test_RK_fRhs1_s1.dat");
+    std::string filename_AB("test_AB_fRhs1_s1.dat");
+    std::fstream File_AB;
+    File_AB.open(filename_AB, std::ios::out);
+    try {
+            if (File_AB.is_open()) {
+                solver_AB.SolveEquation(File_AB);
+                File_AB.close();
+            } else {
+            throw FileNotOpenException("File cannot be opened.");
+        }
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+    try {
+        Test_results(&solver_RK, filename_RK, filename_AB);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, EulerForward_compared_to_Adamsbashforth_fRhs2) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.8;
+    unsigned int s = 1;
+    RKSolver solver_RK(h, t0, t1, y0, fRhs2, s);
+    AdamsBashforthSolver solver_AB(h, t0, t1, y0, fRhs2, s);
+    std::string filename_RK("test_RK_fRhs2_s1.dat");
+    std::string filename_AB("test_AB_fRhs2_s1.dat");
+    std::fstream File_AB;
+    File_AB.open(filename_AB, std::ios::out);
+    try {
+        if (File_AB.is_open()) {
+            solver_AB.SolveEquation(File_AB);
+            File_AB.close();
+        } else {
+            throw FileNotOpenException("File cannot be opened.");
+        }
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+    try {
+        Test_results(&solver_RK, filename_RK, filename_AB);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, EulerForward_compared_to_Adamsbashforth_fRhs3) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.8;
+    unsigned int s = 1;
+    RKSolver solver_RK(h, t0, t1, y0, fRhs2, s);
+    AdamsBashforthSolver solver_AB(h, t0, t1, y0, fRhs2, s);
+    std::string filename_RK("test_RK_fRhs3_s1.dat");
+    std::string filename_AB("test_AB_fRhs3_s1.dat");
+    std::fstream File_AB;
+    File_AB.open(filename_AB, std::ios::out);
+    try {
+        if (File_AB.is_open()) {
+            solver_AB.SolveEquation(File_AB);
+            File_AB.close();
+        } else {
+            throw FileNotOpenException("File cannot be opened.");
+        }
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+    try {
+        Test_results(&solver_RK, filename_RK, filename_AB);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, Solver_order_2_fRhs1) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 2;
+    RKSolver solver(h, t0, t1, y0, fRhs1, s);
+    std::string filename_solver("test_RK_fRhs1_s2.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, Solver_order_2_fRhs2) {
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 2;
     RKSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::string filename_solver("test_RK_s2.dat");
-    std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
+    std::string filename_solver("test_RK_fRhs2_s2.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol2);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
-TEST(RKSolver_test, Solver_order_3) {
+TEST(RKSolver_test, Solver_order_2_fRhs3) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 2;
+    RKSolver solver(h, t0, t1, y0, fRhs3, s);
+    std::string filename_solver("test_RK_fRhs3_s2.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol3);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, Solver_order_3_fRhs1) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 3;
+    RKSolver solver(h, t0, t1, y0, fRhs1, s);
+    std::string filename_solver("test_RK_fRhs1_s3.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, Solver_order_3_fRhs2) {
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
     unsigned int s = 3;
     RKSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::string filename_solver("test_RK_s3.dat");
+    std::string filename_solver("test_RK_fRhs2_s3.dat");
     std::string filename_solution("solution_euler.dat");
+    try {
+        Test_final_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
 
-    Test_final_results(&solver, filename_solver, filename_solution);
+TEST(RKSolver_test, Solver_order_3_fRhs3) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 3;
+    RKSolver solver(h, t0, t1, y0, fRhs3, s);
+    std::string filename_solver("test_RK_fRhs3_s3.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol3);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
+
+TEST(RKSolver_test, Solver_order_4_fRhs1) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 4;
+    RKSolver solver(h, t0, t1, y0, fRhs1, s);
+    std::string filename_solver("test_RK_fRhs1_s4.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol1);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }
 
 TEST(RKSolver_test, Solver_order_4) {
@@ -529,8 +801,26 @@ TEST(RKSolver_test, Solver_order_4) {
     double y0 = 0.8;
     unsigned int s = 4;
     RKSolver solver(h, t0, t1, y0, fRhs2, s);
-    std::string filename_solver("test_RK_s4.dat");
+    std::string filename_solver("test_RK_fRhs2_s4.dat");
     std::string filename_solution("solution_euler.dat");
+    try {
+        Test_final_results(&solver, filename_solver, filename_solution);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
+}
 
-    Test_final_results(&solver, filename_solver, filename_solution);
+TEST(RKSolver_test, Solver_order_4_fRhs3) {
+    double h = 0.001;
+    double t0 = 0.0;
+    double t1 = 100.0;
+    double y0 = 0.;
+    unsigned int s = 4;
+    RKSolver solver(h, t0, t1, y0, fRhs3, s);
+    std::string filename_solver("test_RK_fRhs3_s4.dat");
+    try {
+        Test_final_results(&solver, filename_solver, sol3);
+    } catch (FileNotOpenException &error) {
+        error.PrintDebug();
+    }
 }

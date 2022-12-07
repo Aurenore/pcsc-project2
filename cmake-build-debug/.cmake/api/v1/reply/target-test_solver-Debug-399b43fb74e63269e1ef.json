@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "main_solver"
+			"path" : "test_solver"
 		}
 	],
 	"backtrace" : 1,
@@ -25,13 +25,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 27,
+				"line" : 17,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 28,
+				"line" : 18,
 				"parent" : 0
 			}
 		]
@@ -45,12 +45,25 @@
 					"fragment" : "-g"
 				}
 			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/googletest/googletest/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/googletest/googletest"
+				}
+			],
 			"language" : "CXX",
 			"languageStandard" : 
 			{
 				"backtraces" : 
 				[
-					1
+					2
 				],
 				"standard" : "17"
 			},
@@ -69,9 +82,17 @@
 		{
 			"backtrace" : 2,
 			"id" : "exception::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "gtest::@f95b5c00bd49b3b4698d"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "gtest_main::@f95b5c00bd49b3b4698d"
 		}
 	],
-	"id" : "main_solver::@6890427a1f51a3e7e1df",
+	"id" : "test_solver::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -86,6 +107,21 @@
 			},
 			{
 				"backtrace" : 2,
+				"fragment" : "lib/libgtest_maind.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "lib/libgtestd.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
 				"fragment" : "libsolver.a",
 				"role" : "libraries"
 			},
@@ -97,8 +133,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "main_solver",
-	"nameOnDisk" : "main_solver",
+	"name" : "test_solver",
+	"nameOnDisk" : "test_solver",
 	"paths" : 
 	{
 		"build" : ".",
@@ -119,7 +155,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/main.cc",
+			"path" : "test/test_solver.cc",
 			"sourceGroupIndex" : 0
 		}
 	],

@@ -6,6 +6,7 @@
 #include <cassert>
 #include <iostream>
 #include <cmath>
+#include "FileNotOpenException.hpp"
 
 AdamsBashforthSolver::AdamsBashforthSolver() : AbstractExplicitSolver() {
     SetB();
@@ -58,7 +59,6 @@ void AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
     //std::cout << "Step size: " << h << std::endl;
 
     int n = static_cast<int>(std::floor((GetFinalTime() - GetInitialTime()) / h));
-
     stream << t << " " << y << "\n";
     double temp[order+1];
     double F[order+1];

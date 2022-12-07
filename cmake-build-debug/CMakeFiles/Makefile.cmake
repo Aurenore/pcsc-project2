@@ -77,10 +77,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/pcsc.dir/DependInfo.cmake"
-  "CMakeFiles/main.dir/DependInfo.cmake"
-  "CMakeFiles/test_pcsc.dir/DependInfo.cmake"
-  "CMakeFiles/test.dir/DependInfo.cmake"
   "CMakeFiles/solver.dir/DependInfo.cmake"
   "CMakeFiles/exception.dir/DependInfo.cmake"
   "CMakeFiles/main_solver.dir/DependInfo.cmake"
