@@ -66,10 +66,7 @@ double AbstractOdeSolver::ScalarProduct(const int size, const double *a, const d
 double AbstractOdeSolver::ProductWithB(const double *F, const int j) const {
     //Product with B : return sum_{i = 0}^{j-1} F[i]*b[j-1][i]
     double product;
-    auto* pt = new double;
-    *pt = b[j-1][0];
-    product = ScalarProduct(j, F, pt);
-    delete pt;
+    product = ScalarProduct(j, F, &b[j-1][0]);
     return product;
 }
 

@@ -119,10 +119,7 @@ void RKSolver::SetOrder(const unsigned int order) {
 double RKSolver::ProductWithA(const double *k, const int j) const {
     // compute sum_{i=0}^{j-1} a[j][i]*k[i]
     double product;
-    auto* pt = new double;
-    *pt = a[j][0];
-    product = ScalarProduct(j, k, pt);
-    delete pt;
+    product = ScalarProduct(j, k, &a[j][0]);
     return product;
 }
 

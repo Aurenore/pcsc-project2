@@ -143,6 +143,17 @@ TEST(AdamsBashforthSolver_test, B_sum_order1) {
     }
 }
 
+TEST(AdamsBashforthSolver_test, ScalarProduct) {
+    AdamsBashforthSolver solver;
+    int order = 6;
+    double ones[order];
+    for(int i=0; i<order; i++){
+        ones[i]=1;
+    }
+    double sum = solver.ScalarProduct(order, &ones[0], &ones[0]);
+    EXPECT_DOUBLE_EQ(order, sum);
+}
+
 TEST(AdamsBashforthSolver_test, ProductWithB) {
     AdamsBashforthSolver solver;
     for(int order=1; order<=max_order; order++){
@@ -151,7 +162,6 @@ TEST(AdamsBashforthSolver_test, ProductWithB) {
             ones[i]=1;
         }
         double sum = solver.ProductWithB(ones, order);
-        std::cout << "For order : " << order <<", sum = " << sum << std::endl;
         EXPECT_DOUBLE_EQ(1., sum);
     }
 }
