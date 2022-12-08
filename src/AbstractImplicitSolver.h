@@ -6,7 +6,8 @@
 #define ABSTRACTIMPLICITSOLVERHEADERDEF
 
 #include "AbstractOdeSolver.hpp"
-
+/** Abstract class, daughter of AbstractOdeSolver, and mother class of the classes which implement implicit methods to solve ODE.
+ */
 class AbstractImplicitSolver : public AbstractOdeSolver{
 public:
     AbstractImplicitSolver();

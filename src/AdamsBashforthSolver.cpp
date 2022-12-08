@@ -9,12 +9,18 @@
 #include "FileNotOpenException.hpp"
 
 AdamsBashforthSolver::AdamsBashforthSolver() : AbstractExplicitSolver() {
+    /**
+    Constructor of an AdamsBashforthSolver instance.
+    */
     SetB();
 }
 
 AdamsBashforthSolver::AdamsBashforthSolver(const double h, const double t0, const double t1, const double y0,
                                            double (*f)(double, double), const unsigned int s) : AbstractExplicitSolver
                                            (h,t0,t1,y0,f,s) {
+    /**
+    Constructor of an AdamsBashforthSolver instance where each parameter are defined from outside the class.
+    */
     SetOrder(s);
 }
 
@@ -27,6 +33,12 @@ void AdamsBashforthSolver::SetOrder(const unsigned int order){
 AdamsBashforthSolver::~AdamsBashforthSolver() = default;
 
 void AdamsBashforthSolver::SetB(){
+    /**
+  * Set the matrix B of coefficients which define the equations to solve for each order.
+    B is composed of 5 rows and 6 columns, the first lign corresponding to the coefficients included in the equation
+    for order 1 and the last lign for order 5.
+  *
+  */
     // test if sum of b is equal to 1
     // s = 1:
     b[0][0] = 1.;
@@ -51,6 +63,12 @@ void AdamsBashforthSolver::SetB(){
 }
 
 void AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
+    /*!
+   * Adams Bashforth methods for the scalar ODE in the form y'(t)=f(y,t).
+
+
+   * \param stream: name of the file on which write the numerical solution at each time t
+   */
     double y = GetInitialValue();
     double t = GetInitialTime();
     double h = GetStepSize();
