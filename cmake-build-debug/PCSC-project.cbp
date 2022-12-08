@@ -486,6 +486,12 @@
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/AbstractExplicitSolver.h">
 			<Option target="solver"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/AbstractImplicitSolver.cpp">
+			<Option target="solver"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/AbstractImplicitSolver.h">
+			<Option target="solver"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/AbstractOdeSolver.cpp">
 			<Option target="solver"/>
 		</Unit>
@@ -496,6 +502,12 @@
 			<Option target="solver"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/AdamsBashforthSolver.h">
+			<Option target="solver"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/AdamsMoultonSolver.cpp">
+			<Option target="solver"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/AdamsMoultonSolver.h">
 			<Option target="solver"/>
 		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/Exception.cpp">
