@@ -34,11 +34,11 @@ AdamsBashforthSolver::~AdamsBashforthSolver() = default;
 
 void AdamsBashforthSolver::SetB(){
     /**
-  * Set the matrix B of coefficients which define the equations to solve for each order.
-    B is composed of 5 rows and 6 columns, the first lign corresponding to the coefficients included in the equation
-    for order 1 and the last lign for order 5.
-  *
-  */
+    * Set the matrix B of coefficients which define the equations to solve for each order.
+    *B is composed of 5 rows and 6 columns, the first lign corresponding to the coefficients included in the equation
+    *for order 1 and the last lign for order 5.
+   */
+
     // test if sum of b is equal to 1
     // s = 1:
     b[0][0] = 1.;
@@ -63,12 +63,10 @@ void AdamsBashforthSolver::SetB(){
 }
 
 void AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
-    /*!
-   * Adams Bashforth methods for the scalar ODE in the form y'(t)=f(y,t).
-
-
-   * \param stream: name of the file on which write the numerical solution at each time t
-   */
+/*!
+   \brief Implementation of the Adams Bashforth methods to solve scalar ODE in the form y'(t)=f(y,t).
+   * \param stream: name of the file on which to write the numerical solution at each time t
+*/
     double y = GetInitialValue();
     double t = GetInitialTime();
     double h = GetStepSize();

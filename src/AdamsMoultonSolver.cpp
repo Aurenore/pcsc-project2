@@ -1,50 +1,69 @@
-//
-// Created by anyam on 30.11.2022.
-//
 
 #include "AdamsMoultonSolver.h"
+#include "FileNotOpenException.hpp"
 #include <cassert>
 #include <iostream>
 #include <cmath>
 AdamsMoultonSolver::AdamsMoultonSolver() : AbstractImplicitSolver() {
+    /**
+    Constructor of an AdamsMoultonSolver instance.
+    */
     SetB();
 }
 
 AdamsMoultonSolver::AdamsMoultonSolver(const double h, const double t0, const double t1, const double y0,
-                                           double (*f)(double, double), double (*df)(double, double),const unsigned int s) :
-                                           AbstractImplicitSolver(h, t0,t1,y0, f,df,s) {
+                                       double (*f)(double, double), double (*df)(double, double),const unsigned int s) :AbstractImplicitSolver(h, t0,t1,y0, f,df,s) {
+    /**
+    Constructor of an AdamsMoulton instance where each parameter are defined from outside the class.
+    */
+
     SetB();
 }
 AdamsMoultonSolver::~AdamsMoultonSolver() =default;
 
 void AdamsMoultonSolver::SetB(){
-      // test if sum of b is equal to 1
-      //b=  std::fill(b[0] + 0, b[max_order] + max_order, 0);
+    // test if sum of b is equal to 1
+    //b=  std::fill(b[0] + 0, b[max_order] + max_order, 0);
+    /**
+   * Set the matrix B of coefficients which define the equations to solve for each order.
+     B is composed of 5 rows and 6 columns, the first lign corresponding the coefficients included in the equation
+     for order 0 and the last lign for order 4.
+   *
+   */
+    b[0][1] = 0;
+    b[0][1]=1;
 
-      b[0][1] = 0;
-      b[0][1]=1;
+    b[1][1]=1./2;
+    b[1][2]=1./2;
 
-      b[1][1]=1./2;
-      b[1][2]=1./2;
+    b[2][1] = -1./12;
+    b[2][2]=8./12;
+    b[2][3]=5./12;
 
-      b[2][1] = -1./12;
-      b[2][2]=8./12;
-      b[2][3]=5./12;
+    b[3][1] = 1./24;
+    b[3][2]=-5./24;
+    b[3][3]= 19./24;
+    b[3][4]= 9./24;
 
-      b[3][1] = 1./24;
-      b[3][2]=-5./24;
-      b[3][3]= 19./24;
-      b[3][4]= 9./24;
-
-      b[4][1] = -19./720;
-      b[4][2]= 106./720;
-      b[4][3]= -264./720;
-      b[4][4]= 646./720;
-      b[4][5] = 251./720;
+    b[4][1] = -19./720;
+    b[4][2]= 106./720;
+    b[4][3]= -264./720;
+    b[4][4]= 646./720;
+    b[4][5] = 251./720;
 }
 
 template <class Function, class FunctionDerivative>
 double Newton (double y_prev,Function F, FunctionDerivative dF, double const epsilon=1e-6, int const max_iter=1000){
+    /*!
+     * Finds a zero of the differentiable function F using the Newton method and returns a double corresponding
+       to the final approximations of the zero
+     * \param y_prev: initial guess
+     * \param F: function whose zero is sought
+     * \param dF: derivative of F with respect to y
+     * \param epsilon: tolerance on error allowed
+     * \param max_iter: maximum number of operations
+     *
+     */
     double x_next = y_prev;
     double x_prev;
     int num_iter = 0;
@@ -61,6 +80,12 @@ double Newton (double y_prev,Function F, FunctionDerivative dF, double const eps
     return x_next;
 }
 void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {
+    /*!
+   * Adams Moulton methods for the scalar ODE in the form y'(t)=f(y,t).
+   * The Newton method is used to solve the nonlinear equation at each time t.
+
+   * \param stream: name of the file on which write the numerical solution at each time t
+   */
     double y = GetInitialValue();
     double t = GetInitialTime();
     double h = GetStepSize();
@@ -105,10 +130,10 @@ void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {
         double c = product + temp[order];
 
         auto Fu = [&](double x) {
-                return x - c - b[order][order+1] * h * RightHandSide(x, t);
+            return x - c - b[order][order+1] * h * RightHandSide(x, t);
         };
         auto dFu = [&](double x) {
-                return 1 - b[order][order+1] * h * dRightHandSide(x, t);
+            return 1 - b[order][order+1] * h * dRightHandSide(x, t);
         };
 
         y = Newton(temp[order],Fu, dFu, 1e-6, 1000);

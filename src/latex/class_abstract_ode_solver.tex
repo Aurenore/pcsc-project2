@@ -1,0 +1,235 @@
+\hypertarget{class_abstract_ode_solver}{}\doxysection{Abstract\+Ode\+Solver Class Reference}
+\label{class_abstract_ode_solver}\index{AbstractOdeSolver@{AbstractOdeSolver}}
+
+
+{\ttfamily \#include $<$Abstract\+Ode\+Solver.\+hpp$>$}
+
+Inheritance diagram for Abstract\+Ode\+Solver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.255033cm]{class_abstract_ode_solver}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_abstract_ode_solver_a03edbae822c8ff26c61f85dd6cfd3d71}{Abstract\+Ode\+Solver}} ()
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_adc0f2584de7eb040a6ee3013ad9ac712}\label{class_abstract_ode_solver_adc0f2584de7eb040a6ee3013ad9ac712}} 
+{\bfseries Abstract\+Ode\+Solver} (const double h, const double t0, const double t1, const double y0, double($\ast$f)(double y, double t), const unsigned int s)
+\item 
+void \mbox{\hyperlink{class_abstract_ode_solver_ae077d6f26471336551baba8ee34c44a7}{Set\+Step\+Size}} (const double h)
+\item 
+void \mbox{\hyperlink{class_abstract_ode_solver_a703521b467a66a16aa01b4bfcb5c2f8b}{Set\+Time\+Interval}} (const double t0, const double t1)
+\item 
+void \mbox{\hyperlink{class_abstract_ode_solver_a8b842c66802558170fd88bd16ea3ce11}{Set\+Initial\+Value}} (const double y0)
+\item 
+void \mbox{\hyperlink{class_abstract_ode_solver_ac69f1a30516f0e594c4e193625ef9943}{Set\+Right\+Hand\+Side}} (double($\ast$f)(double y, double t))
+\item 
+virtual void \mbox{\hyperlink{class_abstract_ode_solver_a2c80c40baa03cdf976e97bb6dbb99a9d}{Set\+Order}} (const unsigned int order)
+\item 
+double \mbox{\hyperlink{class_abstract_ode_solver_a632c1d1c190714930a96db317528cec9}{Right\+Hand\+Side}} (double y, double t) const
+\item 
+double \mbox{\hyperlink{class_abstract_ode_solver_ae5012b8b84a64512a49d2f0872c06426}{Scalar\+Product}} (const int size, const double $\ast$a, const double $\ast$b) const
+\item 
+double \mbox{\hyperlink{class_abstract_ode_solver_af1e058d43ce10fda67076ae1674dd399}{Product\+WithB}} (const double F\mbox{[}max\+\_\+order+1\mbox{]}, const int j) const
+\item 
+virtual void \mbox{\hyperlink{class_abstract_ode_solver_ae295de5ad77812f5a16cbb41b8084c14}{Solve\+Equation}} (std\+::ostream \&stream)=0
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_ac0086075915c39f11a22845a7f2b2d11}\label{class_abstract_ode_solver_ac0086075915c39f11a22845a7f2b2d11}} 
+double {\bfseries Get\+Final\+Time} () const
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_a7339e2a431b3b8ca75e9ad40092267a6}\label{class_abstract_ode_solver_a7339e2a431b3b8ca75e9ad40092267a6}} 
+double {\bfseries Get\+Initial\+Time} () const
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_a602d6b6170573d1216272c6963faac76}\label{class_abstract_ode_solver_a602d6b6170573d1216272c6963faac76}} 
+double {\bfseries Get\+Initial\+Value} () const
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_aae60901c523d49d3507d5b640ad67a73}\label{class_abstract_ode_solver_aae60901c523d49d3507d5b640ad67a73}} 
+double {\bfseries Get\+Step\+Size} () const
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_a3539e28ca350099a4bcee0565b30cc3f}\label{class_abstract_ode_solver_a3539e28ca350099a4bcee0565b30cc3f}} 
+unsigned int {\bfseries Get\+Order} () const
+\item 
+double \mbox{\hyperlink{class_abstract_ode_solver_a73b9919ff9696807d05cdc827abcc6b4}{GetB}} (const unsigned int i, const unsigned int j) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_abstract_ode_solver_a9653b7307ba9f8586680b21bf093d2f9}{SetB}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_a2231ddc6272c34370986de1b2477a5f5}\label{class_abstract_ode_solver_a2231ddc6272c34370986de1b2477a5f5}} 
+unsigned int {\bfseries s}
+\item 
+\mbox{\Hypertarget{class_abstract_ode_solver_af7f79c1ce0f80345055de86e4570055c}\label{class_abstract_ode_solver_af7f79c1ce0f80345055de86e4570055c}} 
+double {\bfseries b} \mbox{[}max\+\_\+order\mbox{]}\mbox{[}max\+\_\+order\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class, mother class of \mbox{\hyperlink{class_abstract_implicit_solver}{Abstract\+Implicit\+Solver}} and \mbox{\hyperlink{class_abstract_explicit_solver}{Abstract\+Explicit\+Solver}}. Contains all the variables and functions common to the implicit and explicit approaches. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_abstract_ode_solver_a03edbae822c8ff26c61f85dd6cfd3d71}\label{class_abstract_ode_solver_a03edbae822c8ff26c61f85dd6cfd3d71}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!AbstractOdeSolver@{AbstractOdeSolver}}
+\index{AbstractOdeSolver@{AbstractOdeSolver}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{AbstractOdeSolver()}{AbstractOdeSolver()}}
+{\footnotesize\ttfamily Abstract\+Ode\+Solver\+::\+Abstract\+Ode\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor of the class, assigning the variables of the class to default values. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_abstract_ode_solver_a73b9919ff9696807d05cdc827abcc6b4}\label{class_abstract_ode_solver_a73b9919ff9696807d05cdc827abcc6b4}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!GetB@{GetB}}
+\index{GetB@{GetB}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{GetB()}{GetB()}}
+{\footnotesize\ttfamily double Abstract\+Ode\+Solver\+::\+GetB (\begin{DoxyParamCaption}\item[{const unsigned int}]{i,  }\item[{const unsigned int}]{j }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & row index \\
+\hline
+{\em j} & column index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The evaluation of b at position (i,j)
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_abstract_ode_solver_af1e058d43ce10fda67076ae1674dd399}\label{class_abstract_ode_solver_af1e058d43ce10fda67076ae1674dd399}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!ProductWithB@{ProductWithB}}
+\index{ProductWithB@{ProductWithB}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{ProductWithB()}{ProductWithB()}}
+{\footnotesize\ttfamily double Abstract\+Ode\+Solver\+::\+Product\+WithB (\begin{DoxyParamCaption}\item[{const double}]{F\mbox{[}max\+\_\+order+1\mbox{]},  }\item[{const int}]{j }\end{DoxyParamCaption}) const}
+
+Implementation of the scalar product between vectors F and the vectors of coefficients b 
+\begin{DoxyParams}{Parameters}
+{\em F} & vector of size order+1 containing the evaluation of f(y,t) at different consecutive times \\
+\hline
+{\em j} & parameter defining the length of F and b to consider \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: result of the scalar product between b and F
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_abstract_ode_solver_a632c1d1c190714930a96db317528cec9}\label{class_abstract_ode_solver_a632c1d1c190714930a96db317528cec9}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!RightHandSide@{RightHandSide}}
+\index{RightHandSide@{RightHandSide}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{RightHandSide()}{RightHandSide()}}
+{\footnotesize\ttfamily double Abstract\+Ode\+Solver\+::\+Right\+Hand\+Side (\begin{DoxyParamCaption}\item[{double}]{y,  }\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & time in seconds \\
+\hline
+{\em y} & numerical solution at a certain time t \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The evaluation of f\+\_\+rhs(y,t)
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_abstract_ode_solver_ae5012b8b84a64512a49d2f0872c06426}\label{class_abstract_ode_solver_ae5012b8b84a64512a49d2f0872c06426}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!ScalarProduct@{ScalarProduct}}
+\index{ScalarProduct@{ScalarProduct}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{ScalarProduct()}{ScalarProduct()}}
+{\footnotesize\ttfamily double Abstract\+Ode\+Solver\+::\+Scalar\+Product (\begin{DoxyParamCaption}\item[{const int}]{size,  }\item[{const double $\ast$}]{a,  }\item[{const double $\ast$}]{b }\end{DoxyParamCaption}) const}
+
+Implementation of the scalar product between vectors a and b 
+\begin{DoxyParams}{Parameters}
+{\em size} & length of a and b \\
+\hline
+{\em a} & first vector \\
+\hline
+{\em b} & second vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: result of the scalar product between two vectors
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_abstract_ode_solver_a9653b7307ba9f8586680b21bf093d2f9}\label{class_abstract_ode_solver_a9653b7307ba9f8586680b21bf093d2f9}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!SetB@{SetB}}
+\index{SetB@{SetB}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{SetB()}{SetB()}}
+{\footnotesize\ttfamily virtual void Abstract\+Ode\+Solver\+::\+SetB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+Virtual function, overriden in the daughter classes, setting the coefficients values b\mbox{[}i\mbox{]}\mbox{[}j\mbox{]} of the equations to solve . 
+
+Implemented in \mbox{\hyperlink{class_adams_bashforth_solver_aac480bea1235ff1be694cdf03791c13c}{Adams\+Bashforth\+Solver}}, \mbox{\hyperlink{class_adams_moulton_solver_a6074e612d9bdb5e5c861b42454e9189f}{Adams\+Moulton\+Solver}}, and \mbox{\hyperlink{class_r_k_solver_ac4eb74db0ddc9b52cd8597e0d375cd68}{RKSolver}}.
+
+\mbox{\Hypertarget{class_abstract_ode_solver_a8b842c66802558170fd88bd16ea3ce11}\label{class_abstract_ode_solver_a8b842c66802558170fd88bd16ea3ce11}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!SetInitialValue@{SetInitialValue}}
+\index{SetInitialValue@{SetInitialValue}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{SetInitialValue()}{SetInitialValue()}}
+{\footnotesize\ttfamily void Abstract\+Ode\+Solver\+::\+Set\+Initial\+Value (\begin{DoxyParamCaption}\item[{const double}]{y0 }\end{DoxyParamCaption})}
+
+Set the initial value 
+\begin{DoxyParams}{Parameters}
+{\em y0} & initial value\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_abstract_ode_solver_a2c80c40baa03cdf976e97bb6dbb99a9d}\label{class_abstract_ode_solver_a2c80c40baa03cdf976e97bb6dbb99a9d}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!SetOrder@{SetOrder}}
+\index{SetOrder@{SetOrder}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{SetOrder()}{SetOrder()}}
+{\footnotesize\ttfamily void Abstract\+Ode\+Solver\+::\+Set\+Order (\begin{DoxyParamCaption}\item[{const unsigned int}]{order }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Set order of the method used to solve the ODE 
+\begin{DoxyParams}{Parameters}
+{\em order} & value given to order\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_abstract_ode_solver_ac69f1a30516f0e594c4e193625ef9943}\label{class_abstract_ode_solver_ac69f1a30516f0e594c4e193625ef9943}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!SetRightHandSide@{SetRightHandSide}}
+\index{SetRightHandSide@{SetRightHandSide}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{SetRightHandSide()}{SetRightHandSide()}}
+{\footnotesize\ttfamily void Abstract\+Ode\+Solver\+::\+Set\+Right\+Hand\+Side (\begin{DoxyParamCaption}\item[{double($\ast$)(double y, double t)}]{f }\end{DoxyParamCaption})}
+
+Set f(y,t)\+: f\+\_\+rhs with an external function f 
+\begin{DoxyParams}{Parameters}
+{\em t} & time in seconds \\
+\hline
+{\em y} & numerical solution at a certain time t\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_abstract_ode_solver_ae077d6f26471336551baba8ee34c44a7}\label{class_abstract_ode_solver_ae077d6f26471336551baba8ee34c44a7}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!SetStepSize@{SetStepSize}}
+\index{SetStepSize@{SetStepSize}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{SetStepSize()}{SetStepSize()}}
+{\footnotesize\ttfamily void Abstract\+Ode\+Solver\+::\+Set\+Step\+Size (\begin{DoxyParamCaption}\item[{const double}]{h }\end{DoxyParamCaption})}
+
+Set the step size 
+\begin{DoxyParams}{Parameters}
+{\em h} & value given to the step size\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_abstract_ode_solver_a703521b467a66a16aa01b4bfcb5c2f8b}\label{class_abstract_ode_solver_a703521b467a66a16aa01b4bfcb5c2f8b}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!SetTimeInterval@{SetTimeInterval}}
+\index{SetTimeInterval@{SetTimeInterval}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{SetTimeInterval()}{SetTimeInterval()}}
+{\footnotesize\ttfamily void Abstract\+Ode\+Solver\+::\+Set\+Time\+Interval (\begin{DoxyParamCaption}\item[{const double}]{t0,  }\item[{const double}]{t1 }\end{DoxyParamCaption})}
+
+Set the time interval 
+\begin{DoxyParams}{Parameters}
+{\em t0} & initial time \\
+\hline
+{\em t1} & final time\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_abstract_ode_solver_ae295de5ad77812f5a16cbb41b8084c14}\label{class_abstract_ode_solver_ae295de5ad77812f5a16cbb41b8084c14}} 
+\index{AbstractOdeSolver@{AbstractOdeSolver}!SolveEquation@{SolveEquation}}
+\index{SolveEquation@{SolveEquation}!AbstractOdeSolver@{AbstractOdeSolver}}
+\doxysubsubsection{\texorpdfstring{SolveEquation()}{SolveEquation()}}
+{\footnotesize\ttfamily virtual void Abstract\+Ode\+Solver\+::\+Solve\+Equation (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Virtual function, overriden in the daughter classes, computing the numerical solution of the ODE. 
+
+Implemented in \mbox{\hyperlink{class_adams_bashforth_solver_aa41376db6baf14ea6e79d17ba25132d2}{Adams\+Bashforth\+Solver}}, \mbox{\hyperlink{class_forward_euler_solver_a15731ae91ddb39295c03b51f97d990ad}{Forward\+Euler\+Solver}}, \mbox{\hyperlink{class_runge_kutta_solver_a83f4e4b81bf5bed8f1f24a14916566ef}{Runge\+Kutta\+Solver}}, \mbox{\hyperlink{class_adams_moulton_solver_ab7391060b3d2726f3bfbed8c9b309eae}{Adams\+Moulton\+Solver}}, and \mbox{\hyperlink{class_r_k_solver_aa3a48ce8483e46fccdc35a55ad4df449}{RKSolver}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstract\+Ode\+Solver.\+hpp\item 
+Abstract\+Ode\+Solver.\+cpp\end{DoxyCompactItemize}

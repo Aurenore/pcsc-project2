@@ -1,0 +1,29 @@
+\hypertarget{_adams_bashforth_solver_8h_source}{}\doxysection{Adams\+Bashforth\+Solver.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by anyam on 30.11.2022.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef PCSC\_PROJECT\_ADAMSBASHFORTHSOLVER\_H}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define PCSC\_PROJECT\_ADAMSBASHFORTHSOLVER\_H}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}AbstractExplicitSolver.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_adams_bashforth_solver}{AdamsBashforthSolver}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_abstract_explicit_solver}{AbstractExplicitSolver}} \{}
+\DoxyCodeLine{14 \textcolor{keyword}{public}:}
+\DoxyCodeLine{15     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adams_bashforth_solver_aa41376db6baf14ea6e79d17ba25132d2}{SolveEquation}}(std::ostream \&stream);}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_adams_bashforth_solver_ae3bd432eac0b810b72f5ef81725f7a54}{AdamsBashforthSolver}}();}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_adams_bashforth_solver_ae3bd432eac0b810b72f5ef81725f7a54}{AdamsBashforthSolver}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} h, \textcolor{keyword}{const} \textcolor{keywordtype}{double} t0, \textcolor{keyword}{const} \textcolor{keywordtype}{double} t1, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y0,}
+\DoxyCodeLine{18                          \textcolor{keywordtype}{double} (*f)(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t), \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} s);}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_adams_bashforth_solver}{\string~AdamsBashforthSolver}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} SetOrder(\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} order) \textcolor{keyword}{override};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{23     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adams_bashforth_solver_aac480bea1235ff1be694cdf03791c13c}{SetB}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{24 \};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//PCSC\_PROJECT\_ADAMSBASHFORTHSOLVER\_H}}
+
+\end{DoxyCode}

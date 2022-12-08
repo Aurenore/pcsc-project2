@@ -6,8 +6,11 @@
 #define PCSC_PROJECT2_ABSTRACTEXPLICITSOLVER_H
 
 #include "AbstractOdeSolver.hpp"
-/** Abstract class, daughter of AbstractOdeSolver, and mother class of the classes which implement implicit methods to solve ODE.
- */
+
+/** Abstract class, daughter of AbstractOdeSolver, and mother class of
+ * the classes which implement explicit methods to solve ODE, such as the Adam Bashforth method or Runke Kutta.
+*/
+
 class AbstractExplicitSolver : public AbstractOdeSolver{
 public:
     AbstractExplicitSolver();

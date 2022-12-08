@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -rdynamic CMakeFiles/main.dir/src/main.cc.o -o main  libpcsc.a 

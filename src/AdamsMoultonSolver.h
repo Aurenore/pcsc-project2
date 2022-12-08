@@ -8,7 +8,9 @@
 #include "AbstractImplicitSolver.h"
 
 
-
+/**
+ * Daugther class of AbstractImplicitSolver, the Adams Moulton solver is an ensemble of implicite methods of different orders.
+ */
 class AdamsMoultonSolver : public AbstractImplicitSolver {
 public:
     AdamsMoultonSolver();

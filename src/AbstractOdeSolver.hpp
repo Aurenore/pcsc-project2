@@ -13,6 +13,9 @@
 //the maximum order of the solver is set to 5 in our case.
 const unsigned int max_order = 5;
 
+/** Abstract class, mother class of AbstractImplicitSolver and AbstractExplicitSolver. Contains all the variables and
+* functions common to the implicit and explicit approaches.*/
+
 class AbstractOdeSolver {
 public:
   // Constructor and destructor
@@ -32,6 +35,7 @@ public:
   double ScalarProduct(const int size, const double* a, const double* b) const;
   //Product with B : return sum_{i = 0}^{j-1} F[i]*b[j-1][i]
   double ProductWithB(const double F[max_order+1], const int j) const;
+  /** Virtual function, overriden in the daughter classes, computing the numerical solution of the ODE.*/
   virtual void SolveEquation(std::ostream &stream) = 0;
 
   // Get methods
@@ -57,6 +61,7 @@ private:
 
 protected:
     unsigned int s;
+    /** Virtual function, overriden in the daughter classes, setting the coefficients values b[i][j]  of the equations to solve .*/
     virtual void SetB() = 0;
     double b[max_order][max_order];
 };

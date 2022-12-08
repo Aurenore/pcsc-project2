@@ -1,0 +1,27 @@
+\hypertarget{_exception_8hpp_source}{}\doxysection{Exception.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * Exception.hpp}}
+\DoxyCodeLine{3 \textcolor{comment}{ *}}
+\DoxyCodeLine{4 \textcolor{comment}{ *  Created on: Nov 15, 2012}}
+\DoxyCodeLine{5 \textcolor{comment}{ *      Author: rpopescu}}
+\DoxyCodeLine{6 \textcolor{comment}{ */}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef EXCEPTIONDEF}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define EXCEPTIONDEF}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_exception}{Exception}} \{}
+\DoxyCodeLine{14 \textcolor{keyword}{private}:}
+\DoxyCodeLine{15   std::string mTag, mProblem;}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{public}:}
+\DoxyCodeLine{18   \mbox{\hyperlink{class_exception}{Exception}}(std::string tagString, std::string problemString);}
+\DoxyCodeLine{19   \textcolor{keywordtype}{void} PrintDebug() \textcolor{keyword}{const};}
+\DoxyCodeLine{20 \};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// EXCEPTIONDEF}}
+
+\end{DoxyCode}
