@@ -1,0 +1,76 @@
+\hypertarget{class_adams_moulton_solver}{}\doxysection{Adams\+Moulton\+Solver Class Reference}
+\label{class_adams_moulton_solver}\index{AdamsMoultonSolver@{AdamsMoultonSolver}}
+
+
+{\ttfamily \#include $<$Adams\+Moulton\+Solver.\+h$>$}
+
+Inheritance diagram for Adams\+Moulton\+Solver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_adams_moulton_solver}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_adams_moulton_solver_ac6f3cc28bafcf6c308c6e9e9f9ed7b20}{Adams\+Moulton\+Solver}} ()
+\item 
+\mbox{\Hypertarget{class_adams_moulton_solver_a8dca939833800b939fc006ce01834783}\label{class_adams_moulton_solver_a8dca939833800b939fc006ce01834783}} 
+{\bfseries Adams\+Moulton\+Solver} (const double h, const double t0, const double t1, const double y0, double($\ast$f)(double y, double t), double($\ast$df)(double y, double t), const unsigned int s)
+\item 
+void \mbox{\hyperlink{class_adams_moulton_solver_ab7391060b3d2726f3bfbed8c9b309eae}{Solve\+Equation}} (std\+::ostream \&stream) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_adams_moulton_solver_a6074e612d9bdb5e5c861b42454e9189f}{SetB}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Daugther class of \mbox{\hyperlink{class_abstract_implicit_solver}{Abstract\+Implicit\+Solver}}, the Adams Moulton solver is an ensemble of implicite methods of different orders. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_adams_moulton_solver_ac6f3cc28bafcf6c308c6e9e9f9ed7b20}\label{class_adams_moulton_solver_ac6f3cc28bafcf6c308c6e9e9f9ed7b20}} 
+\index{AdamsMoultonSolver@{AdamsMoultonSolver}!AdamsMoultonSolver@{AdamsMoultonSolver}}
+\index{AdamsMoultonSolver@{AdamsMoultonSolver}!AdamsMoultonSolver@{AdamsMoultonSolver}}
+\doxysubsubsection{\texorpdfstring{AdamsMoultonSolver()}{AdamsMoultonSolver()}}
+{\footnotesize\ttfamily Adams\+Moulton\+Solver\+::\+Adams\+Moulton\+Solver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor of an \mbox{\hyperlink{class_adams_moulton_solver}{Adams\+Moulton\+Solver}} instance.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_adams_moulton_solver_a6074e612d9bdb5e5c861b42454e9189f}\label{class_adams_moulton_solver_a6074e612d9bdb5e5c861b42454e9189f}} 
+\index{AdamsMoultonSolver@{AdamsMoultonSolver}!SetB@{SetB}}
+\index{SetB@{SetB}!AdamsMoultonSolver@{AdamsMoultonSolver}}
+\doxysubsubsection{\texorpdfstring{SetB()}{SetB()}}
+{\footnotesize\ttfamily void Adams\+Moulton\+Solver\+::\+SetB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+Virtual function, overriden in the daughter classes, setting the coefficients values b\mbox{[}i\mbox{]}\mbox{[}j\mbox{]} of the equations to solve . Set the matrix B of coefficients which define the equations to solve for each order. B is composed of 5 rows and 6 columns, the first lign corresponding the coefficients included in the equation for order 0 and the last lign for order 4.
+
+Implements \mbox{\hyperlink{class_abstract_ode_solver_a9653b7307ba9f8586680b21bf093d2f9}{Abstract\+Ode\+Solver}}.
+
+\mbox{\Hypertarget{class_adams_moulton_solver_ab7391060b3d2726f3bfbed8c9b309eae}\label{class_adams_moulton_solver_ab7391060b3d2726f3bfbed8c9b309eae}} 
+\index{AdamsMoultonSolver@{AdamsMoultonSolver}!SolveEquation@{SolveEquation}}
+\index{SolveEquation@{SolveEquation}!AdamsMoultonSolver@{AdamsMoultonSolver}}
+\doxysubsubsection{\texorpdfstring{SolveEquation()}{SolveEquation()}}
+{\footnotesize\ttfamily void Adams\+Moulton\+Solver\+::\+Solve\+Equation (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Virtual function, overriden in the daughter classes, computing the numerical solution of the ODE. Adams Moulton methods for the scalar ODE in the form y\textquotesingle{}(t)=f(y,t). The Newton method is used to solve the nonlinear equation at each time t.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & name of the file on which write the numerical solution at each time t\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_abstract_ode_solver_ae295de5ad77812f5a16cbb41b8084c14}{Abstract\+Ode\+Solver}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Adams\+Moulton\+Solver.\+h\item 
+Adams\+Moulton\+Solver.\+cpp\end{DoxyCompactItemize}

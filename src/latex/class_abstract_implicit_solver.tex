@@ -1,0 +1,66 @@
+\hypertarget{class_abstract_implicit_solver}{}\doxysection{Abstract\+Implicit\+Solver Class Reference}
+\label{class_abstract_implicit_solver}\index{AbstractImplicitSolver@{AbstractImplicitSolver}}
+
+
+{\ttfamily \#include $<$Abstract\+Implicit\+Solver.\+h$>$}
+
+Inheritance diagram for Abstract\+Implicit\+Solver\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_abstract_implicit_solver}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_abstract_implicit_solver_a04f432fc54761d013a6801200397d28d}\label{class_abstract_implicit_solver_a04f432fc54761d013a6801200397d28d}} 
+{\bfseries Abstract\+Implicit\+Solver} (const double h, const double t0, const double t1, const double y0, double($\ast$f)(double y, double t), double($\ast$df)(double y, double t), const unsigned int s)
+\item 
+void \mbox{\hyperlink{class_abstract_implicit_solver_af7ee58e229db2a85d2dfd65066c7c8c2}{Setd\+Right\+Hand\+Side}} (double($\ast$f)(double y, double t))
+\item 
+double \mbox{\hyperlink{class_abstract_implicit_solver_a8999e9b05e7e1c553789b8feb6871417}{d\+Right\+Hand\+Side}} (double y, double t) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract class, daughter of \mbox{\hyperlink{class_abstract_ode_solver}{Abstract\+Ode\+Solver}}, and mother class of the classes which implement implicit methods to solve ODE. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_abstract_implicit_solver_a8999e9b05e7e1c553789b8feb6871417}\label{class_abstract_implicit_solver_a8999e9b05e7e1c553789b8feb6871417}} 
+\index{AbstractImplicitSolver@{AbstractImplicitSolver}!dRightHandSide@{dRightHandSide}}
+\index{dRightHandSide@{dRightHandSide}!AbstractImplicitSolver@{AbstractImplicitSolver}}
+\doxysubsubsection{\texorpdfstring{dRightHandSide()}{dRightHandSide()}}
+{\footnotesize\ttfamily double Abstract\+Implicit\+Solver\+::d\+Right\+Hand\+Side (\begin{DoxyParamCaption}\item[{double}]{y,  }\item[{double}]{t }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & time in seconds \\
+\hline
+{\em y} & numerical solution at a certain time t \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+evaluation of the derivative of f(y,t) with respect to y
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_abstract_implicit_solver_af7ee58e229db2a85d2dfd65066c7c8c2}\label{class_abstract_implicit_solver_af7ee58e229db2a85d2dfd65066c7c8c2}} 
+\index{AbstractImplicitSolver@{AbstractImplicitSolver}!SetdRightHandSide@{SetdRightHandSide}}
+\index{SetdRightHandSide@{SetdRightHandSide}!AbstractImplicitSolver@{AbstractImplicitSolver}}
+\doxysubsubsection{\texorpdfstring{SetdRightHandSide()}{SetdRightHandSide()}}
+{\footnotesize\ttfamily void Abstract\+Implicit\+Solver\+::\+Setd\+Right\+Hand\+Side (\begin{DoxyParamCaption}\item[{double($\ast$)(double y, double t)}]{f }\end{DoxyParamCaption})}
+
+Set the derivative of f(y,t) with respect to y\+: df\+\_\+rhs with an external function f 
+\begin{DoxyParams}{Parameters}
+{\em f} & function handle for df(y,t) \\
+\hline
+{\em t} & time in seconds \\
+\hline
+{\em y} & numerical solution at a certain time t\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Abstract\+Implicit\+Solver.\+h\item 
+Abstract\+Implicit\+Solver.\+cpp\end{DoxyCompactItemize}

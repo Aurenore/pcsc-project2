@@ -7,7 +7,9 @@
 
 #include "AbstractExplicitSolver.h"
 #include <fstream>
-
+/**
+ * Daugther class of AbstractExplicitSolver, the Adams Bashforth solver is an ensemble of explicite methods of different orders.
+*/
 class AdamsBashforthSolver : public AbstractExplicitSolver {
 public:
     virtual void SolveEquation(std::ostream &stream);
