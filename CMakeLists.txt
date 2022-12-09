@@ -18,5 +18,3 @@ target_link_libraries(main_solver solver exception)
 
 add_executable(test_solver test/test_solver.cc)
 target_link_libraries(test_solver gtest_main gtest pthread solver exception)
-
-add_custom_target(target_test ./test_solver DEPENDS test_solver)

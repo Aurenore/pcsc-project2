@@ -1,12 +1,12 @@
 #include <cmath>
+#include <string>
 #include <gtest/gtest.h>
 #include "../src/AbstractOdeSolver.hpp"
+#include "../src/AbstractExplicitSolver.h"
+#include "../src/AbstractImplicitSolver.h"
 #include "../src/AdamsMoultonSolver.h"
 #include "../src/AdamsBashforthSolver.h"
 #include "../src/RKSolver.h"
-#include <fstream>
-#include <string>
-#include <cmath>
 #include "../src/FileNotOpenException.hpp"
 
 const double TOL = 1e-5;
@@ -154,7 +154,7 @@ void Test_function(AbstractOdeSolver *solver, std::string filename_solver, doubl
     Test_final_results(solver, filename_solver, sol, tol);
 }
 
-void Test_orders(AbstractOdeSolver *solver, int order_min, int order_max, std::string prefix_filename_solver,
+void Test_orders(AbstractExplicitSolver *solver, int order_min, int order_max, std::string prefix_filename_solver,
                  double tol=TOL){
     for(int order=order_min; order<=order_max; order++){
         solver->SetOrder(order);
@@ -168,7 +168,7 @@ void Test_orders(AbstractOdeSolver *solver, int order_min, int order_max, std::s
     }
 }
 
-void Test_orders(AdamsMoultonSolver *solver, int order_min, int order_max, std::string prefix_filename_solver,
+void Test_orders(AbstractImplicitSolver *solver, int order_min, int order_max, std::string prefix_filename_solver,
                  double tol=TOL){
     for(int order=order_min; order<=order_max; order++){
         solver->SetOrder(order);
@@ -259,18 +259,18 @@ TEST(AdamsMoultonSolver_test, ScalarProduct) {
 }
 
 
-TEST(AdamsMoultonSolver_test, EulerForward_fRhs1) {
+TEST(AdamsMoultonSolver_test, EulerBackward_fRhs1) {
     double h = 0.0001;
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.;
     unsigned int s = 1;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs1,dfRhs1, s);
+    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs1, dfRhs1, s);
     std::string filename_solver("test_AM_fRhs1_s1.dat");
     Test_final_results(&solver, filename_solver, sol1, 0.01);
 }
 
-TEST(AdamsMoultonSolver_test, EulerForward_fRhs2) {
+TEST(AdamsMoultonSolver_test, EulerBackward_fRhs2) {
     AbstractOdeSolver* pt_solver = new AdamsMoultonSolver;
     double h = 0.001;
     double t0 = 0.0;
@@ -279,13 +279,11 @@ TEST(AdamsMoultonSolver_test, EulerForward_fRhs2) {
     unsigned int s = 1;
     AdamsMoultonSolver solver(h, t0, t1, y0, fRhs2,dfRhs2, s);
     std::string filename_solver("test_AM_fRhs2_s1.dat");
-    std::string filename_solution("solution_euler.dat");
 
-    //Test_results(&solver, filename_solver, filename_solution);
     Test_final_results(&solver, filename_solver, sol2, 0.01);
 }
 
-TEST(AdamsMoultonSolver_test, EulerForward_fRhs3) {
+TEST(AdamsMoultonSolver_test, EulerBackward_fRhs3) {
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
@@ -296,122 +294,12 @@ TEST(AdamsMoultonSolver_test, EulerForward_fRhs3) {
     Test_final_results(&solver, filename_solver, sol3, 0.01);
 }
 
-TEST(AdamsMoultonSolver_test, Solver_order_2_fRhs1) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.0;
-    unsigned int s = 2;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs1,dfRhs1, s);
-    std::string filename_solver("test_AM_fRhs1_s2.dat");
-
-    Test_final_results(&solver, filename_solver, sol1);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_2_fRhs2) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.8;
-    unsigned int s = 2;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs2,dfRhs2, s);
-    std::string filename_solver("test_AM_fRhs2_s2.dat");
-    std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_2_fRhs3) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.0;
-    unsigned int s = 2;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs3,dfRhs3, s);
-    std::string filename_solver("test_AM_fRhs3_s2.dat");
-
-    Test_final_results(&solver, filename_solver, sol3);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_3_fRhs1) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.0;
-    unsigned int s = 3;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs1,dfRhs1, s);
-    std::string filename_solver("test_AM_fRhs1_s3.dat");
-
-    Test_final_results(&solver, filename_solver, sol1);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_3_fRhs2) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.8;
-    unsigned int s = 3;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs2,dfRhs2, s);
-    std::string filename_solver("test_AM_fRhs2_s3.dat");
-    std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_3_fRhs3) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.0;
-    unsigned int s = 3;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs3,dfRhs3, s);
-    std::string filename_solver("test_AM_fRhs3_s3.dat");
-
-    Test_final_results(&solver, filename_solver, sol3);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_4_fRhs1) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.0;
-    unsigned int s = 4;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs1,dfRhs1, s);
-    std::string filename_solver("test_AM_fRhs1_s4.dat");
-
-    Test_final_results(&solver, filename_solver, sol1);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_4_fRhs2) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.8;
-    unsigned int s = 4;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs2, dfRhs2, s);
-    std::string filename_solver("test_AM_s4.dat");
-    std::string filename_solution("solution_euler.dat");
-
-    Test_final_results(&solver, filename_solver, filename_solution);
-}
-
-TEST(AdamsMoultonSolver_test, Solver_order_4_fRhs3) {
-    double h = 0.001;
-    double t0 = 0.0;
-    double t1 = 100.0;
-    double y0 = 0.0;
-    unsigned int s = 4;
-    AdamsMoultonSolver solver(h, t0, t1, y0, fRhs3,dfRhs3, s);
-    std::string filename_solver("test_AM_fRhs3_s4.dat");
-
-    Test_final_results(&solver, filename_solver, sol3);
-}
 
 TEST(AdamsMoultonSolver_test, orders_and_fRhs){
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
-    AdamsMoultonSolver* solver = new AdamsMoultonSolver;
+    AbstractImplicitSolver* solver = new AdamsMoultonSolver;
     solver->SetStepSize(h);
     solver->SetTimeInterval(t0, t1);
     int order_min = 2;
@@ -421,7 +309,7 @@ TEST(AdamsMoultonSolver_test, orders_and_fRhs){
     delete solver;
 }
 
-// TESTS:
+// TESTS AdamsBashforth Solver:
 TEST(AdamsBashforthSolver_test, GetFinalTime) {
     AdamsBashforthSolver solver;
     double t0(2);
@@ -508,7 +396,7 @@ TEST(AdamsBashforthSolver_test, orders_and_fRhs){
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
-    AbstractOdeSolver* solver = new AdamsBashforthSolver;
+    AbstractExplicitSolver* solver = new AdamsBashforthSolver;
     solver->SetStepSize(h);
     solver->SetTimeInterval(t0, t1);
     int order_min = 2;
@@ -798,7 +686,7 @@ TEST(RKSolver_test, all_orders_and_fRhs){
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
-    AbstractOdeSolver* solver = new RKSolver;
+    AbstractExplicitSolver* solver = new RKSolver;
     solver->SetStepSize(h);
     solver->SetTimeInterval(t0, t1);
     int order_min = 2;

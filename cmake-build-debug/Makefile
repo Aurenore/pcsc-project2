@@ -214,19 +214,6 @@ test_solver/fast:
 .PHONY : test_solver/fast
 
 #=============================================================================
-# Target rules for targets named target_test
-
-# Build rule for target.
-target_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 target_test
-.PHONY : target_test
-
-# fast build rule for target.
-target_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/target_test.dir/build.make CMakeFiles/target_test.dir/build
-.PHONY : target_test/fast
-
-#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -602,7 +589,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... target_test"
 	@echo "... exception"
 	@echo "... gmock"
 	@echo "... gmock_main"
