@@ -45,7 +45,7 @@ public:
 
   unsigned int GetOrder() const { return s; }
 
-  double GetB(const unsigned int i, const unsigned int j) const;
+  virtual double GetB(const unsigned int i, const unsigned int j) const;
 
 private:
   double stepSize;
@@ -58,7 +58,7 @@ private:
 protected:
     unsigned int s;
     virtual void SetB() = 0;
-    double b[max_order][max_order];
+    double b[max_order][max_order+1];
 };
 
 #endif /* ABSTRACTODESOLVER_HPP_ */

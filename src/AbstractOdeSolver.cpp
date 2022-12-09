@@ -50,8 +50,6 @@ AbstractOdeSolver::AbstractOdeSolver(const double h, const double t0, const doub
 }
 
 double AbstractOdeSolver::GetB(const unsigned int i, const unsigned int j) const {
-    assert((i>=0) && (i<max_order) && (j>=0) && (j<max_order));
-    assert(i>=j); //since the B matrix is triangular inferior
     return b[i][j];
 }
 

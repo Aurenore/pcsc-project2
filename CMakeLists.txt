@@ -8,9 +8,11 @@ add_subdirectory(googletest)
 
 add_library(solver src/AbstractOdeSolver.cpp src/AbstractOdeSolver.hpp src/AbstractExplicitSolver.cpp
         src/AbstractExplicitSolver.h src/AdamsBashforthSolver.cpp src/AdamsBashforthSolver.h
-        src/RKSolver.cpp src/RKSolver.h)
+        src/RKSolver.cpp src/RKSolver.h src/AbstractImplicitSolver.cpp src/AbstractImplicitSolver.h
+        src/AdamsMoultonSolver.cpp src/AdamsMoultonSolver.h)
 add_library(exception src/Exception.cpp src/Exception.hpp src/FileNotOpenException.cpp src/FileNotOpenException.hpp
-        src/UnsetOrderException.cpp src/UnsetOrderException.h src/SetOrderException.cpp src/SetOrderException.h src/OutOfRangeException.cpp src/OutOfRangeException.h)
+        src/UnsetOrderException.cpp src/UnsetOrderException.h src/SetOrderException.cpp src/SetOrderException.h
+        src/OutOfRangeException.cpp src/OutOfRangeException.h)
 add_executable(main_solver src/main.cc)
 target_link_libraries(main_solver solver exception)
 
