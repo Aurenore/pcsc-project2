@@ -18,7 +18,7 @@ public:
     void SetOrder(unsigned int order) override;
 
     double GetC(int i, int j) const;
-    double GetA(int i, int j) const;
+    double GetA(int i, int j);
 
     // compute sum_{j=0}^{l-1} a[l-1][j]*k[j]
     double ProductWithA(const double k[max_order-1], int j) const;

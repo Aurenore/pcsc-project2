@@ -26,8 +26,8 @@ void AdamsMoultonSolver::SetB(){
     //b=  std::fill(b[0] + 0, b[max_order] + max_order, 0);
     /**
    * Set the matrix B of coefficients which define the equations to solve for each order.
-     B is composed of 5 rows and 6 columns, the first lign corresponding the coefficients included in the equation
-     for order 0 and the last lign for order 4.
+     B is composed of 5 rows and 6 columns, the first row corresponding the coefficients included in the equation
+     for order 0 and the last row for order 4.
    *
    */
     b[0][1] = 0;
