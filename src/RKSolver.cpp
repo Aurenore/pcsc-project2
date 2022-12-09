@@ -14,7 +14,14 @@
 
 RKSolver::RKSolver() : AbstractExplicitSolver() {
     /**
-    Constructor of an RKsolver instance.
+    Constructor of a Runge Kutta solver instance.
+     The Runge-Kutta solves the initial value problem
+     \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
+     In particular, the Explicit Runge-Kutta methods consist of computing for \f$ n \geq 0\f$:
+     \f$y_{n+1} = y_n + h \sum_{i=1}^s b_i k_i\f$
+     where for \f$j=1, \dots, s\f$
+     \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$
+     The coefficients \f$a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
     */
     SetB();
     SetC();
@@ -23,7 +30,14 @@ RKSolver::RKSolver() : AbstractExplicitSolver() {
 RKSolver::RKSolver(const double h, const double t0, const double t1, const double y0,
                    double (*f)(double, double), const unsigned int s) : AbstractExplicitSolver(h,t0,t1,y0,f,s) {
     /**
-    Constructor of a RKsolver instance where each parameter are defined from outside the class.
+    Constructor of a Runge Kutta solver instance, where each parameter are defined from outside the class.
+     The Runge-Kutta solves the initial value problem
+     \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
+     In particular, the Explicit Runge-Kutta methods consist of computing for \f$ n \geq 0\f$:
+     \f$y_{n+1} = y_n + h \sum_{i=1}^s b_i k_i\f$
+     where for \f$j=1, \dots, s\f$
+     \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$
+     The coefficients \f$a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
     */
     SetOrder(s);
 }
@@ -104,6 +118,7 @@ double RKSolver::GetC(int i, int j) const {
         }
     } catch (OutOfRangeException &error) {
         error.PrintDebug();
+        std::cout << "i is set to " << std::to_string(max_order) << "-1" << std::endl;
         i = max_order-1;
     }
     try {
@@ -180,6 +195,11 @@ void RKSolver::SetA() {
 }
 
 double RKSolver::GetA(int i, int j) {
+/*!
+ * \param i: row index
+ * \param j: column index
+ * \return The evaluation of a at position (i,j)
+*/
     try {
         if (i<0) {
             throw OutOfRangeException("Out of range index. i should be bigger than 0.");
@@ -206,7 +226,7 @@ double RKSolver::GetA(int i, int j) {
         std::cout << "j is set to 0." << std::endl;
         j = 0;
     }
-    //since the C matrix is triangular inferior:
+    //since the A matrix is triangular inferior:
     try {
         if (j>i) {
             throw OutOfRangeException("j must be smaller or equal to i.");
@@ -231,6 +251,9 @@ double RKSolver::GetA(int i, int j) {
 }
 
 void RKSolver::SetOrder(unsigned int order) {
+/*!
+ * \param order: order that will be set for the Runge Kutta method.
+*/
     try {
         if(order < 1) {
             throw SetOrderException("Order of the RK solver should be bigger or equal to 1.");
@@ -255,8 +278,30 @@ void RKSolver::SetOrder(unsigned int order) {
     SetA();
 }
 
-double RKSolver::ProductWithA(const double *k, const int j) const {
-    // compute sum_{i=0}^{j-1} a[j][i]*k[i]
+double RKSolver::ProductWithA(const double *k, int j) const {
+/*!
+ * \param k: pointer to a double vector/array
+ * \param j: row index of A
+ * \return scalar product of k with the jth row of A, i.e. \f$\sum_{i=0}^{j-1} a[j][i]*k[i]\f$
+*/
+    try {
+        if (j>max_order) {
+            throw OutOfRangeException("j must be smaller than max_order.");
+        }
+    } catch (OutOfRangeException &error) {
+        error.PrintDebug();
+        std::cout << "j is set 4. " << std::endl;
+        j = 4;
+    }
+    try {
+        if (j<0) {
+            throw OutOfRangeException("j must be positive.");
+        }
+    } catch (OutOfRangeException &error) {
+        error.PrintDebug();
+        std::cout << "j is set 0. " << std::endl;
+        j = 0;
+    }
     double product;
     product = ScalarProduct(j, k, &a[j][0]);
     return product;
@@ -264,6 +309,12 @@ double RKSolver::ProductWithA(const double *k, const int j) const {
 
 
 void RKSolver::SolveEquation(std::ostream &stream) {
+    /*!
+   * Runge Kutta methods for the scalar ODE in the form y'(t)=f(y,t).
+
+   * \param stream: name of the file on which write the numerical solution at each time t
+   */
+
     double y = GetInitialValue();
     double t = GetInitialTime();
     double h = GetStepSize();
@@ -276,7 +327,7 @@ void RKSolver::SolveEquation(std::ostream &stream) {
     double temp; // y_n
     double k[order]; // k_0, k_1, ..., k_{order-1}
     temp = y;
-    double product(0);
+    double product;
     double final_product;
     for (int i = 1; i <= n; ++i) {
         // compute the values k_j
