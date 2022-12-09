@@ -33,7 +33,6 @@ public:
 
   double RightHandSide(double y, double t) const;
   double ScalarProduct(int size, const double* a, const double* b) const;
-  //Product with B : return sum_{i = 0}^{j-1} F[i]*b[j-1][i]
   double ProductWithB(const double F[max_order+1], int j) const;
   /** Virtual function, overriden in the daughter classes, computing the numerical solution of the ODE.*/
   virtual void SolveEquation(std::ostream &stream) = 0;

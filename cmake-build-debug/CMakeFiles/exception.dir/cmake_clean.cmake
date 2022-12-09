@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o.d"
   "CMakeFiles/exception.dir/src/SetOrderException.cpp.o"
   "CMakeFiles/exception.dir/src/SetOrderException.cpp.o.d"
+  "CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o"
+  "CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o.d"
   "CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o"
   "CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o.d"
   "libexception.a"

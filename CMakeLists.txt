@@ -12,7 +12,7 @@ add_library(solver src/AbstractOdeSolver.cpp src/AbstractOdeSolver.hpp src/Abstr
         src/AdamsMoultonSolver.cpp src/AdamsMoultonSolver.h)
 add_library(exception src/Exception.cpp src/Exception.hpp src/FileNotOpenException.cpp src/FileNotOpenException.hpp
         src/UnsetOrderException.cpp src/UnsetOrderException.h src/SetOrderException.cpp src/SetOrderException.h
-        src/OutOfRangeException.cpp src/OutOfRangeException.h)
+        src/OutOfRangeException.cpp src/OutOfRangeException.h src/UncoherentValueException.cpp src/UncoherentValueException.h)
 add_executable(main_solver src/main.cc)
 target_link_libraries(main_solver solver exception)
 

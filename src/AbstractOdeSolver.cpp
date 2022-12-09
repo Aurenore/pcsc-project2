@@ -7,7 +7,8 @@
 
 #include "AbstractOdeSolver.hpp"
 #include "OutOfRangeException.h"
-#include <cassert>
+#include "UncoherentValueException.h"
+#include "SetOrderException.h"
 #include <iostream>
 
 AbstractOdeSolver::AbstractOdeSolver()
@@ -21,22 +22,49 @@ AbstractOdeSolver::AbstractOdeSolver()
 
 AbstractOdeSolver::~AbstractOdeSolver() {}
 
-void AbstractOdeSolver::SetStepSize(const double h) {
+void AbstractOdeSolver::SetStepSize(double h) {
 
 /*! Set the step size
  * \param h: value given to the step size
 */
-    assert(h>0);
+    try {
+        if (h<0) {
+            throw UncoherentValueException("The step size must be positive.");
+        }
+    } catch (UncoherentValueException &error) {
+        error.PrintDebug();
+        std::cout << "The step size is to |h|." << std::endl;
+        h = -h;
+    }
+    try {
+        if (h<1e-6) {
+            throw UncoherentValueException("The step size is too small.");
+        }
+    } catch (UncoherentValueException &error) {
+        error.PrintDebug();
+        std::cout << "The step size is to 1e-5" << std::endl;
+        h = 1e-5;
+    }
     stepSize = h;
 }
 
-void AbstractOdeSolver::SetTimeInterval(const double t0, const double t1) {
+void AbstractOdeSolver::SetTimeInterval(double t0, double t1) {
 
 /*! Set the time interval
 * \param t0: initial time
 *\param t1: final time
 */
-    assert(t1>t0);
+    try {
+        if (t1<t0) {
+            throw UncoherentValueException("Final time cannot be smaller than initial time.");
+        }
+    } catch (UncoherentValueException &error) {
+        error.PrintDebug();
+        std::cout << "t1 and t0 are switched." << std::endl;
+        double temp(t0);
+        t0 = t1;
+        t1 = temp;
+    }
     initialTime = t0;
     finalTime = t1;
 }
@@ -59,11 +87,19 @@ void AbstractOdeSolver::SetRightHandSide(double (*f)(double y, double t)) {
   f_rhs = f;
 }
 
-void AbstractOdeSolver::SetOrder(const unsigned int order) {
+void AbstractOdeSolver::SetOrder(unsigned int order) {
 /*! Set order of the method used to solve the ODE
 * \param order: value given to order
 */
-    assert(order>=0);
+    try {
+        if (order > max_order) {
+            throw SetOrderException("Order must be smaller than the maximum order " + std::to_string(max_order));
+        }
+    } catch (SetOrderException &error) {
+        error.PrintDebug();
+        std::cout << "The order is set to the maximum order " + std::to_string(max_order) << std::endl;
+        order = max_order;
+    }
     s = order;
 }
 

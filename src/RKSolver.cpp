@@ -215,6 +215,7 @@ double RKSolver::GetA(int i, int j) {
         }
     } catch (OutOfRangeException &error) {
         error.PrintDebug();
+        std::cout << "i is set to " << std::to_string(max_order-1) << std::endl;
         i = max_order-1;
     }
     try {

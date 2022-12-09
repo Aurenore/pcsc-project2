@@ -3,10 +3,11 @@
 //
 
 #include "AdamsBashforthSolver.h"
+#include "FileNotOpenException.hpp"
+#include "SetOrderException.h"
 #include <cassert>
 #include <iostream>
 #include <cmath>
-#include "FileNotOpenException.hpp"
 
 AdamsBashforthSolver::AdamsBashforthSolver() : AbstractExplicitSolver() {
     /**
@@ -24,9 +25,17 @@ AdamsBashforthSolver::AdamsBashforthSolver(const double h, const double t0, cons
     SetOrder(s);
 }
 
-void AdamsBashforthSolver::SetOrder(const unsigned int order){
-    assert(order>=0);
-    s = order;
+void AdamsBashforthSolver::SetOrder(unsigned int order){
+    try {
+        if(order < 1) {
+            throw SetOrderException("Order of the Adamsbashforth solver should be bigger or equal to 1.");
+        }
+    } catch (SetOrderException &error) {
+        error.PrintDebug();
+        std::cout << "The order is set to 1. " << std::endl;
+        order = 1;
+    }
+    AbstractOdeSolver::SetOrder(order);
     SetB();
 }
 
@@ -72,7 +81,6 @@ void AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
     double h = GetStepSize();
     unsigned int order = GetOrder();
     assert(h > 1e-6);
-    //std::cout << "Step size: " << h << std::endl;
 
     int n = static_cast<int>(std::floor((GetFinalTime() - GetInitialTime()) / h));
     stream << t << " " << y << "\n";
@@ -93,7 +101,7 @@ void AdamsBashforthSolver::SolveEquation(std::ostream &stream) {
 
     for (int i = order; i < n; ++i) {
         double product = ProductWithB(F, order);
-        double y = temp[order-1] + h*product;
+        y = temp[order-1] + h*product;
         t += h;
         double new_F = RightHandSide(y, t);
 

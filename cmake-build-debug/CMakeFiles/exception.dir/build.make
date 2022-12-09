@@ -139,13 +139,28 @@ CMakeFiles/exception.dir/src/OutOfRangeException.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exception.dir/src/OutOfRangeException.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/OutOfRangeException.cpp -o CMakeFiles/exception.dir/src/OutOfRangeException.cpp.s
 
+CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o: CMakeFiles/exception.dir/flags.make
+CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o: ../src/UncoherentValueException.cpp
+CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o: CMakeFiles/exception.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o -MF CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o.d -o CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o -c /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UncoherentValueException.cpp
+
+CMakeFiles/exception.dir/src/UncoherentValueException.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exception.dir/src/UncoherentValueException.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UncoherentValueException.cpp > CMakeFiles/exception.dir/src/UncoherentValueException.cpp.i
+
+CMakeFiles/exception.dir/src/UncoherentValueException.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exception.dir/src/UncoherentValueException.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UncoherentValueException.cpp -o CMakeFiles/exception.dir/src/UncoherentValueException.cpp.s
+
 # Object files for target exception
 exception_OBJECTS = \
 "CMakeFiles/exception.dir/src/Exception.cpp.o" \
 "CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o" \
 "CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o" \
 "CMakeFiles/exception.dir/src/SetOrderException.cpp.o" \
-"CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o"
+"CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o" \
+"CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o"
 
 # External object files for target exception
 exception_EXTERNAL_OBJECTS =
@@ -155,9 +170,10 @@ libexception.a: CMakeFiles/exception.dir/src/FileNotOpenException.cpp.o
 libexception.a: CMakeFiles/exception.dir/src/UnsetOrderException.cpp.o
 libexception.a: CMakeFiles/exception.dir/src/SetOrderException.cpp.o
 libexception.a: CMakeFiles/exception.dir/src/OutOfRangeException.cpp.o
+libexception.a: CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o
 libexception.a: CMakeFiles/exception.dir/build.make
 libexception.a: CMakeFiles/exception.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libexception.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libexception.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/exception.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/exception.dir/link.txt --verbose=$(VERBOSE)
 

@@ -505,6 +505,30 @@ src/SetOrderException.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/SetOrderException.cpp.s
 .PHONY : src/SetOrderException.cpp.s
 
+src/UncoherentValueException.o: src/UncoherentValueException.cpp.o
+.PHONY : src/UncoherentValueException.o
+
+# target to build an object file
+src/UncoherentValueException.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/UncoherentValueException.cpp.o
+.PHONY : src/UncoherentValueException.cpp.o
+
+src/UncoherentValueException.i: src/UncoherentValueException.cpp.i
+.PHONY : src/UncoherentValueException.i
+
+# target to preprocess a source file
+src/UncoherentValueException.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/UncoherentValueException.cpp.i
+.PHONY : src/UncoherentValueException.cpp.i
+
+src/UncoherentValueException.s: src/UncoherentValueException.cpp.s
+.PHONY : src/UncoherentValueException.s
+
+# target to generate assembly for a file
+src/UncoherentValueException.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/exception.dir/build.make CMakeFiles/exception.dir/src/UncoherentValueException.cpp.s
+.PHONY : src/UncoherentValueException.cpp.s
+
 src/UnsetOrderException.o: src/UnsetOrderException.cpp.o
 .PHONY : src/UnsetOrderException.o
 
@@ -627,6 +651,9 @@ help:
 	@echo "... src/SetOrderException.o"
 	@echo "... src/SetOrderException.i"
 	@echo "... src/SetOrderException.s"
+	@echo "... src/UncoherentValueException.o"
+	@echo "... src/UncoherentValueException.i"
+	@echo "... src/UncoherentValueException.s"
 	@echo "... src/UnsetOrderException.o"
 	@echo "... src/UnsetOrderException.i"
 	@echo "... src/UnsetOrderException.s"

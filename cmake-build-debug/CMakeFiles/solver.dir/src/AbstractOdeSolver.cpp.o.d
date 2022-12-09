@@ -148,6 +148,7 @@ CMakeFiles/solver.dir/src/AbstractOdeSolver.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc \
  /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/OutOfRangeException.h \
  /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/Exception.hpp \
- /usr/include/c++/11/cassert /usr/include/assert.h \
+ /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UncoherentValueException.h \
+ /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/SetOrderException.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc

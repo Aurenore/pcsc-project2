@@ -530,6 +530,12 @@
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/SetOrderException.h">
 			<Option target="exception"/>
 		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UncoherentValueException.cpp">
+			<Option target="exception"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UncoherentValueException.h">
+			<Option target="exception"/>
+		</Unit>
 		<Unit filename="/mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/UnsetOrderException.cpp">
 			<Option target="exception"/>
 		</Unit>
