@@ -13,7 +13,7 @@ AdamsBashforthSolver::AdamsBashforthSolver() : AbstractExplicitSolver() {
     /**
     Constructor of an AdamsBashforthSolver instance.
     */
-    SetB();
+    AdamsBashforthSolver::SetOrder(1);
 }
 
 AdamsBashforthSolver::AdamsBashforthSolver(const double h, const double t0, const double t1, const double y0,
@@ -22,7 +22,7 @@ AdamsBashforthSolver::AdamsBashforthSolver(const double h, const double t0, cons
     /**
     Constructor of an AdamsBashforthSolver instance where each parameter are defined from outside the class.
     */
-    SetOrder(s);
+    AdamsBashforthSolver::SetOrder(s);
 }
 
 void AdamsBashforthSolver::SetOrder(unsigned int order){

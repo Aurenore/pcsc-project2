@@ -18,7 +18,7 @@ AbstractOdeSolver::AbstractOdeSolver()
      \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0, \f$
      given a step size \f$ h>0 \f$ and an order \f$ s \geq 0 \f$.
  */
-    : stepSize(), initialTime(), finalTime(), initialValue(), f_rhs(0), s(0) {}
+    : stepSize(1e-3), initialTime(0.), finalTime(100.), initialValue(0.), f_rhs(0), s(0) {}
 
 AbstractOdeSolver::~AbstractOdeSolver() {}
 
@@ -33,7 +33,7 @@ void AbstractOdeSolver::SetStepSize(double h) {
         }
     } catch (UncoherentValueException &error) {
         error.PrintDebug();
-        std::cout << "The step size is to |h|." << std::endl;
+        std::cout << "The step size is to |h| = " << -h << std::endl;
         h = -h;
     }
     try {
@@ -54,6 +54,24 @@ void AbstractOdeSolver::SetTimeInterval(double t0, double t1) {
 * \param t0: initial time
 *\param t1: final time
 */
+    try {
+        if (t1<0) {
+            throw UncoherentValueException("Final time cannot be negative");
+        }
+    } catch (UncoherentValueException &error) {
+        error.PrintDebug();
+        std::cout << "Final time is set positive |t1| = " << -t1 << std::endl;
+        t1 = -t1;
+    }
+    try {
+        if (t0<0) {
+            throw UncoherentValueException("Initial time cannot be negative");
+        }
+    } catch (UncoherentValueException &error) {
+        error.PrintDebug();
+        std::cout << "Initial time is set positive |t0| = " << -t0 << std::endl;
+        t0 = -t0;
+    }
     try {
         if (t1<t0) {
             throw UncoherentValueException("Final time cannot be smaller than initial time.");
@@ -93,7 +111,7 @@ void AbstractOdeSolver::SetOrder(unsigned int order) {
 */
     try {
         if (order > max_order) {
-            throw SetOrderException("Order must be smaller than the maximum order " + std::to_string(max_order));
+            throw SetOrderException("Order must be smaller or equal to the maximum order " + std::to_string(max_order));
         }
     } catch (SetOrderException &error) {
         error.PrintDebug();

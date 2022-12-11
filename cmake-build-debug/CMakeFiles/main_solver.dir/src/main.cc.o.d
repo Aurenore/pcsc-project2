@@ -154,4 +154,6 @@ CMakeFiles/main_solver.dir/src/main.cc.o: \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc \
  /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/RKSolver.h \
+ /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/FileNotOpenException.hpp \
+ /mnt/c/Users/anyam/Desktop/MA3/PCSC/pcsc-project2/src/Exception.hpp \
  /usr/include/c++/11/iostream
