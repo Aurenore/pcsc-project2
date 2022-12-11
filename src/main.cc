@@ -4,9 +4,34 @@
 #include "FileNotOpenException.hpp"
 #include <iostream>
 
-double fRhs(double y, double t)  { return -100*y; }
+int choice;
+double fRhs(double y,double t){
+    if (choice==1) {
+        return 1 + t;
+    } else if (choice==2) {
+        return -100*y;
+    } else if(choice==3){
+        return sin(t)*cos(t);
+    }
+}
+double dfRhs(double y, double t) {
+    if (choice == 1) {
+        return 0;
+    } else if (choice == 2) {
+        return -100;
+    } else if (choice == 3) {
+        return 0;
+    }
+}
 
 int main(int argc, char **argv) {
+    std::cout<< "Please enter the function you want among these functions:" <<std::endl;
+    std::cout <<"1: f(y,t) = 1+t" <<std::endl;
+    std::cout<<"2: f(y,t) = -100*y" <<std::endl;
+    std::cout<<"3 : f(y,t) = sin(t)*cos(t)" <<std::endl;
+    std::cout<<"You choose function number:";
+    std::cin>>choice;
+
     double h = 0.001;
     double t0 = 0.;
     double t1 = 100.;
