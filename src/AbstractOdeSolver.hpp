@@ -20,21 +20,20 @@ class AbstractOdeSolver {
 public:
   // Constructor and destructor
   AbstractOdeSolver();
-  AbstractOdeSolver(const double h, const double t0, const double t1, const double y0, double (*f)(double y, double t),
-                    const unsigned int s);
+  AbstractOdeSolver(double h, double t0, double t1, double y0, double (*f)(double y, double t),
+                    unsigned int s);
   virtual ~AbstractOdeSolver();
 
   // Other public methods
-  void SetStepSize(const double h);
-  void SetTimeInterval(const double t0, const double t1);
-  void SetInitialValue(const double y0);
+  void SetStepSize(double h);
+  void SetTimeInterval(double t0, double t1);
+  void SetInitialValue(double y0);
   void SetRightHandSide(double (*f)(double y, double t));
-  virtual void SetOrder(const unsigned int order);
+  virtual void SetOrder(unsigned int order);
 
   double RightHandSide(double y, double t) const;
-  double ScalarProduct(const int size, const double* a, const double* b) const;
-  //Product with B : return sum_{i = 0}^{j-1} F[i]*b[j-1][i]
-  double ProductWithB(const double F[max_order+1], const int j) const;
+  double ScalarProduct(int size, const double* a, const double* b) const;
+  double ProductWithB(const double F[max_order+1], int j) const;
   /** Virtual function, overriden in the daughter classes, computing the numerical solution of the ODE.*/
   virtual void SolveEquation(std::ostream &stream) = 0;
 
@@ -49,7 +48,7 @@ public:
 
   unsigned int GetOrder() const { return s; }
 
-  double GetB(const unsigned int i, const unsigned int j) const;
+  virtual double GetB(const unsigned int i, const unsigned int j) const;
 
 private:
   double stepSize;
@@ -63,7 +62,7 @@ protected:
     unsigned int s;
     /** Virtual function, overriden in the daughter classes, setting the coefficients values b[i][j]  of the equations to solve .*/
     virtual void SetB() = 0;
-    double b[max_order][max_order];
+    double b[max_order][max_order+1];
 };
 
 #endif /* ABSTRACTODESOLVER_HPP_ */
