@@ -189,8 +189,14 @@ CMakeFiles/main_solver.dir/src/main.cc.o: ../src/main.cc \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
   ../src/RKSolver.h \
+  ../src/FileNotOpenException.hpp \
+  ../src/Exception.hpp \
   /usr/include/c++/11/iostream
 
+
+../src/Exception.hpp:
+
+../src/FileNotOpenException.hpp:
 
 /usr/include/c++/11/bits/fstream.tcc:
 

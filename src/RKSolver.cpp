@@ -23,8 +23,7 @@ RKSolver::RKSolver() : AbstractExplicitSolver() {
      \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$
      The coefficients \f$a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
     */
-    SetB();
-    SetC();
+    RKSolver::SetOrder(1);
 }
 
 RKSolver::RKSolver(const double h, const double t0, const double t1, const double y0,
@@ -39,7 +38,7 @@ RKSolver::RKSolver(const double h, const double t0, const double t1, const doubl
      \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$
      The coefficients \f$a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
     */
-    SetOrder(s);
+    RKSolver::SetOrder(s);
 }
 
 RKSolver::~RKSolver() = default;
@@ -150,15 +149,7 @@ void RKSolver::SetA() {
    *
    */
     unsigned int order = GetOrder();
-    try {
-        if (order<1) {
-            throw UnsetOrderException("When setting the coefficient As, the order needs to be set.");
-        }
-    } catch (UnsetOrderException &error) {
-        error.PrintDebug();
-        std::cout << "The order is set to 1." << std::endl;
-        SetOrder(1);
-    }
+    assert(order > 0);
     assert(order < max_order);
     switch (order) {
         case 1: // s = 1: Forward Euler (first order)
@@ -273,7 +264,7 @@ void RKSolver::SetOrder(unsigned int order) {
         std::cout << "the order is set to the maximum order : 4." << std::endl;
         order = 4;
     }
-    s = order;
+    AbstractOdeSolver::SetOrder(order);
     SetB();
     SetC();
     SetA();
