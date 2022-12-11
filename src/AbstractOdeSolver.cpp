@@ -33,7 +33,7 @@ void AbstractOdeSolver::SetStepSize(double h) {
         }
     } catch (UncoherentValueException &error) {
         error.PrintDebug();
-        std::cout << "The step size is to |h| = " << -h << std::endl;
+        std::cout << "The step size is set to |h| = " << -h << std::endl;
         h = -h;
     }
     try {
@@ -42,7 +42,7 @@ void AbstractOdeSolver::SetStepSize(double h) {
         }
     } catch (UncoherentValueException &error) {
         error.PrintDebug();
-        std::cout << "The step size is to 1e-5" << std::endl;
+        std::cout << "The step size is set to 1e-5" << std::endl;
         h = 1e-5;
     }
     stepSize = h;
