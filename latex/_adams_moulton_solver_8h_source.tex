@@ -1,0 +1,31 @@
+\hypertarget{_adams_moulton_solver_8h_source}{}\doxysection{Adams\+Moulton\+Solver.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by anyam on 30.11.2022.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ADAMSMOULTONSOLVERHEADERDEF}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ADAMSMOULTONSOLVERHEADERDEF}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}AbstractImplicitSolver.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_adams_moulton_solver}{AdamsMoultonSolver}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_abstract_implicit_solver}{AbstractImplicitSolver}} \{}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_adams_moulton_solver}{AdamsMoultonSolver}}();}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_adams_moulton_solver}{AdamsMoultonSolver}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} h, \textcolor{keyword}{const} \textcolor{keywordtype}{double} t0, \textcolor{keyword}{const} \textcolor{keywordtype}{double} t1, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y0,}
+\DoxyCodeLine{16                          \textcolor{keywordtype}{double} (*f)(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t),\textcolor{keywordtype}{double} (*df)(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t), \textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} s);}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_adams_moulton_solver}{\string~AdamsMoultonSolver}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{18     \textcolor{keywordtype}{double} SolveEquation(std::ostream \&stream) \textcolor{keyword}{override};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} SetB() \textcolor{keyword}{override};}
+\DoxyCodeLine{23 \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,30 @@
+\hypertarget{_abstract_implicit_solver_8h_source}{}\doxysection{Abstract\+Implicit\+Solver.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{//}}
+\DoxyCodeLine{2 \textcolor{comment}{// Created by anyam on 30.11.2022.}}
+\DoxyCodeLine{3 \textcolor{comment}{//}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#ifndef ABSTRACTIMPLICITSOLVERHEADERDEF}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define ABSTRACTIMPLICITSOLVERHEADERDEF}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}AbstractOdeSolver.hpp"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_abstract_implicit_solver}{AbstractImplicitSolver}} : \textcolor{keyword}{public} AbstractOdeSolver\{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_abstract_implicit_solver}{AbstractImplicitSolver}}();}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_abstract_implicit_solver}{AbstractImplicitSolver}}(\textcolor{keyword}{const} \textcolor{keywordtype}{double} h, \textcolor{keyword}{const} \textcolor{keywordtype}{double} t0, \textcolor{keyword}{const} \textcolor{keywordtype}{double} t1, \textcolor{keyword}{const} \textcolor{keywordtype}{double} y0,}
+\DoxyCodeLine{14                            \textcolor{keywordtype}{double} (*f)(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t),\textcolor{keywordtype}{double} (*df)(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t),\textcolor{keyword}{const} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} s);}
+\DoxyCodeLine{15     \textcolor{keyword}{virtual} \mbox{\hyperlink{class_abstract_implicit_solver}{\string~AbstractImplicitSolver}}();}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{keywordtype}{void} SetdRightHandSide(\textcolor{keywordtype}{double} (*f)(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t));}
+\DoxyCodeLine{18     \textcolor{keywordtype}{double} dRightHandSide(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t) \textcolor{keyword}{const};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{private}:}
+\DoxyCodeLine{21     double (*df\_rhs)(\textcolor{keywordtype}{double} y, \textcolor{keywordtype}{double} t);}
+\DoxyCodeLine{22 \};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

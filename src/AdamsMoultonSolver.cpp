@@ -1,6 +1,7 @@
 
 #include "AdamsMoultonSolver.h"
 #include "FileNotOpenException.hpp"
+#include "SetOrderException.h"
 #include <cassert>
 #include <iostream>
 #include <cmath>
@@ -20,6 +21,21 @@ AdamsMoultonSolver::AdamsMoultonSolver(const double h, const double t0, const do
     SetB();
 }
 AdamsMoultonSolver::~AdamsMoultonSolver() =default;
+
+void AdamsMoultonSolver::SetOrder(unsigned int order){
+
+    try {
+        if (order > max_order-1) {
+            throw SetOrderException("Order must be strictly smaller than " + std::to_string(max_order));
+        }
+    } catch (SetOrderException &error) {
+        error.PrintDebug();
+        std::cout << "The order is set to the maximum order: " << max_order-1 << std::endl;
+        order = max_order-1;
+    }
+    AbstractOdeSolver::SetOrder(order);
+    SetB();
+}
 
 void AdamsMoultonSolver::SetB(){
     // test if sum of b is equal to 1
