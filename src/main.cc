@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <cmath>
 
 int choice;
 double fRhs(double y,double t){
@@ -45,11 +46,6 @@ int main(int argc, char **argv) {
     std::cout<<"You choose function number:";
     std::cin>>choice;
 
-    double h = 0.001;
-    double t0 = 0.;
-    double t1 = 100.;
-    double y0 = 0.8;
-    int order = 8;
     AbstractOdeSolver *pSolver;
     try {
         if (argc == 7){
@@ -238,10 +234,10 @@ void set_data(AbstractOdeSolver* &pSolver, std::string &type_solver, double &h, 
     std::cout << "\nt1 = " << t1;
     std::cout << "\ny0 = " << y0;
     std::cout << "\norder: " << order << std::endl;
-
     check_type_solver(type_solver);
     if(type_solver == "AM"){
         pSolver = new AdamsMoultonSolver;
+        pSolver->SetdRightHandSide(dfRhs);
     } else if(type_solver == "AB"){
         pSolver = new AdamsBashforthSolver;
     } else if(type_solver == "RK"){
