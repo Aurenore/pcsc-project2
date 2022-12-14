@@ -6,6 +6,7 @@
 #include <cassert>
 #include <iostream>
 #include <cmath>
+
 AdamsMoultonSolver::AdamsMoultonSolver() : AbstractImplicitSolver() {
     /**
     Constructor of an AdamsMoultonSolver instance.
@@ -16,15 +17,18 @@ AdamsMoultonSolver::AdamsMoultonSolver() : AbstractImplicitSolver() {
 AdamsMoultonSolver::AdamsMoultonSolver(const double h, const double t0, const double t1, const double y0,
                                        double (*f)(double, double), double (*df)(double, double),const unsigned int s) :AbstractImplicitSolver(h, t0,t1,y0, f,df,s) {
     /**
-    Constructor of an AdamsMoulton instance where each parameter are defined from outside the class.
+    Constructor of an AdamsMoulton instance where each parameter are defined outside the class by the user.
     */
-
     SetB();
 }
+
 AdamsMoultonSolver::~AdamsMoultonSolver() =default;
 
 void AdamsMoultonSolver::SetOrder(unsigned int order){
-
+    /**
+    Checks if the order specified by the user is well between 0 and 4. If it is higher than 4, then the order is directly
+     set to 4.
+    */
     try {
         if (order > max_order-1) {
             throw SetOrderException("Order must be strictly smaller than " + std::to_string(max_order));
@@ -42,11 +46,11 @@ void AdamsMoultonSolver::SetB(){
     // test if sum of b is equal to 1
     //b=  std::fill(b[0] + 0, b[max_order] + max_order, 0);
     /**
-   * Set the matrix B of coefficients which define the equations to solve for each order.
+    * Set the matrix B of coefficients which define the equations to solve for each order.
      B is composed of 5 rows and 6 columns, the first row corresponding the coefficients included in the equation
      for order 0 and the last row for order 4.
-   *
-   */
+    *
+    */
     b[0][1] = 0;
     b[0][1]=1;
 
@@ -102,11 +106,12 @@ double Newton (double y_prev,Function F, FunctionDerivative dF, double const eps
 }
 void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {
     /*!
-   * Adams Moulton methods for the scalar ODE in the form y'(t)=f(y,t).
-   * The Newton method is used to solve the nonlinear equation at each time t.
+    * Adams Moulton methods for the scalar ODE in the form:
+     *  \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
+    * The Newton method is used to solve the nonlinear equation at each time t.
 
-   * \param stream: name of the file on which write the numerical solution at each time t
-   */
+    * \param stream: name of the file in which to write the numerical solution at each time t
+    */
     double y = GetInitialValue();
     double t = GetInitialTime();
     double h = GetStepSize();
@@ -121,7 +126,7 @@ void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {
     F[0] = RightHandSide(y, t);
 
     stream << t << " " << y << "\n";
-
+    // if the order is bigger than zero, we need to compute the first y_i with AdamsMoulton with smaller degrees.
     if (order>0){
         for (int j = 1; j < order+1; j++) {
             t+=h;
@@ -139,6 +144,7 @@ void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {
 
             F[j] = RightHandSide(temp[j], t);
 
+            //store the values in the outstream
             stream << t << " " << temp[j] << "\n";
         }
     }
@@ -157,12 +163,16 @@ void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {
         };
 
         y = Newton(temp[order],Fu, dFu, 1e-6, 1000);
+
+        //store the new temporary values in temp and F:
         for(int k=0; k<order; k++){
             temp[k] = temp[k+1];
             F[k] = F[k+1];
         }
         temp[order] = y;
         F[order] = RightHandSide(temp[order], t);
+
+        //store the values in the outstream
         stream << t << " " << temp[order] << "\n";
     }
 

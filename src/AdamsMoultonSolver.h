@@ -1,7 +1,3 @@
-//
-// Created by anyam on 30.11.2022.
-//
-
 #ifndef ADAMSMOULTONSOLVERHEADERDEF
 #define ADAMSMOULTONSOLVERHEADERDEF
 
@@ -9,8 +5,12 @@
 
 
 /**
- * Daugther class of AbstractImplicitSolver, the Adams Moulton solver is an ensemble of implicit methods of different orders.
+ * /** Daughter of Abstract Implicit Solver class.
+ * The Adams Moulton solver solves the initial value problem
+     \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
+   It is an ensemble of implicit methods of different orders between 0 and 4 included.
  */
+
 class AdamsMoultonSolver : public AbstractImplicitSolver {
 public:
     AdamsMoultonSolver();
