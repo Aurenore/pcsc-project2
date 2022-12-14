@@ -13,6 +13,13 @@ METTRE LE DIAGRAMME
 *'Doxygen'
 *'GoogleTest'
 
+##Installation
+
+Clone the repo:
+```
+git clone https://github.com/patrontheo/PCSC-Eigenvalue-problems.git
+cd PCSC-Eigenvalue-problems
+```
 
 In order to compile it you should first install *googletest*
 
