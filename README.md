@@ -79,7 +79,7 @@ The time and the numerical solution at each time steps can be found in the 'cmak
 
 ## List of features
 * Changable numerical methods to solve ODE
-* Changable initial conditions for which to solve the ODE: t0, t1, y0 and h
+* Changable initial conditions for which to solve the ODE: *t0, t1, y0 and h*
 * Easy addition of new functions for which to solve the ODE
 
 ## Tests
