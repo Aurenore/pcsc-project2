@@ -1,5 +1,6 @@
-step-*.csv
 build
-starting_point
 *~
 .idea
+cmake-build-debug
+html
+latex
