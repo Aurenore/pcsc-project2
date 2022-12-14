@@ -16,9 +16,9 @@ The implemented classes are described in the following diagram:
 METTRE LE DIAGRAMME
 
 ## Prerequisites:
-* 'C++17'
-* 'Doxygen'
-* 'GoogleTest'
+* `C++17`
+* `Doxygen`
+* `GoogleTest`
 
 ## Installation
 
