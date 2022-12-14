@@ -64,6 +64,12 @@ As an example the following command will solve the ODE associated to function nu
 ### Output
 The time and the numerical solution at each time steps can be found in the 'cmake-build-debug/solution_file.dat VERIFIER NOM
 
+## Flow of the program
+1. Input arguments: ex: `--solver RK --h 0.001 --t0 0 --t1 100 --y0 1 --order 3 --choice 2`
+2. Create an appropriate solver method
+3. Solve the ODE 
+4. Write the results at each time step in the file solution_file.dat
+
 ## List of features
 * Changable numerical methods to solve ODE
 * Changable initial conditions for which to solve the ODE
