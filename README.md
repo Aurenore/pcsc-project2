@@ -58,8 +58,8 @@ The user can provide different options:
 * `--order`: order of the method: [0,4] for Adams Moulton Solver, [1,5] for Adams Bashforth Solver and [1,4] for the Runge Kutta Solver
 * `--choice`: Three functions f(y,t) are provided to the user. Choice is the number assoicated to the function the user wants to use so 1,2 or three
 
-As an example the following command will solve the ODE associated to function number 2 (f(y,t)=-100*y) using the Runge Kutta solver of order 3. The initial time is set to 0 and the final time to 100. The step size used is 0.001 and the initial guess is 1.
-`./main --solver RK --h 0.001 --t0 0 --t1 100 --y0 1 --order 3 --choice 2`
+As an example the following command will solve the ODE associated to function number 2 (f(y,t)=-100*y) using the Runge Kutta solver of order 3. The initial time is set to 0 and the final time to 100. The step size used is 0.001 and the initial guess is 1:  
+  `./main --solver RK --h 0.001 --t0 0 --t1 100 --y0 1 --order 3 --choice 2`
 
 ### Output
 The time and the numerical solution at each time steps can be found in the 'cmake-build-debug/solution_file.dat VERIFIER NOM
