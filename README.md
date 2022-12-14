@@ -1,9 +1,11 @@
 # PCSC-Solving-ODE 
 Project for the *Programming concepts in scientific computing* (MATH-458) course.
 
-This project implements different numerical methods to solve ordinary differential equations with generic non linear functions f(y,t): 
-   y'(t) = f(y,t)
-Theses methods are divided into two categories: implicit and explicit methods. The explicit methods implemented are: Adams Bashforth  and Runge Kutta. The implicit method implemented is Adams Moulton.
+This project implements different numerical methods to solve ordinary differential equations with generic non linear functions f(y,t):   
+y'(t) = f(y,t)
+Theses methods are divided into two categories: 
+* implicit methods: Adams Moulton solver.
+* explicit methods:  Adams Bashforth solver and Runge Kutta solver.  
 
 All these methods return the numerical solution of the ODE. 
 
