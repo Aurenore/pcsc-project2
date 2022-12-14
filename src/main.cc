@@ -105,7 +105,7 @@ int main(int argc, char **argv) {
             set_data(pSolver, type_solver, h, t0, t1, y0, order, choice);
 
         } else if(argc == 1){
-            // no argument was given by the user.
+            // no argument was given by the user. Therefore he/she must be give them in enter_data.
             enter_data(pSolver);
         } else {
             throw WrongArgumentsException("Wrong number of arguments was entered.");

@@ -8,7 +8,7 @@
 #include "AbstractOdeSolver.hpp"
 
 /** Abstract class, daughter of AbstractOdeSolver, and mother class of
- * the classes which implement explicit methods to solve ODE, such as the Adam Bashforth method or Runke Kutta.
+ * the classes which implement explicit methods to solve ODE, such as the Adam-Bashforth method or Runge-Kutta.
 */
 
 class AbstractExplicitSolver : public AbstractOdeSolver{

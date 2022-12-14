@@ -14,7 +14,11 @@
 const unsigned int max_order = 5;
 
 /** Abstract class, mother class of AbstractImplicitSolver and AbstractExplicitSolver. Contains all the variables and
-* functions common to the implicit and explicit approaches.*/
+* functions common to the implicit and explicit approaches.
+ * A solver find a solution \f$ y \f$ at a final time \f$t_1\f$ of the initial value problem
+     * \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0, \f$
+     * given a step size \f$ h>0 \f$ and an order \f$ s \geq 0 \f$.
+ * */
 
 class AbstractOdeSolver {
 public:

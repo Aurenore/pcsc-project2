@@ -1,7 +1,8 @@
 
 #include "AdamsMoultonSolver.h"
-#include "FileNotOpenException.hpp"
 #include "SetOrderException.h"
+#include "Exception.hpp"
+
 #include <cassert>
 #include <iostream>
 #include <cmath>
@@ -89,10 +90,14 @@ double Newton (double y_prev,Function F, FunctionDerivative dF, double const eps
         ++num_iter;
     } while ((std::abs(x_next - x_prev) > epsilon) && (num_iter < max_iter));
 
-    if ((num_iter == max_iter) && (std::abs(x_next - x_prev) > epsilon)) {
-        std::cout << "Max number of iterations reached without convergence"
-                  << std::endl;
+    try {
+        if ((num_iter == max_iter) && (std::abs(x_next - x_prev) > epsilon)) {
+            throw Exception("MAX_IT", "Max number of iterations reached without convergence");
+        }
+    } catch (Exception &error) {
+        error.PrintDebug();
     }
+
     return x_next;
 }
 void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {

@@ -15,13 +15,6 @@
 RKSolver::RKSolver() : AbstractExplicitSolver() {
     /**
     Constructor of a Runge Kutta solver instance.
-     The Runge-Kutta solves the initial value problem
-     \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
-     In particular, the Explicit Runge-Kutta methods consist of computing for \f$ n \geq 0\f$:
-     \f$y_{n+1} = y_n + h \sum_{i=1}^s b_i k_i\f$
-     where for \f$j=1, \dots, s\f$
-     \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$
-     The coefficients \f$a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
     */
     RKSolver::SetOrder(1);
 }
@@ -30,13 +23,6 @@ RKSolver::RKSolver(const double h, const double t0, const double t1, const doubl
                    double (*f)(double, double), const unsigned int s) : AbstractExplicitSolver(h,t0,t1,y0,f,s) {
     /**
     Constructor of a Runge Kutta solver instance, where each parameter are defined from outside the class.
-     The Runge-Kutta solves the initial value problem
-     \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
-     In particular, the Explicit Runge-Kutta methods consist of computing for \f$ n \geq 0\f$:
-     \f$y_{n+1} = y_n + h \sum_{i=1}^s b_i k_i\f$
-     where for \f$j=1, \dots, s\f$
-     \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$
-     The coefficients \f$a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
     */
     RKSolver::SetOrder(s);
 }

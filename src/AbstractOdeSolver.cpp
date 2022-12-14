@@ -14,9 +14,6 @@
 AbstractOdeSolver::AbstractOdeSolver()
 /**
     * Constructor of the class, assigning the variables of the class to default values.
-    * A solver find a solution \f$ y \f$ at a final time \f$t_1\f$ of the initial value problem
-     \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0, \f$
-     given a step size \f$ h>0 \f$ and an order \f$ s \geq 0 \f$.
  */
     : stepSize(1e-3), initialTime(0.), finalTime(100.), initialValue(0.), f_rhs(0), s(0) {}
 

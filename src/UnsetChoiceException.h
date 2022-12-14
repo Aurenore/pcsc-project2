@@ -7,6 +7,8 @@
 
 #include "Exception.hpp"
 
+/** Daughter of Exception class. Exception thrown when the choice is not set.*/
+
 class UnsetChoiceException : public Exception{
 public:
     UnsetChoiceException(std::string probString);

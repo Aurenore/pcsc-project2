@@ -44,11 +44,10 @@ AdamsBashforthSolver::~AdamsBashforthSolver() = default;
 void AdamsBashforthSolver::SetB(){
     /**
     * Set the matrix B of coefficients which define the equations to solve for each order.
-    *B is composed of 5 rows and 6 columns, the first lign corresponding to the coefficients included in the equation
-    *for order 1 and the last lign for order 5.
+    *B is composed of 5 rows and 6 columns, the first row corresponding to the coefficients included in the equation
+    *for order 1 and the last row for order 5.
+     * Note that each row sums to 1.
    */
-
-    // test if sum of b is equal to 1
     // s = 1:
     b[0][0] = 1.;
     // s = 2:

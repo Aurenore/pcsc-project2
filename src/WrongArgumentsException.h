@@ -6,7 +6,8 @@
 #define PCSC_PROJECT_WRONGARGUMENTSEXCEPTION_H
 
 #include "Exception.hpp"
-#include <string>
+
+/** Daughter of Exception class. Exception thrown when the arguments are wrong.*/
 
 class WrongArgumentsException : public Exception{
 public:
