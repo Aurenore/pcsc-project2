@@ -72,14 +72,14 @@ As an example the following command will solve the ODE associated to function nu
 The time and the numerical solution at each time steps can be found in the 'cmake-build-debug/solution_file.dat VERIFIER NOM
 
 ## Flow of the program
-1. Input arguments: ex: `--solver RK --h 0.001 --t0 0 --t1 100 --y0 1 --order 3 --choice 2`
-2. Create an appropriate solver method
-3. Solve the ODE 
-4. Write the results at each time step in the file solution_file.dat
+1. The user sets the input arguments: ex: `--solver RK --h 0.001 --t0 0 --t1 100 --y0 1 --order 3 --choice 2`
+2. Construction of the appropriate solver method
+3. Ode solved using the solver specified by the user
+4. The results are written at each time step in the file solution_file.dat
 
 ## List of features
 * Changable numerical methods to solve ODE
-* Changable initial conditions for which to solve the ODE
+* Changable initial conditions for which to solve the ODE: t0, t1, y0 and h
 * Easy addition of new functions for which to solve the ODE
 
 ## Tests
@@ -100,10 +100,10 @@ Tests which check the constructors for each method
 `EulerForward_fRhs1`: checks that the result of the Euler forward method, so the Adams Bashforth or the Runge Kutta solver for order 1 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3.
 `EulerForward_compared_to_Adamsbashforth_fRhs1`: checks that the result of the Adamsbashforth solver and the result of the Runge Kutta result are equal for order equal to 1 and for fRhs1. This check is also performed for fRhs2 and fRhs3.
 
-## Limitations of the program and possible improvements
-* The first limitation of the program is that the number of functions fRhs proposed ot the user is very limited. One should use a Sparse method to translate a string which would be specified by the user into a mathematical expression. Then, any function could be used. 
+## Issues and perspective
+* The first limitation of the program is that the number of functions fRhs proposed to the user is very limited. One should implement method which translates a string - specified by the user -  into a mathematical expression. Then, any function could be used. 
 * The second limitation of the program is for implicit methods which use the Newton method. If the maximum number of iteration is reached and the Newton method didn't converge then it would have been smart to implement another method like the bisection one for example. 
-* Another limitation is that we can not check the result for for all functions. Maybe it didn't converge 
+* Another limitation is that we can not check the result for all functions. The convergence depends on parameters such as t1, h and y0. If the final result is far from the true result, there is no way to verify it.  
 
 
 
