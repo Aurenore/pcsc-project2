@@ -36,6 +36,11 @@ make
 ```
 ##Create Doxygen documentation
 Install Doxygen: https://www.doxygen.nl/manual/install.html
+```
+mkdir doc
+cd doc
+doxygen
+```
 
 To view documentation: LIEN HTML
 
@@ -65,6 +70,31 @@ The time and the numerical solution at each time steps can be found in the 'cmak
 GoogleTest library was used.
 The tests can be found in `test/test.cc` file.  
 To run the tests: COMPLETER
+
+The following are implemented:
+Three function fRhs1, fRhs2 and fRhs3 are used to check the efficiency of the solvers. The exact solutions for these three functions are known: sol1, sol2, sol3.
+
+Tests which check that the value returned by a Get function corresponds to the one set in the Set functions. Done for each methods:
+
+Tests which check the constructors for each method
+
+`B_sum_order1`: checks that for each order the b values sum up to 1. This check is performed for all solvers.
+`ScalarProduct`: checks the scalar product function. This check is performed for all solvers.
+`EulerBackward_fRhs1`: checks that the result of the Euler backward method, so the Adams Moulton solver for order 0 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3
+`EulerForward_fRhs1`: checks that the result of the Euler forward method, so the Adams Bashforth or the Runge Kutta solver for order 1 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3.
+`EulerForward_compared_to_Adamsbashforth_fRhs1`: checks that the result of the Adamsbashforth solver and the result of the Runge Kutta result are equal for order equal to 1 and for fRhs1. This check is also performed for fRhs2 and fRhs3.
+
+##Limitations of the program and possible improvements
+* The first limitation of the program is that the number of functions fRhs proposed ot the user is very limited. One should use a Sparse method to translate a string which would be specified by the user into a mathematical expression. Then, any function could be used. 
+* The second limitation of the program is for implicit methods which use the Newton method. If the maximum number of iteration is reached and the Newton method didn't converge then it would have been smart to implement another method like the bisection one for example. 
+* Another limitation is that we can not check the result for for all functions. Maybe it didn't converge 
+
+
+
+
+
+
+
 
 
 
