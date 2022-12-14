@@ -10,7 +10,7 @@
 /**
  * Daugther class of AbstractExplicitSolver, the Adams-Bashforth solver is an ensemble of explicit methods of different orders.
  * It solves the initial value problem
-     \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
+     *\f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
      * In particular, the Adams-Bashforth method of order s has the general form
      * \f$ y_{n+s} = y_{n+s-1} + h \sum_{k=1}^s \lambda_k f(t_{n+s-k}, y_{n+s-k}) \f$
      where \f$ \sum_{k=1}^s \lamda_k = 1\f$.

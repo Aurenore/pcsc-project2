@@ -20,7 +20,7 @@ AdamsBashforthSolver::AdamsBashforthSolver(const double h, const double t0, cons
                                            double (*f)(double, double), const unsigned int s) : AbstractExplicitSolver
                                            (h,t0,t1,y0,f,s) {
     /**
-    Constructor of an AdamsBashforthSolver instance where each parameter are defined from outside the class.
+    Constructor of an AdamsBashforthSolver instance where each parameter are defined from outside the class by the user.
     */
     AdamsBashforthSolver::SetOrder(s);
 }
