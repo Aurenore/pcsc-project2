@@ -14,9 +14,9 @@ AbstractOdeSolver::~AbstractOdeSolver() {}
 
 void AbstractOdeSolver::SetStepSize(double h) {
 
-   /*! Set the step size
+    /*! Set the step size
     * \param h: value given to the step size
-   */
+    */
     try {
         if (h<0) {
             throw UncoherentValueException("The step size must be positive.");

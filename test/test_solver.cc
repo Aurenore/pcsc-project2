@@ -216,7 +216,7 @@ TEST(AdamsMoultonSolver_test, GetInitialValue) {
     EXPECT_DOUBLE_EQ(y0, solver.GetInitialValue());
 }
 
-TEST(AdamsMoultonSolver_test, SetOrder) {
+TEST(AdamsMoultonSolver_test, GetOrder) {
     AdamsMoultonSolver solver;
     unsigned int s=1;
     solver.SetOrder(s);
@@ -302,7 +302,7 @@ TEST(AdamsMoultonSolver_test, orders_and_fRhs){
     AbstractImplicitSolver* solver = new AdamsMoultonSolver;
     solver->SetStepSize(h);
     solver->SetTimeInterval(t0, t1);
-    int order_min = 2;
+    int order_min = 1;
     int order_max = 4;
     std::string prefix_filename_solver("test_AM_");
     Test_orders(solver, order_min, order_max, prefix_filename_solver);
@@ -340,7 +340,7 @@ TEST(AdamsBashforthSolver_test, GetInitialValue) {
     EXPECT_DOUBLE_EQ(y0, solver.GetInitialValue());
 }
 
-TEST(AdamsBashforthSolver_test, SetOrder) {
+TEST(AdamsBashforthSolver_test, GetOrder) {
     AdamsBashforthSolver solver;
     unsigned int s=1;
     solver.SetOrder(s);
@@ -485,7 +485,7 @@ TEST(RKSolver_test, GetInitialValue) {
     EXPECT_DOUBLE_EQ(y0, solver.GetInitialValue());
 }
 
-TEST(RKSolver_test, SetOrder) {
+TEST(RKSolver_test, GetOrder) {
     RKSolver solver;
     unsigned int s=1;
     solver.SetOrder(s);
@@ -682,7 +682,7 @@ TEST(RKSolver_test, EulerForward_compared_to_Adamsbashforth_fRhs3) {
     }
 }
 
-TEST(RKSolver_test, all_orders_and_fRhs){
+TEST(RKSolver_test, orders_and_fRhs){
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
