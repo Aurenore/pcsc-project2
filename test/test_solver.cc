@@ -264,10 +264,10 @@ TEST(AdamsMoultonSolver_test, EulerBackward_fRhs1) {
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.;
-    unsigned int s = 1;
+    unsigned int s = 0;
     AdamsMoultonSolver solver(h, t0, t1, y0, fRhs1, dfRhs1, s);
     std::string filename_solver("test_AM_fRhs1_s1.dat");
-    Test_final_results(&solver, filename_solver, sol1, 0.01);
+    Test_final_results(&solver, filename_solver, sol1, 0.011);
 }
 
 TEST(AdamsMoultonSolver_test, EulerBackward_fRhs2) {
@@ -276,7 +276,7 @@ TEST(AdamsMoultonSolver_test, EulerBackward_fRhs2) {
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.8;
-    unsigned int s = 1;
+    unsigned int s = 0;
     AdamsMoultonSolver solver(h, t0, t1, y0, fRhs2,dfRhs2, s);
     std::string filename_solver("test_AM_fRhs2_s1.dat");
 
@@ -288,7 +288,7 @@ TEST(AdamsMoultonSolver_test, EulerBackward_fRhs3) {
     double t0 = 0.0;
     double t1 = 100.0;
     double y0 = 0.;
-    unsigned int s = 1;
+    unsigned int s = 0;
     AdamsMoultonSolver solver(h, t0, t1, y0, fRhs3,dfRhs3, s);
     std::string filename_solver("test_AM_fRhs3_s1.dat");
     Test_final_results(&solver, filename_solver, sol3, 0.01);
