@@ -2,10 +2,11 @@
 Project for the *Programming concepts in scientific computing* (MATH-458) course.
 
 This project implements different numerical methods to solve ordinary differential equations with generic non linear functions f(y,t):   
-  <p align="center">
+ <p align="center">
   y'(t) = f(y,t) with y(t0)=y0
-  </p>
-Theses methods are divided into two categories: 
+ </p>
+
+  Theses methods are divided into two categories: 
 * implicit methods: Adams Moulton solver.
 * explicit methods:  Adams Bashforth solver and Runge Kutta solver.  
 
