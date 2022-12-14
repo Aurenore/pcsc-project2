@@ -90,16 +90,14 @@ To run the tests: ./test_solver A VERIFIER
 
 Three function fRhs1, fRhs2 and fRhs3 are used to check the accuracy of the solvers. The exact solutions for these three functions are known: sol1, sol2, sol3.
 
-Tests which check that the value of the initial parameters (*t0, h, t1, y0, order*) returned by the corresponding Get function corresponds to the one set with the Setfunctions. Done for each methods:
-`GetFinalTime`,`GetInitialTime`,`GetStepSize`,`GetInitialValue`,`GetOrder`
+* `GetFinalTime`,`GetInitialTime`,`GetStepSize`,`GetInitialValue`,`GetOrder`: check that the value of the initial parameters (*t1,t0, h, y0, order*) returned by the corresponding  function Get corresponds to the one defined with the corresponding Set functions. Performed for all solvers.
 
-Tests which check the constructors for each solver: `second_Constructor`
-
+* `second_Constructor` : checks the constructor of a solver. Performed for all solvers.
 * `B_sum_order1`: checks that for each order the b values sum up to 1. This check is performed for all solvers.
 * `ScalarProduct`: checks the scalar product function. This check is performed for all solvers.
-* `EulerBackward_fRhs1`: checks that the result of the Euler backward method, so the Adams Moulton solver for order 0 and for fRhs1, corresponds to the    one of sol1. This check is also performed for fRhs2 and fRhs3
-* `EulerForward_fRhs1`: checks that the result of the Euler forward method, so the Adams Bashforth or the Runge Kutta solver for order 1 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3.
-* `orders_and_fRhs`: checks for each order and for each function  that the result is equal to the one of the solution. The orders checked are between 1 and 4 for Adams Moulton, 2 and 5 for Adams Bashforth and 
+* `EulerBackward_fRhs1`: checks that the result of the Euler backward method, so the Adams Moulton solver for order 0 and for fRhs1, corresponds to the    one of sol1. This check is also performed for fRhs2 and fRhs3: `EulerBackward_fRhs2` and `EulerBackward_fRhs3`
+* `EulerForward_fRhs1`: checks that the result of the Euler forward method, so the Adams Bashforth or the Runge Kutta solver for order 1 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3: `EulerForward_fRhs2` and `EulerForward_fRhs3`
+* `orders_and_fRhs`: checks for each order and for each function  that the result is equal to the one of the solution. The orders checked are between 1 and 4 for Adams Moulton, 2 and 5 for Adams Bashforth and 2 and 4 for Runge Kutta
 * `EulerForward_compared_to_Adamsbashforth_fRhs1`: checks that the result of the Adamsbashforth solver and the result of the Runge Kutta result are equal for order equal to 1 and for fRhs1. This check is also performed for fRhs2 and fRhs3.
 * `ProductWithA`: ANYA
 * `sum_of_A_is_C`: ANYA
