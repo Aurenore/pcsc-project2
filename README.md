@@ -50,13 +50,13 @@ To view documentation: LIEN HTML
 ## Usage
 ### Command line arguments
 The user can provide different options:
-`--solver`: to specify the method used to find the solution of the ODE: Moulton, Bashforth or Runge Kutta
-`--h`: step size 
-`--t0`: initial time
-`--t1`: final time
-`--y0`: initial value
-`--order`: order of the method: [0,4] for Adams Moulton Solver, [1,5] for Adams Bashforth Solver and [1,4] for the Runge Kutta Solver
-`--choice`: Three functions f(y,t) are provided to the user. Choice is the number assoicated to the function the user wants to use so 1,2 or three
+* `--solver`: to specify the method used to find the solution of the ODE: Moulton, Bashforth or Runge Kutta
+* `--h`: step size 
+* `--t0`: initial time
+* `--t1`: final time
+* `--y0`: initial value
+* `--order`: order of the method: [0,4] for Adams Moulton Solver, [1,5] for Adams Bashforth Solver and [1,4] for the Runge Kutta Solver
+* `--choice`: Three functions f(y,t) are provided to the user. Choice is the number assoicated to the function the user wants to use so 1,2 or three
 
 As an example the following command will solve the ODE associated to function number 2 (f(y,t)=-100*y) using the Runge Kutta solver of order 3. The initial time is set to 0 and the final time to 100. The step size used is 0.001 and the initial guess is 1.
 `./main --solver RK --h 0.001 --t0 0 --t1 100 --y0 1 --order 3 --choice 2`
