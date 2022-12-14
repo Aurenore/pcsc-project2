@@ -13,7 +13,10 @@ This project implements different numerical methods to solve ordinary differenti
 All these methods return the numerical solution of the ODE. 
 
 The implemented classes are described in the following diagram: 
-METTRE LE DIAGRAMME
+<p align="center">
+  <img src="images/class_abstract_ode_solver.png" width="350" >
+  
+</p>
 
 ## Prerequisites:
 * `C++17`
@@ -79,7 +82,7 @@ The time and the numerical solution at each time steps can be found in the 'cmak
 
 ## List of features
 * Changable numerical methods to solve ODE
-* Changable initial conditions for which to solve the ODE: t0, t1, y0 and h
+* Changable initial conditions for which to solve the ODE: *t0, t1, y0 and h*
 * Easy addition of new functions for which to solve the ODE
 
 ## Tests
