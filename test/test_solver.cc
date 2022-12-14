@@ -52,58 +52,7 @@ void Test_results(AbstractOdeSolver *solver, std::string filename_solver, std::s
     }
 }
 
-void Test_final_results(AbstractOdeSolver *solver, std::string filename_solver, std::string filename_solution){
-    // check that the last line of result is the same as the one given in the solution file.
-    std::fstream SolveFile;
-    SolveFile.open(filename_solver, std::ios::out);
-    if (SolveFile.is_open()) {
-        solver->SolveEquation(SolveFile);
-        SolveFile.close();
-    } else {
-        throw FileNotOpenException("File can't be opened.");
-    }
 
-    // check that the second to last line correspond between the solve data and the solution given by Euler Forward
-    SolveFile.open(filename_solver, std::ios::in);
-    std::fstream SolutionFile;
-    SolutionFile.open(filename_solution, std::ios::in);
-    if(!(SolveFile.is_open() || SolutionFile.is_open())){
-        throw FileNotOpenException("One of the 2 files can't be opened.");
-    }
-    while(SolveFile.is_open() && SolutionFile.is_open()) {
-        // store the line and previous lines of the files
-        std::string solve_line;
-        std::string solve_line_prev;
-        std::string solution_line;
-        std::string solution_line_prev;
-
-        do {
-            solve_line_prev = solve_line;
-        } while (std::getline(SolveFile, solve_line));
-        do {
-            solution_line_prev = solution_line;
-        } while (std::getline(SolutionFile, solution_line));
-
-        //only check that the last line is similar.
-        std::stringstream ss(solve_line_prev);
-        double t;
-        ss >> t;
-        double y;
-        ss >> y;
-
-        std::stringstream ss_sol(solution_line_prev);
-        double t_sol;
-        ss_sol >> t_sol;
-        double y_sol;
-        ss_sol >> y_sol;
-
-        EXPECT_NEAR(y, y_sol, TOL);
-        EXPECT_NEAR(t, t_sol, TOL);
-
-        SolveFile.close();
-        SolutionFile.close();
-    }
-}
 
 void Test_final_results(AbstractOdeSolver *solver, std::string filename_solver, double (*sol)(double t), const double tol = TOL){
     // check that the last line of result is the same as the one given by the solution function.
