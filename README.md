@@ -17,18 +17,16 @@ METTRE LE DIAGRAMME
 
 Clone the repo:
 ```
-git clone https://github.com/patrontheo/PCSC-Eigenvalue-problems.git
-cd PCSC-Eigenvalue-problems
+git clone https://github.com/Aurenore/pcsc-project2.git
+cd pcsc-project2
 ```
 
-In order to compile it you should first install *googletest*
-
+Install *googletest*
 ```
 git submodule update --init 
 ```
 
-Then, building is done as usual, e.g. with CLion or in the terminal:
-
+##Build CMake porject:
 ```
 mkdir build
 cd build
