@@ -6,7 +6,6 @@
  */
 
 #include "FileNotOpenException.hpp"
-#include <iostream>
 
 // Constructor
 FileNotOpenException::FileNotOpenException(std::string probString)

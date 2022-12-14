@@ -9,7 +9,7 @@
 #define EXCEPTIONDEF
 
 #include <string>
-
+/** Exception class*/
 class Exception {
 private:
   std::string mTag, mProblem;

@@ -7,6 +7,7 @@
 
 #include "Exception.hpp"
 
+/** Daughter of Exception class. Is thrown when a value is uncoherent. */
 class UncoherentValueException : public Exception{
 public:
     UncoherentValueException(std::string probString);

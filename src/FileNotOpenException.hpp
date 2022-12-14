@@ -10,7 +10,7 @@
 
 #include "Exception.hpp"
 #include <string>
-
+/** Daughter of Exception class. Is thrown when a file cannot be opened.*/
 class FileNotOpenException : public Exception {
 public:
   FileNotOpenException(std::string probString);

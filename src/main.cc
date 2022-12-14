@@ -6,6 +6,8 @@
 #include "FileNotOpenException.hpp"
 #include "UncoherentValueException.h"
 #include "SetOrderException.h"
+#include "WrongArgumentsException.h"
+#include "UnsetChoiceException.h"
 
 #include <iostream>
 #include <sstream>
@@ -21,9 +23,9 @@ double fRhs(double y,double t){
         } else if(CHOICE==3){
             return sin(t)*cos(t);
         } else {
-            throw Exception("UNSET_CHOICE", "The choice was not set, therefore fRhs could not be called");
+            throw UnsetChoiceException("The choice was not set, therefore fRhs could not be called");
         }
-    } catch (Exception &error) {
+    } catch (UnsetChoiceException &error) {
         error.PrintDebug();
         std::cout << "Choice is set to 1." << std::endl;
         CHOICE = 1;
@@ -39,9 +41,9 @@ double dfRhs(double y, double t) {
         } else if (CHOICE == 3) {
             return 0;
         } else {
-            throw Exception("UNSET_CHOICE", "The choice was not set, therefore dfRhs could not be called");
+            throw UnsetChoiceException("The choice was not set, therefore dfRhs could not be called");
         }
-    } catch (Exception &error) {
+    } catch (UnsetChoiceException &error) {
         error.PrintDebug();
         std::cout << "Choice is set to 1." << std::endl;
         CHOICE = 1;
@@ -106,9 +108,9 @@ int main(int argc, char **argv) {
             // no argument was given by the user.
             enter_data(pSolver);
         } else {
-            throw Exception("WRONG_ARGUMENTS", "Wrong number of arguments was entered.");
+            throw WrongArgumentsException("Wrong number of arguments was entered.");
         }
-    } catch (Exception &error) {
+    } catch (WrongArgumentsException &error) {
         error.PrintDebug();
         std::cout << "You have entered " << argc << " argument(s). Please fill the right arguments now." << std::endl;
         enter_data(pSolver);
@@ -142,9 +144,9 @@ void check_type_solver(std::string &type_solver){
     */
     try{
         if(!((type_solver == "AM") || (type_solver == "AB") || (type_solver == "RK"))) {
-            throw Exception("WRONG_ARGUMENTS", "Wrong string was entered as argument.");
+            throw WrongArgumentsException("Wrong string was entered as argument.");
         }
-    } catch (Exception &error) {
+    } catch (WrongArgumentsException &error) {
         error.PrintDebug();
         std::cout << "Please enter the right string." << std::endl;
         std::cout << "First, choose which type of solver you would like : \n 'AM' : Adams-Moulton \n 'AB' : Adams-Bashforth \n 'RK' : Runge-Kutta: ";
