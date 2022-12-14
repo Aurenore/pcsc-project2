@@ -1,4 +1,4 @@
-#PCSC-Solving-ODE 
+# PCSC-Solving-ODE 
 Project for the *Programming concepts in scientific computing* (MATH-458) course.
 
 This project implements different numerical methods to solve ordinary differential equations with generic non linear functions: y'(t) = f(y,t)
@@ -9,12 +9,12 @@ All these methods return the numerical solution of the ODE.
 The implemented classes are described in the following diagram: 
 METTRE LE DIAGRAMME
 
-##Prerequisites:
+## Prerequisites:
 *'C++17'
 *'Doxygen'
 *'GoogleTest'
 
-##Installation
+## Installation
 
 Clone the repo:
 ```
@@ -27,14 +27,14 @@ Install *googletest*
 git submodule update --init 
 ```
 
-##Build CMake project:
+## Build CMake project:
 ```
 mkdir build
 cd build
 cmake ..
 make
 ```
-##Create Doxygen documentation
+## Create Doxygen documentation
 Install Doxygen: https://www.doxygen.nl/manual/install.html
 ```
 mkdir doc
@@ -44,8 +44,8 @@ doxygen
 
 To view documentation: LIEN HTML
 
-##Usage
-###Command line arguments
+## Usage
+### Command line arguments
 The user can provide different options:
 `--solver`: to specify the method used to find the solution of the ODE: Moulton, Bashforth or Runge Kutta
 `--h`: step size 
@@ -58,15 +58,15 @@ The user can provide different options:
 As an example the following command will solve the ODE associated to function number 2 (f(y,t)=-100*y) using the Runge Kutta solver of order 3. The initial time is set to 0 and the final time to 100. The step size used is 0.001 and the initial guess is 1.
 `./main --solver RK --h 0.001 --t0 0 --t1 100 --y0 1 --order 3 --choice 2`
 
-###Output
+### Output
 The time and the numerical solution at each time steps can be found in the 'cmake-build-debug/solution_file.dat VERIFIER NOM
 
-##List of features
+## List of features
 * Changable numerical methods to solve ODE
 * Changable initial conditions for which to solve the ODE
 * Easy addition of new functions for which to solve the ODE
 
-##Tests
+## Tests
 GoogleTest library was used.
 The tests can be found in `test/test.cc` file.  
 To run the tests: COMPLETER
@@ -84,7 +84,7 @@ Tests which check the constructors for each method
 `EulerForward_fRhs1`: checks that the result of the Euler forward method, so the Adams Bashforth or the Runge Kutta solver for order 1 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3.
 `EulerForward_compared_to_Adamsbashforth_fRhs1`: checks that the result of the Adamsbashforth solver and the result of the Runge Kutta result are equal for order equal to 1 and for fRhs1. This check is also performed for fRhs2 and fRhs3.
 
-##Limitations of the program and possible improvements
+## Limitations of the program and possible improvements
 * The first limitation of the program is that the number of functions fRhs proposed ot the user is very limited. One should use a Sparse method to translate a string which would be specified by the user into a mathematical expression. Then, any function could be used. 
 * The second limitation of the program is for implicit methods which use the Newton method. If the maximum number of iteration is reached and the Newton method didn't converge then it would have been smart to implement another method like the bisection one for example. 
 * Another limitation is that we can not check the result for for all functions. Maybe it didn't converge 
