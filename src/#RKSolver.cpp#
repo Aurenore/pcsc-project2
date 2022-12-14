@@ -32,10 +32,10 @@ RKSolver::~RKSolver() = default;
 void RKSolver::SetB(){
     /**
    * Set the matrix B of coefficients which define the equations to solve for each order.
-     Each row corresponds to different order of the RK method. <br> 
+     Each row corresponds to different order of the RK method. <br>
      order = 1: Forward Euler (first order) <br> 
      order = 2: Explicit midpoint method <br>
-     order = 3: Kutta's third-order method <br>
+     order = 3: Kutta's third-order method <br> 
      order = 4: classic fourth-order method <br>
    *
    */
@@ -60,7 +60,7 @@ void RKSolver::SetC() {
    * Set the matrix C of coefficients which define the equations to solve for each order.
      Each row corresponds to different order of the RK method. <br>
      order = 1: Forward Euler (first order) <br>
-     order = 2: Explicit midpoint method <br>
+     order = 2: Explicit midpoint method <br> 
      order = 3: Kutta's third-order method <br>
      order = 4: classic fourth-order method <br>
    *

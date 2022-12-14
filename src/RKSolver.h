@@ -11,16 +11,16 @@
 /** Daughter of Abstract Explicit Solver class.
  * The Runge-Kutta solves the initial value problem
      * \f$ \frac{dy}{dt} f(t,y), \quad y(t_0) = y_0 \f$
-     * In particular, the Explicit Runge-Kutta methods consist of computing for \f$ n \geq 0 \f$:
-     * \f$ y_{n+1} = y_n + h \sum_{i=1}^s b_i k_i \f$
-     * where for \f$ j=1, \dots, s \f$
-     * \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$
+     * In particular, the Explicit Runge-Kutta methods consist of computing for \f$ n \geq 0 \f$: <br>
+     * \f$ y_{n+1} = y_n + h \sum_{i=1}^s b_i k_i \f$ <br>
+     * where for \f$ j=1, \dots, s \f$ <br>
+     * \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$ <br>
      * The coefficients \f$ a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
-     * The implemented methods with different order are:
-     * order = 1: Forward Euler (first order)
-     * order = 2: Explicit midpoint method
-     * order = 3: Kutta's third-order method
-     * order = 4: classic fourth-order method
+     * The implemented methods with different order are: <br>
+     * order = 1: Forward Euler (first order) <br> 
+     * order = 2: Explicit midpoint method <br>
+     * order = 3: Kutta's third-order method <br>
+     * order = 4: classic fourth-order method <br>
      */
 class RKSolver : public AbstractExplicitSolver {
 public:
