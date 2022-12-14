@@ -94,11 +94,11 @@ Tests which check that the value returned by a Get function corresponds to the o
 
 Tests which check the constructors for each method
 
-`B_sum_order1`: checks that for each order the b values sum up to 1. This check is performed for all solvers.
-`ScalarProduct`: checks the scalar product function. This check is performed for all solvers.
-`EulerBackward_fRhs1`: checks that the result of the Euler backward method, so the Adams Moulton solver for order 0 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3
-`EulerForward_fRhs1`: checks that the result of the Euler forward method, so the Adams Bashforth or the Runge Kutta solver for order 1 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3.
-`EulerForward_compared_to_Adamsbashforth_fRhs1`: checks that the result of the Adamsbashforth solver and the result of the Runge Kutta result are equal for order equal to 1 and for fRhs1. This check is also performed for fRhs2 and fRhs3.
+* `B_sum_order1`: checks that for each order the b values sum up to 1. This check is performed for all solvers.
+* `ScalarProduct`: checks the scalar product function. This check is performed for all solvers.
+* `EulerBackward_fRhs1`: checks that the result of the Euler backward method, so the Adams Moulton solver for order 0 and for fRhs1, corresponds to the    one of sol1. This check is also performed for fRhs2 and fRhs3
+* `EulerForward_fRhs1`: checks that the result of the Euler forward method, so the Adams Bashforth or the Runge Kutta solver for order 1 and for fRhs1, corresponds to the one of sol1. This check is also performed for fRhs2 and fRhs3.
+* `EulerForward_compared_to_Adamsbashforth_fRhs1`: checks that the result of the Adamsbashforth solver and the result of the Runge Kutta result are equal for order equal to 1 and for fRhs1. This check is also performed for fRhs2 and fRhs3.
 
 ## Issues and perspective
 * The first limitation of the program is that the number of functions fRhs proposed to the user is very limited. One should implement method which translates a string - specified by the user -  into a mathematical expression. Then, any function could be used. 
