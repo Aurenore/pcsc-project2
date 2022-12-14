@@ -11,22 +11,22 @@
 #include <sstream>
 #include <cmath>
 
-int choice;
+int CHOICE;
 double fRhs(double y,double t){
-    if (choice==1) {
+    if (CHOICE==1) {
         return 1 + t;
-    } else if (choice==2) {
+    } else if (CHOICE==2) {
         return -100*y;
-    } else if(choice==3){
+    } else if(CHOICE==3){
         return sin(t)*cos(t);
     }
 }
 double dfRhs(double y, double t) {
-    if (choice == 1) {
+    if (CHOICE == 1) {
         return 0;
-    } else if (choice == 2) {
+    } else if (CHOICE == 2) {
         return -100;
-    } else if (choice == 3) {
+    } else if (CHOICE == 3) {
         return 0;
     }
 }
@@ -34,29 +34,24 @@ void check_type_solver(std::string &type_solver);
 void check_step_size(double &h);
 void check_time_interval(double &t0, double &t1);
 void check_order(unsigned int &order);
-void enter_data(AbstractOdeSolver* &pSolver);
+void check_choice(int &choice);
+void enter_data(AbstractOdeSolver* &pSolver, int& choice);
 void set_data(AbstractOdeSolver* &pSolver, std::string &type_solver, double &h, double &t0, double &t1, double &y0,
-              unsigned int &order);
+              unsigned int &order, int &choice);
 
 int main(int argc, char **argv) {
-    std::cout<< "Please enter the function you want among these functions:" <<std::endl;
-    std::cout <<"1: f(y,t) = 1+t" <<std::endl;
-    std::cout<<"2: f(y,t) = -100*y" <<std::endl;
-    std::cout<<"3 : f(y,t) = sin(t)*cos(t)" <<std::endl;
-    std::cout<<"You choose function number:";
-    std::cin>>choice;
-
     AbstractOdeSolver *pSolver;
     try {
-        if (argc == 7){
+        if (argc == 8){
             std::string type_solver;
             double h;
             double t0;
             double t1;
             double y0;
             unsigned int order;
+            int choice;
 
-            for(int i=0; i<7; i++) {
+            for(int i=0; i<8; i++) {
                 std::stringstream arg(argv[i]);
                 switch(i){
                     case 1:
@@ -77,25 +72,28 @@ int main(int argc, char **argv) {
                     case 6:
                         arg >> order;
                         break;
+                    case 7:
+                        arg >> choice;
+                        break;
                 }
                 if(arg.fail()){
                     throw Exception("CORRUPTED_ARGUMENT", "Argument " + std::to_string(i) + " failed.");
                 }
             }
-            set_data(pSolver, type_solver, h, t0, t1, y0, order);
+            set_data(pSolver, type_solver, h, t0, t1, y0, order, choice);
 
         } else if(argc == 1){
-            enter_data(pSolver);
+            enter_data(pSolver, CHOICE);
         } else {
             throw Exception("WRONG_ARGUMENTS", "Wrong number of arguments was entered.");
         }
     } catch (Exception &error) {
         error.PrintDebug();
         std::cout << "You have entered " << argc << " argument(s). Please fill the right arguments now." << std::endl;
-        enter_data(pSolver);
+        enter_data(pSolver, CHOICE);
     }
 
-    std::cout << "solver was instantiate." << std::endl;
+    std::cout << "Solver is instantiated." << std::endl;
     std::string filename_solver("solution_file.dat");
     std::fstream SolveFile;
     SolveFile.open(filename_solver, std::ios::out);
@@ -109,7 +107,7 @@ int main(int argc, char **argv) {
     } catch (FileNotOpenException &error) {
         error.PrintDebug();
     }
-    std::cout << "finish program." << std::endl;
+    std::cout << "The solution is stored in " + filename_solver << std::endl;
     delete pSolver;
     return 0;
 }
@@ -190,14 +188,31 @@ void check_order(unsigned int &order){
             throw SetOrderException("Order must be smaller or equal to the maximum order " + std::to_string(max_order));
         }
     } catch (SetOrderException &error) {
+        error.PrintDebug();
         std::cout << "Enter the order of the method: ";
         std::cin >> order;
-        error.PrintDebug();
         check_order(order);
     }
 }
 
-void enter_data(AbstractOdeSolver *&pSolver) {
+void check_choice(int &choice){
+    try {
+        if (!(choice == 1 || choice == 2 || choice == 3)){
+            throw UncoherentValueException("Choice must be either 1, 2, or 3.");
+        }
+    } catch (UncoherentValueException &error) {
+        error.PrintDebug();
+        std::cout<< "Please enter the function you want among these functions:" <<std::endl;
+        std::cout <<"1: f(y,t) = 1+t" <<std::endl;
+        std::cout<<"2: f(y,t) = -100*y" <<std::endl;
+        std::cout<<"3 : f(y,t) = sin(t)*cos(t)" <<std::endl;
+        std::cout<<"You choose function number:";
+        std::cin>>choice;
+        check_choice(choice);
+    }
+}
+
+void enter_data(AbstractOdeSolver *&pSolver, int &choice) {
     double h;
     double t0;
     double t1;
@@ -222,22 +237,31 @@ void enter_data(AbstractOdeSolver *&pSolver) {
     std::cout << "Enter the order of the method: ";
     std::cin >> order;
     check_order(order);
-    set_data(pSolver, type_solver, h, t0, t1, y0, order);
+    std::cout<< "Please enter the function you want among these functions:" <<std::endl;
+    std::cout <<"1: f(y,t) = 1+t" <<std::endl;
+    std::cout<<"2: f(y,t) = -100*y" <<std::endl;
+    std::cout<<"3 : f(y,t) = sin(t)*cos(t)" <<std::endl;
+    std::cout<<"You choose function number:";
+    std::cin>>choice;
+    check_choice(choice);
+    set_data(pSolver, type_solver, h, t0, t1, y0, order, choice);
 }
 
 void set_data(AbstractOdeSolver* &pSolver, std::string &type_solver, double &h, double &t0, double &t1, double &y0,
-              unsigned int &order) {
+              unsigned int &order, int &choice) {
     std::cout << "You have entered the following arguments  ";
     std::cout << "\ntype solver: " << type_solver;
     std::cout << "\nh = " << h;
     std::cout << "\nt0 = " << t0;
     std::cout << "\nt1 = " << t1;
     std::cout << "\ny0 = " << y0;
-    std::cout << "\norder: " << order << std::endl;
+    std::cout << "\norder: " << order;
+    std::cout << "\nchoice: " << choice << std::endl;
     check_type_solver(type_solver);
     if(type_solver == "AM"){
-        pSolver = new AdamsMoultonSolver;
-        pSolver->SetdRightHandSide(dfRhs);
+        AdamsMoultonSolver* pSolverTemp = new AdamsMoultonSolver;
+        pSolverTemp->SetdRightHandSide(dfRhs);
+        pSolver = pSolverTemp;
     } else if(type_solver == "AB"){
         pSolver = new AdamsBashforthSolver;
     } else if(type_solver == "RK"){
@@ -248,10 +272,12 @@ void set_data(AbstractOdeSolver* &pSolver, std::string &type_solver, double &h, 
     check_step_size(h);
     check_time_interval(t0, t1);
     check_order(order);
+    check_choice(choice);
 
     pSolver->SetStepSize(h);
     pSolver->SetTimeInterval(t0, t1);
     pSolver->SetInitialValue(y0);
     pSolver->SetRightHandSide(fRhs);
     pSolver->SetOrder(order);
+    CHOICE = choice;
 }
