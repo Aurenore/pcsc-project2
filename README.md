@@ -13,7 +13,10 @@ This project implements different numerical methods to solve ordinary differenti
 All these methods return the numerical solution of the ODE. 
 
 The implemented classes are described in the following diagram: 
-METTRE LE DIAGRAMME
+<p align="center">
+  <img src="images/class_abstract_ode_solver.png" width="350" >
+  
+</p>
 
 ## Prerequisites:
 * `C++17`
