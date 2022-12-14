@@ -107,7 +107,6 @@ void AdamsMoultonSolver::SolveEquation(std::ostream &stream) {
     double h = GetStepSize();
     int order = GetOrder();
     assert(h > 1e-6);
-    std::cout << "Step size: " << h << std::endl;
 
     int n = static_cast<int>(std::floor((GetFinalTime() - GetInitialTime()) / h));
     double temp[order+1];

@@ -13,29 +13,48 @@
 
 int CHOICE;
 double fRhs(double y,double t){
-    if (CHOICE==1) {
+    try{
+        if (CHOICE==1) {
+            return 1 + t;
+        } else if (CHOICE==2) {
+            return -100*y;
+        } else if(CHOICE==3){
+            return sin(t)*cos(t);
+        } else {
+            throw Exception("UNSET_CHOICE", "The choice was not set, therefore fRhs could not be called");
+        }
+    } catch (Exception &error) {
+        error.PrintDebug();
+        std::cout << "Choice is set to 1." << std::endl;
+        CHOICE = 1;
         return 1 + t;
-    } else if (CHOICE==2) {
-        return -100*y;
-    } else if(CHOICE==3){
-        return sin(t)*cos(t);
     }
 }
 double dfRhs(double y, double t) {
-    if (CHOICE == 1) {
-        return 0;
-    } else if (CHOICE == 2) {
-        return -100;
-    } else if (CHOICE == 3) {
+    try {
+        if (CHOICE == 1) {
+            return 0;
+        } else if (CHOICE == 2) {
+            return -100;
+        } else if (CHOICE == 3) {
+            return 0;
+        } else {
+            throw Exception("UNSET_CHOICE", "The choice was not set, therefore dfRhs could not be called");
+        }
+    } catch (Exception &error) {
+        error.PrintDebug();
+        std::cout << "Choice is set to 1." << std::endl;
+        CHOICE = 1;
         return 0;
     }
 }
+
 void check_type_solver(std::string &type_solver);
 void check_step_size(double &h);
 void check_time_interval(double &t0, double &t1);
 void check_order(unsigned int &order);
 void check_choice(int &choice);
-void enter_data(AbstractOdeSolver* &pSolver, int& choice);
+void enter_data(AbstractOdeSolver* &pSolver);
 void set_data(AbstractOdeSolver* &pSolver, std::string &type_solver, double &h, double &t0, double &t1, double &y0,
               unsigned int &order, int &choice);
 
@@ -43,6 +62,7 @@ int main(int argc, char **argv) {
     AbstractOdeSolver *pSolver;
     try {
         if (argc == 8){
+            // the right number of arguments was given by the user.
             std::string type_solver;
             double h;
             double t0;
@@ -83,17 +103,17 @@ int main(int argc, char **argv) {
             set_data(pSolver, type_solver, h, t0, t1, y0, order, choice);
 
         } else if(argc == 1){
-            enter_data(pSolver, CHOICE);
+            // no argument was given by the user.
+            enter_data(pSolver);
         } else {
             throw Exception("WRONG_ARGUMENTS", "Wrong number of arguments was entered.");
         }
     } catch (Exception &error) {
         error.PrintDebug();
         std::cout << "You have entered " << argc << " argument(s). Please fill the right arguments now." << std::endl;
-        enter_data(pSolver, CHOICE);
+        enter_data(pSolver);
     }
 
-    std::cout << "Solver is instantiated." << std::endl;
     std::string filename_solver("solution_file.dat");
     std::fstream SolveFile;
     SolveFile.open(filename_solver, std::ios::out);
@@ -113,6 +133,13 @@ int main(int argc, char **argv) {
 }
 
 void check_type_solver(std::string &type_solver){
+    /*!
+     * Check if the given type solver is coherent.
+    * \param type_solver: string of the type of solver.
+     * For Adams-Moulton: "AM"
+     * For Adams-Bashforth: "AB"
+     * For Runge-Kutta: "RK"
+    */
     try{
         if(!((type_solver == "AM") || (type_solver == "AB") || (type_solver == "RK"))) {
             throw Exception("WRONG_ARGUMENTS", "Wrong string was entered as argument.");
@@ -126,6 +153,10 @@ void check_type_solver(std::string &type_solver){
     }
 }
 void check_step_size(double &h){
+    /*!
+     * Check if the given step size is coherent.
+    * \param h : step size.
+    */
     try {
         if (h<0) {
             throw UncoherentValueException("The step size must be positive.");
@@ -148,6 +179,11 @@ void check_step_size(double &h){
     }
 }
 void check_time_interval(double &t0, double &t1){
+    /*!
+     * Check if the given time interval is coherent.
+    * \param t0: initial time
+     * \param t1: final time
+    */
     try {
         if (t1<0) {
             throw UncoherentValueException("Final time cannot be negative");
@@ -183,6 +219,10 @@ void check_time_interval(double &t0, double &t1){
 }
 
 void check_order(unsigned int &order){
+    /*!
+     * Check if the given order is coherent.
+    * \param order: order of the method.
+    */
     try {
         if (order > max_order) {
             throw SetOrderException("Order must be smaller or equal to the maximum order " + std::to_string(max_order));
@@ -196,6 +236,10 @@ void check_order(unsigned int &order){
 }
 
 void check_choice(int &choice){
+    /*!
+     * Check if the given choice is coherent.
+    * \param choice : choice of the function. It should be 1, 2 or 3.
+    */
     try {
         if (!(choice == 1 || choice == 2 || choice == 3)){
             throw UncoherentValueException("Choice must be either 1, 2, or 3.");
@@ -205,23 +249,29 @@ void check_choice(int &choice){
         std::cout<< "Please enter the function you want among these functions:" <<std::endl;
         std::cout <<"1: f(y,t) = 1+t" <<std::endl;
         std::cout<<"2: f(y,t) = -100*y" <<std::endl;
-        std::cout<<"3 : f(y,t) = sin(t)*cos(t)" <<std::endl;
+        std::cout<<"3: f(y,t) = sin(t)*cos(t)" <<std::endl;
         std::cout<<"You choose function number:";
         std::cin>>choice;
         check_choice(choice);
     }
 }
 
-void enter_data(AbstractOdeSolver *&pSolver, int &choice) {
+void enter_data(AbstractOdeSolver *&pSolver) {
+    /*!
+     * Let the user enter the arguments of the solver.
+    * \param pSolver: Abstract ODE solver pointer.
+    */
     double h;
     double t0;
     double t1;
     double y0;
     unsigned int order;
+    int choice;
     std::string type_solver;
     std::cout << "\n                  Welcome to \n ~Abstract ODE Solver : the new generation~ \n   ---- By S. Lunven & A.-A. Mauron ---- \n" << std::endl;
 
-    std::cout << "First, choose which type of solver you would like : \n 'AM' : Adams-Moulton \n 'AB' : Adams-Bashforth \n 'RK' : Runge-Kutta: ";
+    std::cout << "First, choose which type of solver you would like : \n 'AM' : Adams-Moulton \n 'AB' : Adams-Bashforth \n 'RK' : Runge-Kutta: " << std::endl;
+    std::cout << "Your solver: ";
     std::cin >> type_solver;
     check_type_solver(type_solver);
     std::cout << "Enter the step size h: ";
@@ -240,7 +290,7 @@ void enter_data(AbstractOdeSolver *&pSolver, int &choice) {
     std::cout<< "Please enter the function you want among these functions:" <<std::endl;
     std::cout <<"1: f(y,t) = 1+t" <<std::endl;
     std::cout<<"2: f(y,t) = -100*y" <<std::endl;
-    std::cout<<"3 : f(y,t) = sin(t)*cos(t)" <<std::endl;
+    std::cout<<"3: f(y,t) = sin(t)*cos(t)" <<std::endl;
     std::cout<<"You choose function number:";
     std::cin>>choice;
     check_choice(choice);
@@ -249,6 +299,17 @@ void enter_data(AbstractOdeSolver *&pSolver, int &choice) {
 
 void set_data(AbstractOdeSolver* &pSolver, std::string &type_solver, double &h, double &t0, double &t1, double &y0,
               unsigned int &order, int &choice) {
+    /*!
+     * Check if the arguments are coherent. Then set the solver with them.
+    * \param pSolver: Abstract ODE solver pointer.
+     * \param type_solver: string indicating the type of the solver.
+     * \param h: step size
+     * \param t0: initial time
+     * \param t1: final time
+     * \param y0: initial value
+     * \param order: order of the method
+     * \param choice: choice of the right hand side function.
+    */
     std::cout << "You have entered the following arguments  ";
     std::cout << "\ntype solver: " << type_solver;
     std::cout << "\nh = " << h;
