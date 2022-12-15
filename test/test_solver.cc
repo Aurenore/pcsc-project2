@@ -52,8 +52,6 @@ void Test_results(AbstractOdeSolver *solver, std::string filename_solver, std::s
     }
 }
 
-
-
 void Test_final_results(AbstractOdeSolver *solver, std::string filename_solver, double (*sol)(double t), const double tol = TOL){
     // check that the last line of result is the same as the one given by the solution function.
     std::fstream SolveFile;
@@ -220,7 +218,6 @@ TEST(AdamsMoultonSolver_test, EulerBackward_fRhs1) {
 }
 
 TEST(AdamsMoultonSolver_test, EulerBackward_fRhs2) {
-    AbstractOdeSolver* pt_solver = new AdamsMoultonSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
