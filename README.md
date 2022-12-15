@@ -51,7 +51,7 @@ cd doc
 doxygen
 ```
 
-To view documentation: LIEN HTML
+
 
 ## Usage
 ### Command line arguments
