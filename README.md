@@ -110,6 +110,8 @@ Three function fRhs1, fRhs2 and fRhs3 are used to check the accuracy of the solv
 * The first limitation of the program is that the number of functions fRhs proposed to the user is very limited. One should implement method which translates a string - specified by the user -  into a mathematical expression. Then, any function could be used. 
 * The second limitation of the program is for implicit methods which use the Newton method. If the maximum number of iteration is reached and the Newton method didn't converge then it would have been smart to implement another method like the bisection one for example. 
 * Another limitation is that we can not check the result for all right hand side functions, if we do not know the corresponding solution. The convergence depends on parameters such as t1, h and y0. If the final result is far from the unknown true result, there is no way to verify it.  
+* More options could be added concerning the format of the output. For example, a graph ploting the solution with respect to time would be a good visualization of the result. 
+* Other methods could be implemented, like the Backward Differentiation Formulas (BDF).
 
 
 ## Credits
