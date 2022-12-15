@@ -17,7 +17,7 @@
      * \f$ k_j = f(t_n + c_j \cdot h, y_n + h (\sum_{l=0}^{j-1} a_{j-1 \; l} k_l) ). \f$ <br>
      * The coefficients \f$ a_{i \; j}, b_i, c_j \f$ are given depending of the order \f$ s \f$ and the chosen method.
      * The implemented methods with different order are: <br>
-     * order = 1: Forward Euler (first order) <br>
+     * order = 1: Forward Euler (first order) <br> 
      * order = 2: Explicit midpoint method <br>
      * order = 3: Kutta's third-order method <br>
      * order = 4: classic fourth-order method <br>

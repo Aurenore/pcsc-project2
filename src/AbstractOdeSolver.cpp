@@ -14,9 +14,9 @@ AbstractOdeSolver::~AbstractOdeSolver() {}
 
 void AbstractOdeSolver::SetStepSize(double h) {
 
-   /*! Set the step size
+    /*! Set the step size
     * \param h: value given to the step size
-   */
+    */
     try {
         if (h<0) {
             throw UncoherentValueException("The step size must be positive.");
@@ -164,7 +164,7 @@ double AbstractOdeSolver::ScalarProduct(const int size, const double *a, const d
    * \param size: length of a and b
    * \param a: first vector
    * \param b: second vector
-   * \return: result of the scalar product between two vectors
+   * \return result of the scalar product between two vectors
    */
     double product(0.);
     for(int i=0; i<size; i++){
@@ -178,7 +178,7 @@ double AbstractOdeSolver::ProductWithB(const double *F, int j) const {
     *  \f$ \sum_{i = 0}^{j-1} F[i]*b[j-1][i] \f$
     * \param F: vector of size order+1 containing the evaluation of f(y,t) at different consecutive times
     * \param j: parameter defining the length of F and b to consider
-    *\return: result of the scalar product between F and the jth row of b
+    *\return result of the scalar product between F and the jth row of b
     */
     try {
         if (j>max_order) {

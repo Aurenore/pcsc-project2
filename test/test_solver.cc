@@ -52,6 +52,8 @@ void Test_results(AbstractOdeSolver *solver, std::string filename_solver, std::s
     }
 }
 
+
+
 void Test_final_results(AbstractOdeSolver *solver, std::string filename_solver, double (*sol)(double t), const double tol = TOL){
     // check that the last line of result is the same as the one given by the solution function.
     std::fstream SolveFile;
@@ -218,6 +220,7 @@ TEST(AdamsMoultonSolver_test, EulerBackward_fRhs1) {
 }
 
 TEST(AdamsMoultonSolver_test, EulerBackward_fRhs2) {
+    AbstractOdeSolver* pt_solver = new AdamsMoultonSolver;
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
@@ -248,7 +251,7 @@ TEST(AdamsMoultonSolver_test, orders_and_fRhs){
     AbstractImplicitSolver* solver = new AdamsMoultonSolver;
     solver->SetStepSize(h);
     solver->SetTimeInterval(t0, t1);
-    int order_min = 2;
+    int order_min = 1;
     int order_max = 4;
     std::string prefix_filename_solver("test_AM_");
     Test_orders(solver, order_min, order_max, prefix_filename_solver);
@@ -628,7 +631,7 @@ TEST(RKSolver_test, EulerForward_compared_to_Adamsbashforth_fRhs3) {
     }
 }
 
-TEST(RKSolver_test, all_orders_and_fRhs){
+TEST(RKSolver_test, orders_and_fRhs){
     double h = 0.001;
     double t0 = 0.0;
     double t1 = 100.0;
