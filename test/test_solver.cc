@@ -375,9 +375,8 @@ TEST(AdamsBashforthSolver_test, EulerForward_fRhs2) {
     unsigned int s = 1;
     AdamsBashforthSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_AB_fRhs2_s1.dat");
-    std::string filename_solution("../test/solution_euler_fRhs2.dat");
-    try {
-        Test_results(&solver, filename_solver, filename_solution);
+    try{
+        Test_final_results(&solver, filename_solver, sol2, 0.1);
     } catch (FileNotOpenException &error) {
         error.PrintDebug();
     }
@@ -517,9 +516,8 @@ TEST(RKSolver_test, EulerForward_fRhs2) {
     unsigned int s = 1;
     RKSolver solver(h, t0, t1, y0, fRhs2, s);
     std::string filename_solver("test_RK_s1.dat");
-    std::string filename_solution("../test/solution_euler_fRhs2.dat");
-    try {
-        Test_results(&solver, filename_solver, filename_solution);
+    try{
+        Test_final_results(&solver, filename_solver, sol2, 0.1);
     } catch (FileNotOpenException &error) {
         error.PrintDebug();
     }
