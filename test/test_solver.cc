@@ -38,7 +38,7 @@ void Test_results(AbstractOdeSolver *solver, std::string filename_solver, std::s
     SolveFile.open(filename_solver, std::ios::in);
     std::fstream SolutionFile;
     SolutionFile.open(filename_solution, std::ios::in);
-    if(!(SolveFile.is_open() || SolutionFile.is_open())){
+    if(!(SolveFile.is_open() && SolutionFile.is_open())){
         throw FileNotOpenException("One of the 2 files can't be opened.");
     }
     while(SolveFile.is_open() && SolutionFile.is_open()){
